@@ -1,0 +1,5 @@
+.vercel
+
+/studio/node_modules
+
+/client/node_modules
