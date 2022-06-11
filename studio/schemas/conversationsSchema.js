@@ -15,7 +15,7 @@ export const conversationsSchema = {
       },
       {
         name: 'image',
-        type: 'datetime',
+        type: 'image',
         title: 'Image',
       },
       {
