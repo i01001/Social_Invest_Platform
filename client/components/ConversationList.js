@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import friends from "../assets/icons/friends.svg";
 import nitro from "../assets/icons/nitro.svg";
+import dmCard from "../components/dmCard"
 
 import avatar1 from "../assets/avatar-1.png";
 import avatar2 from "../assets/avatar-2.png";
