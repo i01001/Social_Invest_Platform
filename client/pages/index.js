@@ -5,7 +5,7 @@ import SideBar from '../components/Sidebar'
 
 export default function Home() {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper}> side BAR
       <SideBar />
       <div className={styles.main}>
         Conversations List Main Area Chat View
