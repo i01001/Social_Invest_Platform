@@ -10,7 +10,7 @@ export default function Home() {
       <ConversationList />
       <div className={styles.main}>
         Conversations List Main Area Chat View
-        {/* <ChatView /> */}
+        <ChatView />
       </div>
     </div>
   );
