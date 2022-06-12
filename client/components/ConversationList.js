@@ -33,6 +33,7 @@ const dummyDMs = [
 ];
 
 const ConversationList = () => {
+  const [dms, setDMs] = useState(dummyDMs);
   return (
     <div className={styles.conversations}>
       <div className={styles.conversationListTop}>
