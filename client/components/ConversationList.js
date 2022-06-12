@@ -4,6 +4,29 @@ import Image from "next/image";
 import friends from "../assets/icons/friends.svg";
 import nitro from "../assets/icons/nitro.svg";
 
+const dummyDMs = [
+  {
+    id: 1,
+    name: "ethereum",
+    avatar: avatar1,
+  },
+  {
+    id: 2,
+    name: "link",
+    avatar: avatar2,
+  },
+  {
+    id: 3,
+    name: "graph",
+    avatar: avatar3,
+  },
+  {
+    id: 4,
+    name: "dai",
+    avatar: avatar4,
+  },
+];
+
 const ConversationList = () => {
   return (
     <div className={styles.conversations}>
