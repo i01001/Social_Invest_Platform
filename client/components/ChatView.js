@@ -1,6 +1,7 @@
 import React from 'react'
 import ChatHeader from './ChatHeader'
 import styles from "../styles/chatView.module.css"
+import Image from "next/image";
 
 const ChatView = () => {
   return (
