@@ -12,13 +12,14 @@ const dmCard = ({ name, status, avatar, id }) => {
   return (
     <div className={styles.dmCard} onClick={changeUrl}>
       <div className={styles.dmAvatarContainer}>
-        <Image
+        <div>{name}</div>
+        {/* <Image
           src={avatar}
           className={styles.dmAvatar}
           height={48}
           width={48}
           alt={name}
-        />
+        /> */}
         <div className={styles.dmCardStatus} id={status} />
       </div>
       <p className={styles.dmCardName}>{name}</p>
