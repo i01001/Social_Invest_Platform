@@ -66,7 +66,7 @@ const ConversationList = () => {
         </div>
         <div className={styles.dmTitle}>DIRECT MESSAGES</div>
         {dms.map((dm, index) => (
-          <DmCard
+          <dmCard
             key={index}
             name={dm.name}
             id={dm.id}
