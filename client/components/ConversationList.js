@@ -23,7 +23,7 @@ const ConversationList = () => {
             </div>
             <p>Friends</p>
           </div>
-          <div clasName={styles.elementsContainer}>
+          <div className={styles.elementsContainer}>
             <div className={styles.svgContainer}>
               <Image
                 height={25}
