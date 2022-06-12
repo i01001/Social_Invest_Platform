@@ -2,7 +2,7 @@ import Image from 'next/image'
 import styles from '../styles/dmCard.module.css'
 import { useRouter } from 'next/router'
 
-const DmCard = ({ name, status, avatar, id }) => {
+const dmCard = ({ name, status, avatar, id }) => {
   const router = useRouter()
 
   const changeUrl = () => {
@@ -26,4 +26,4 @@ const DmCard = ({ name, status, avatar, id }) => {
   )
 }
 
-export default DmCard
+export default dmCard
