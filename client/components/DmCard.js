@@ -12,7 +12,7 @@ const DmCard = ({ name, status, avatar, id }) => {
   return (
     <div className={styles.dmCard} onClick={changeUrl}>
       <div className={styles.dmAvatarContainer}>
-        <div>test</div>
+        <div>l2232</div>
         <Image
           src={avatar}
           className={styles.dmAvatar}
