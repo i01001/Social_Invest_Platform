@@ -5,9 +5,7 @@ export default function Home() {
   return (
     <div className={styles.wrapper}>
       <Sidebar />
-      <div className={styles.main}>
-
-      </div>
+      <div className={styles.main}>Conversation List View</div>
     </div>
   );
 }
