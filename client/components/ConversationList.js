@@ -7,9 +7,10 @@ import nitro from "../assets/icons/nitro.svg"
 
 const ConversationList = () => {
   return (
-    <div className={styles.conversationList}>
+    <div className={styles.conversations}>
     <div className={styles.conversationListTop}>
         <input type='search' placeholder='Find or start a conversation' />
+    <div className={styles.conversationsContainer}></div>
     </div>
     </div>
   )
