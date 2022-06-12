@@ -8,6 +8,7 @@ export default function Home() {
     <div className={styles.wrapper}>
       <SideBar />
       <div className={styles.main}>
+        Conversations List Main Area Chat View
         {/* <ConversationList /> */}
         {/* <ChatView /> */}
       </div>
