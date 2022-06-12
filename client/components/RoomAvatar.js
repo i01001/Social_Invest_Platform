@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import styles from '../styles/roomAvatar.module.css'
 
-const RoomAvatar = ({ id, avatar, name }) => {
+const RoomAvatar = ({key, id, avatar, name }) => {
   const router = useRouter()
 
   const changeUrl = () => {
@@ -14,13 +14,13 @@ const RoomAvatar = ({ id, avatar, name }) => {
     <div className={styles.wrapper} onClick={changeUrl}>
       <div className={styles.roomAvatar}>
         Testing
-        {/* <Image
+        <Image
           src={avatar}
           className={styles.roomAvatarImage}
           height={48}
           width={48}
           alt={name}
-        /> */}
+        />
       </div>
     </div>
   )
