@@ -13,7 +13,6 @@ const RoomAvatar = ({key, id, avatar, name }) => {
   return (
     <div className={styles.wrapper} onClick={changeUrl}>
       <div className={styles.roomAvatar}>
-        Testing
         <Image
           src={avatar}
           className={styles.roomAvatarImage}

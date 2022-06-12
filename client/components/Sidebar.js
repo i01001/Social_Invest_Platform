@@ -41,7 +41,7 @@ const Sidebar = () => {
         <RoomAvatar
           key={index}
           id={channel.roomId}
-          avatar={channel.avatar}
+          avatar={avatar1}
           name={channel.roomName}
         />
       ))}
