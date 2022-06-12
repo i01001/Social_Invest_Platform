@@ -74,8 +74,9 @@ const ConversationList = () => {
             name={dm.name}
             id={dm.id}
             avatar={
-              dm.avatar ||
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3OCSMFIW5fZ3vSN6yGpD-w-6SsL2_ZPA_sw&usqp=CAU'
+              dm.avatar 
+              // ||
+              // 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3OCSMFIW5fZ3vSN6yGpD-w-6SsL2_ZPA_sw&usqp=CAU'
             }
             status="online"
           />
