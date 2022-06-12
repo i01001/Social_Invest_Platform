@@ -1,12 +1,13 @@
-import React from "react";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import styles from "../styles/dmCard.module.css";
+import Image from 'next/image'
+import styles from '../styles/dmCard.module.css'
+import { useRouter } from 'next/router'
 
-const dmCard = (name, status, avatar, id) => {
-  const router = useRouter();
+const DmCard = ({ name, status, avatar, id }) => {
+  const router = useRouter()
 
-  const changeUrl = () => {};
+  const changeUrl = () => {
+    router.push(`?conversation=${id}&name=${name}`)
+  }
 
   return (
     <div className={styles.dmCard} onClick={changeUrl}>
@@ -18,9 +19,11 @@ const dmCard = (name, status, avatar, id) => {
           width={48}
           alt={name}
         />
+        <div className={styles.dmCardStatus} id={status} />
       </div>
+      <p className={styles.dmCardName}>{name}</p>
     </div>
-  );
-};
+  )
+}
 
-export default dmCard;
+export default DmCard
