@@ -5,7 +5,11 @@ import styles from '../styles/RoomAvatar.module.css'
 import React from 'react'
 
 const RoomAvatar = ({id, avatar, name}) => {
-    const changeUrl = () => {}
+    const router = useRouter()
+
+    const changeUrl = () => {
+        router.push(`?channel=${id}&name=${name}`)
+    }
 
     return (
     <div className={styles.wrapper} onClick={changeUrl}>
