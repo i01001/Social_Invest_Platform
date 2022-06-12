@@ -63,11 +63,12 @@ const ConversationList = () => {
             />
           </div>
           <p>nitro</p>
-        </div>
+          </div>
         <div className={styles.dmTitle}>DIRECT MESSAGES</div>
         {dms.map((dm, index) => (
           <dm>DM CARD</dm>
         ))}
+            
       </div>
     </div>
   );
