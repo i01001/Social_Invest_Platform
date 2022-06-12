@@ -34,15 +34,15 @@ const dummyChannels = [
 
 const Sidebar = () => {
   const router = useRouter();
-  const [channels, setChannels] = useState([dummyChannels]);
+  const [channels, setChannels] = useState(dummyChannels);
   return (
     <div className={styles.wrapper}>
       {channels.map((channel, index) => (
         <RoomAvatar
           key={index}
-          id={channel.roomId}
+          id={channel.id}
           avatar={channel.avatar}
-          name={channel.roomName}
+          name={channel.name}
         />
       ))}
     </div>
