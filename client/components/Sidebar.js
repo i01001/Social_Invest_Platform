@@ -40,9 +40,9 @@ const Sidebar = () => {
       {channels.map((channel, index) => (
         <RoomAvatar
           key={index}
-          id={2}
-          avatar={avatar1}
-          name={"da"}
+          id={channel.id}
+          avatar={channel.avatar}
+          name={channel.name}
         />
       ))}
     </div>
