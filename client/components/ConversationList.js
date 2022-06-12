@@ -66,7 +66,8 @@ const ConversationList = () => {
           </div>
         <div className={styles.dmTitle}>DIRECT MESSAGES</div>
         {dms.map((dm, index) => (
-          <dm>DM CARD</dm>
+          <div>DM CARD 
+          </div>
         ))}
             
       </div>
