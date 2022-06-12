@@ -6,7 +6,6 @@ import styles from "../styles/dmCard.module.css";
 const dmCard = (name, status, avatar, id) => {
 
     const changeUrl = () => {
-        router.push(`?channel=${id}&name=${name}`);
       };
 
 
