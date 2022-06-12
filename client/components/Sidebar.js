@@ -3,7 +3,6 @@ import styles from '../styles/sidebar.module.css'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import RoomAvatar from './RoomAvatar'
-import Sidebar from './Sidebar'
 
 import avatar1 from '../assets/avatar-1.png'
 import avatar2 from '../assets/avatar-2.png'
