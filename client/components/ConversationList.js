@@ -20,6 +20,7 @@ const ConversationList = () => {
                 alt="friends"
               />
             </div>
+            <p>Friends</p>
           </div>
           <div clasName={styles.elementsContainer}>
             <div className={styles.svgContainer}>
@@ -31,7 +32,9 @@ const ConversationList = () => {
                 alt="nitro"
               />
             </div>
+            <p>nitro</p>
           </div>
+          <div clasName={styles.dmTitle}>DIRECT MESSAGES</div>
         </div>
       </div>
     </div>
