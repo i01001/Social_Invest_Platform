@@ -34,7 +34,7 @@ const dummyChannels = [
 
 const Sidebar = () => {
   const router = useRouter();
-  const [channels, setChannels] = useState([dummyChannels]);
+  const [channels, setChannels] = useState([]);
   return (
     <div className={styles.wrapper}>
       {channels.map((channel, index) => (
