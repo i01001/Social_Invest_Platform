@@ -5,7 +5,7 @@ import friends from "../assets/icons/friends.svg"
 import nitro from "../assets/icons/nitro.svg"
 
 
-const conversationList = () => {
+const ConversationList = () => {
   return (
     <div className={styles.conversationList}>
     <div className={styles.conversationListTop}>
@@ -15,4 +15,4 @@ const conversationList = () => {
   )
 }
 
-export default conversationList
+export default ConversationList
