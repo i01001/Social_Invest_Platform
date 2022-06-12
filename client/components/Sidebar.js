@@ -1,33 +1,33 @@
 // import React from 'react'
-import styles from "../styles/sidebar.module.css";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import RoomAvatar from "./RoomAvatar";
+import styles from '../styles/sidebar.module.css'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import RoomAvatar from './RoomAvatar'
 
-import avatar1 from "../assets/avatar-1.png";
-import avatar2 from "../assets/avatar-2.png";
-import avatar3 from "../assets/avatar-3.png";
-import avatar4 from "../assets/avatar-4.png";
+import avatar1 from '../assets/avatar-1.png'
+import avatar2 from '../assets/avatar-2.png'
+import avatar3 from '../assets/avatar-3.png'
+import avatar4 from '../assets/avatar-4.png'
 
 const dummyChannels = [
   {
     id: 1,
-    name: "ethereum",
+    name: 'ethereum',
     avatar: avatar1,
   },
   {
     id: 2,
-    name: "link",
+    name: 'link',
     avatar: avatar2,
   },
   {
     id: 3,
-    name: "graph",
+    name: 'graph',
     avatar: avatar3,
   },
   {
     id: 4,
-    name: "dai",
+    name: 'dai',
     avatar: avatar4,
   },
 ];
