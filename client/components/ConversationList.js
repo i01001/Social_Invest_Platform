@@ -9,6 +9,7 @@ const ConversationList = () => {
     <div className={styles.conversations}>
       <div className={styles.conversationListTop}>
         <input type="search" placeholder="Find or start a conversation" />
+        </div>
         <div className={styles.conversationsContainer}>
           <div clasName={styles.elementsContainer}>
             <div className={styles.svgContainer}>
@@ -37,7 +38,7 @@ const ConversationList = () => {
           <div clasName={styles.dmTitle}>DIRECT MESSAGES</div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 
