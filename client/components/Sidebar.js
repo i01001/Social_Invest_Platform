@@ -36,8 +36,7 @@ const Sidebar = () => {
   const router = useRouter();
   const [channels, setChannels] = useState([dummyChannels]);
   return (
-    <div className={styles.wrapper}>
-        sidebar
+    <div className={styles.wrapper}>sidebar
       {/* {channels.map((channel, index) => (
         <RoomAvatar
           key={index}
