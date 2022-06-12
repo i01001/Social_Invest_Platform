@@ -34,7 +34,7 @@ const dummyChannels = [
 
 const Sidebar = () => {
   const router = useRouter();
-  const [channels, setChannels] = useState([]);
+  const [channels, setChannels] = useState([dummyChannels]);
   return (
     <div className={styles.wrapper}>
       {channels.map((channel, index) => (
@@ -49,4 +49,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Sidebar
