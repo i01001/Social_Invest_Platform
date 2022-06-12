@@ -2,9 +2,51 @@
 import styles from '../styles/sidebar.module.css'
 import { useEffect, useState} from 'react'
 import { useRouter } from 'next/router'
+import RoomAvatar from './RoomAvatar'
+
+
+import avatar1 from '../assets/avatar1.png'
+import avatar2 from '../assets/avatar2.png'
+import avatar3 from '../assets/avatar3.png'
+import avatar4 from '../assets/avatar4.png'
+
+const dummyChannels = [
+    {
+        id: 1,
+        name: 'ethereum',
+        avatar: avatar1,
+    },
+    {
+        id: 2,
+        name: 'link',
+        avatar: avatar2,
+    },
+    {
+        id: 3,
+        name: 'graph',
+        avatar: avatar3,
+    },
+    {
+        id: 4,
+        name: 'dai',
+        avatar: avatar4,
+    },
+]
+
 
 const Sidebar = () => {
-    return <div className={styles.wrapper}>Sidebar</div>
+    const router = useRouter() 
+    const [channels, setchannels] = useState([dummyChannels])
+    return <div className={styles.wrapper}>
+        {channels.map((channel, index) => (
+            <RoomAvatar
+            key={index}
+            id={channel.roomId}
+            avatar={channel.avatar}
+            name={channel.roomName}
+            />
+        ))}
+        </div>
 }
 
 export default Sidebar
