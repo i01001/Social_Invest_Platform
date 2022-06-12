@@ -2,8 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../styles/dmCard.module.css";
-import avatar1 from "../assets/avatar-1.png";
-
 
 const dmCard = (name, status, avatar, id) => {
   const router = useRouter();
@@ -14,7 +12,7 @@ const dmCard = (name, status, avatar, id) => {
     <div className={styles.dmCard} onClick={changeUrl}>
       <div className={styles.dmAvatarContainer}>
         <Image
-          src={avatar1}
+          src={avatar}
           className={styles.dmAvatar}
           height={48}
           width={48}
