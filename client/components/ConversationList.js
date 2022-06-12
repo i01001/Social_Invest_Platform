@@ -1,5 +1,6 @@
 import styles from "../styles/conversationList.module.css";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import friends from "../assets/icons/friends.svg";
 import nitro from "../assets/icons/nitro.svg";
@@ -33,6 +34,7 @@ const dummyDMs = [
 ];
 
 const ConversationList = () => {
+  const router = useRouter();
   const [dms, setDMs] = useState(dummyDMs);
   return (
     <div className={styles.conversations}>
