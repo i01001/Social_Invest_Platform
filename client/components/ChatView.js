@@ -1,8 +1,14 @@
 import React from 'react'
+import ChatHeader from './ChatHeader'
 
-function ChatView() {
+const ChatView = () => {
   return (
-    <div>ChatView</div>
+    <div className={styles.chatView}>
+    <div className={styles.roomNameContainer}>
+        <Image height={20} width={20} src={at} className={styles.svg} alt='' />
+        <h3 className={styles.title}>Room Name</h3>
+    </div>
+    </div>
   )
 }
 
