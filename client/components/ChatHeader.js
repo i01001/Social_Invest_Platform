@@ -7,7 +7,7 @@ import help from '../assets/icons/help.svg'
 import pin from '../assets/icons/pin.svg'
 import at from '../assets/icons/at.svg'
 import styles from '../styles/chatHeader.module.css'
-import ethLogo from '../assets/avatar1.png'
+import avatar1 from "../assets/avatar-1.png";
 import { useContext } from 'react'
 // import { DiscordContext } from '../context/context'
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import ChatHeader from './ChatHeader'
+import styles from "../chatView.module.css"
 
 const ChatView = () => {
   return (
