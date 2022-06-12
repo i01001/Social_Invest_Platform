@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from 'react'
 import styles from '../styles/sidebar.module.css'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
