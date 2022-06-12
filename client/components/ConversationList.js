@@ -11,6 +11,11 @@ const ConversationList = () => {
     <div className={styles.conversationListTop}>
         <input type='search' placeholder='Find or start a conversation' />
     <div className={styles.conversationsContainer}></div>
+    <div clasName={styles.elementsContainer}>
+      <div className={styles.svgContainer}>
+        
+      </div>
+    </div>
     </div>
     </div>
   )
