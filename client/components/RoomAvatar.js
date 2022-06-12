@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import styles from '../styles/roomAvatar.module.css'
-import avatar1 from '../assets/avatar-1.png'
 
 const RoomAvatar = ({ id, avatar, name }) => {
   const router = useRouter()
@@ -14,7 +13,7 @@ const RoomAvatar = ({ id, avatar, name }) => {
     <div className={styles.wrapper} onClick={changeUrl}>
       <div className={styles.roomAvatar}>
         <Image
-          src={avatar1}
+          src={avatar}
           className={styles.roomAvatarImage}
           height={48}
           width={48}
