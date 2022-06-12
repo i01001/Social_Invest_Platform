@@ -9,35 +9,35 @@ const ConversationList = () => {
     <div className={styles.conversations}>
       <div className={styles.conversationListTop}>
         <input type="search" placeholder="Find or start a conversation" />
-        </div>
-        <div className={styles.conversationsContainer}>
-          <div className={styles.elementsContainer}>
-            <div className={styles.svgContainer}>
-              <Image
-                height={25}
-                width={25}
-                src={friends}
-                className={styles.svg}
-                alt="friends"
-              />
-            </div>
-            <p>Friends</p>
-          </div>
-          <div className={styles.elementsContainer}>
-            <div className={styles.svgContainer}>
-              <Image
-                height={25}
-                width={25}
-                src={nitro}
-                className={styles.svg}
-                alt="nitro"
-              />
-            </div>
-            <p>nitro</p>
-          </div>
-          <div className={styles.dmTitle}>DIRECT MESSAGES</div>
-        </div>
       </div>
+      <div className={styles.conversationsContainer}>
+        <div className={styles.elementsContainer}>
+          <div className={styles.svgContainer}>
+            <Image
+              height={25}
+              width={25}
+              src={friends}
+              className={styles.svg}
+              alt="friends"
+            />
+          </div>
+          <p>Friends</p>
+        </div>
+        <div className={styles.elementsContainer}>
+          <div className={styles.svgContainer}>
+            <Image
+              height={25}
+              width={25}
+              src={nitro}
+              className={styles.svg}
+              alt="nitro"
+            />
+          </div>
+          <p>nitro</p>
+        </div>
+        <div className={styles.dmTitle}>DIRECT MESSAGES</div>
+      </div>
+    </div>
   );
 };
 
