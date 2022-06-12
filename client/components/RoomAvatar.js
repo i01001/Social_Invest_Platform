@@ -15,7 +15,7 @@ const RoomAvatar = ({id, avatar, name}) => {
     <div className={styles.wrapper} onClick={changeUrl}>
         <div className={styles.roomAvatar}>
             <Image
-                src={avatar}
+            src={avatar}
                 className={styles.roomAvatarImage}
                 height={48}
                 width={48}
