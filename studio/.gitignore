@@ -1,5 +1,6 @@
 .vercel
 
-
+.env
+/client/.env
 /node_modules
 /node_modules/
