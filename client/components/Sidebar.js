@@ -53,21 +53,21 @@ const Sidebar = () => {
   //   }
   // }, [])
 
-  useEffect(async () => {
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
-      )
+  // useEffect(async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
+  //     )
 
-      const data = await response.json()
-      setChannels(data)
+  //     const data = await response.json()
+  //     setChannels(data)
 
-      router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}`)
-    }
-     catch (error) {
-      console.error(error)
-    }
-  }, [])
+  //     router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}`)
+  //   }
+  //    catch (error) {
+  //     console.error(error)
+  //   }
+  // }, []);
 
   return (
     <div className={styles.wrapper}>
