@@ -28,7 +28,15 @@ export const SocialProvider = ({children }) => {
     }, [])
 
 
-    const createUserAccount = async () => {}
+    const createUserAccount = async () => {
+        if(!window.ethereum) return
+
+        try{
+            const data = {
+                userAddress: userAddress,
+            }
+        }catch (error){ console.log(error)}
+    }
 
 
     const checkIfWalletIsConnected = async () => {
