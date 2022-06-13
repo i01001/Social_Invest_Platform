@@ -32,7 +32,7 @@ export const SocialProvider = ({ children }) => {
     checkIfWalletIsConnected();
   }, []);
 
-  const createUserAccount = async () => {
+  const createUserAccount = async (userAddress=currentAccount) => {
     if (!window.ethereum) return;
 
     try {
