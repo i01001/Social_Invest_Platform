@@ -98,5 +98,21 @@ export const SocialProvider = ({ children }) => {
     }
   };
 
-  return <SocialContext.Provider value={{}}>{children}</SocialContext.Provider>;
+  return (
+    <SocialContext.Provider
+      value={{
+        currentAccount,
+        roomName,
+        setRoomName,
+        placeholder,
+        messageText,
+        state,
+        gun,
+        connectWallet,
+        currentUser,
+      }}
+    >
+      {children}
+    </SocialContext.Provider>
+  );
 };
