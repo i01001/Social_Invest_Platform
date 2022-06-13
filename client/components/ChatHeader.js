@@ -9,11 +9,11 @@ import at from '../assets/icons/at.svg'
 import styles from '../styles/chatHeader.module.css'
 import avatar1 from "../assets/avatar-1.png";
 import { useContext } from 'react'
-// import { DiscordContext } from '../context/context'
+import { SocialContext } from '../context/context'
 
 const currentAccount = "0x0000000000000000000000"
 const ChatHeader = () => {
-//   const { roomName, currentAccount, connectWallet } = useContext(DiscordContext)
+  const { roomName, currentAccount, connectWallet } = useContext(SocialContext)
   return (
     <div className={styles.chatHeader}>
       <div className={styles.roomNameContainer}>
