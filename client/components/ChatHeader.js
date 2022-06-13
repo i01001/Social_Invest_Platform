@@ -11,18 +11,19 @@ import avatar1 from "../assets/avatar-1.png";
 import { useContext } from 'react'
 // import { DiscordContext } from '../context/context'
 
+const currentAccount = "0x0000000000000000000000"
 const ChatHeader = () => {
-  const { roomName, currentAccount, connectWallet } = useContext(DiscordContext)
+//   const { roomName, currentAccount, connectWallet } = useContext(DiscordContext)
   return (
     <div className={styles.chatHeader}>
       <div className={styles.roomNameContainer}>
         <Image height={20} width={20} src={at} className={styles.svg} alt='' />
-        <h3 className={styles.title}>{roomName}</h3>
+        <h3 className={styles.title}>RoomName</h3>
         <div className={styles.chatHeaderStatus} id='online' />
       </div>
       {currentAccount ? (
         <div className={styles.connectedWallet}>
-          <Image src={ethLogo} height={20} width={15} alt='ethLogo' />
+          <Image src={avatar1} height={20} width={15} alt='ethLogo' />
           <span className={styles.separator}>{'|'}</span>
           {currentAccount.slice(0, 6)}...{currentAccount.slice(39)}
         </div>
