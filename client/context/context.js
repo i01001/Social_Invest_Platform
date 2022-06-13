@@ -6,6 +6,8 @@ export const SocialContext = createContext();
 
 const gun = Gun(["https://social-invest-platform.herokuapp.com/"]);
 
+const initialState = { messages: []}
+
 const reducer = (state, action) => {
   try {
     if (action.type == "clear") return { messages: [] };
@@ -17,7 +19,7 @@ const reducer = (state, action) => {
 };
 
 export const SocialProvider = ({ children }) => {
-  const router = userRouter();
+  const router = useRouter();
   const [state, dispatch] = useReducer(reducer, initialState);
   const [currentAccount, setCurrentAccount] = useState("");
   const [roomName, setRoomName] = useState("");
