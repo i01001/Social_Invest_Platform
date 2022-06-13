@@ -9,9 +9,8 @@ export default function Home() {
       <SideBar />
       <ConversationList />
       <div className={styles.main}>
-        {/* Conversations List Main Area Chat View */}
         <ChatView />
-      </div>
-    </div>
+        </div>
+        </div>
   );
 }
