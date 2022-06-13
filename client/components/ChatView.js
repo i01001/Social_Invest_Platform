@@ -6,7 +6,7 @@ import Image from "next/image";
 const ChatView = () => {
   return (
     <div className={styles.chatView}>
-    <div className={styles.roomNameContainer}>
+    <div className={styles.messagesContainer}>
         <Image 
         height={20} 
         width={20} 
