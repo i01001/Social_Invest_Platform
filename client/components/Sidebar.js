@@ -51,9 +51,7 @@ const Sidebar = () => {
      catch (error) {
       console.error(error)
     }
-  }, []);
-
-  return (
+  }, []); return (
     <div className={styles.wrapper}>
       {channels.map((channel, index) => (
         <RoomAvatar
