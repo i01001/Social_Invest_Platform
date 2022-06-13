@@ -15,6 +15,25 @@ import avatar4 from "../assets/avatar-4.png";
 const ConversationList = () => {
   const router = useRouter();
   const [dms, setDMs] = useState([]);
+
+  useEffect(() => {
+    try {
+      const response = fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
+      )
+
+      const data = response.json()
+      setChannels(data)
+
+      router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}`)
+    }
+     catch (error) {
+      console.error(error)
+    }
+  }, []);
+
+
+
   return (
     <div className={styles.conversations}>
       <div className={styles.conversationListTop}>
