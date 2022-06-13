@@ -10,11 +10,11 @@ app.use(cors())
 app.use(Gun.serve)
 
 app.get('/', (_, res) => {
-  res.status(200).send('> DEBUG: Discord Node is Live')
+  res.status(200).send('> DEBUG: Node is Live')
 })
 
 const server = app.listen(port, () => {
-  console.log(`> DEBUG: Discord Node is listening at http://localhost:${port}`)
+  console.log(`> DEBUG: Node is listening at http://localhost:${port}`)
 })
 
 Gun({ web: server })
