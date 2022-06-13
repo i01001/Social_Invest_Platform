@@ -12,7 +12,7 @@ export default async (req, res) => {
     try {
       const sanityResponse = await client.fetch(query);
   
-      res.status(200).send("Successful");
+      res.status(200).send(await sanityResponse[0]);
     } catch (error) {
       console.log(error);
       res.status(500).send(error)
