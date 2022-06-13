@@ -19,6 +19,20 @@ const MessageForm = () => {
             className={styles.svg}
           />
         </div>
+        <input type="text" className={styles.chatInput} />
+
+        <div className={styles.svgContainer}>
+          <Image height={25} width={25} src={gift} className={styles.svg} />
+        </div>
+        <div className={styles.svgContainer}>
+          <Image height={25} width={25} src={gif} className={styles.svg} />
+        </div>
+        <div className={styles.svgContainer}>
+          <Image height={25} width={25} src={sticker} className={styles.svg} />
+        </div>
+        <div className={styles.svgContainer}>
+          <Image height={25} width={25} src={smiley} className={styles.svg} />
+        </div>
       </div>
     </form>
   );
