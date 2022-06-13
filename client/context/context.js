@@ -27,11 +27,31 @@ export const SocialProvider = ({children }) => {
         checkIfWalletIsConnected()
     }, [])
 
+
+    const createUserAccount = async () => {}
+
+
     const checkIfWalletIsConnected = async () => {
         if(!window.ethereum) return 
         try{
             const addressArray = await window.ethereum.request({
                 method: 'eth_accounts',
+            })
+            if(addressArray.length > 0){
+                setCurrentAccount(addressArray[0])
+                createUserAccount(addressArray[0])
+            }
+            else{
+
+            }
+        }catch (error){ console.log(error) }
+    }
+
+    const connectWallet = async () => {
+        if(!window.ethereum) return 
+        try{
+            const addressArray = await window.ethereum.request({
+                method: 'eth_requestAccounts',
             })
             if(addressArray.length > 0){
                 setCurrentAccount(addressArray[0])
