@@ -37,22 +37,6 @@ const Sidebar = () => {
   const router = useRouter();
   const [channels, setChannels] = useState(dummyChannels);
 
-
-  // useEffect(async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
-  //     )
-
-  //     const data = await response.json()
-  //     setChannels(data)
-
-  //     router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}`)
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }, [])
-
   useEffect(async () => {
     try {
       const response = await fetch(
