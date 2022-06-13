@@ -37,13 +37,13 @@ const Sidebar = () => {
   const router = useRouter();
   const [channels, setChannels] = useState(dummyChannels);
 
-  useEffect(async () => {
+  useEffect(() => {
     try {
-      const response = await fetch(
+      const response = fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
       )
 
-      const data = await response.json()
+      const data = response.json()
       setChannels(data)
 
       router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}`)
