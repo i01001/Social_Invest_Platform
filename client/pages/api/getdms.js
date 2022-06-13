@@ -12,6 +12,14 @@ export default async (req, res) => {
   try {
     const sanityResponse = await client.fetch(query);
 
+    const response = sanityResponse.map(item => {
+        return {
+            avatar: item.conversation.image,
+            name: item.conversation.name,
+            id: item.conversation.walletAddress,
+        }
+    })
+
     res.status(200).send("Successful");
   } catch (error) {
     console.log(error);
