@@ -19,7 +19,7 @@ const ConversationList = () => {
   useEffect(() => {
     try {
       const response = fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
+        `${process.env.NEXT_PUBLIC_API_URL}/getdms`,
       )
 
       const data = response.json()
