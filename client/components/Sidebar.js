@@ -48,7 +48,7 @@ const Sidebar = () => {
       
       router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}`)
 
-    }catch(error) {}
+    }catch(error) {    console.log(error)}
 
   },[])
 
