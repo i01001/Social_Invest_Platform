@@ -4,4 +4,5 @@ import Gun from 'gun';
 
 export const SocialContext = createContext()
 
-(['https://social-invest-platform.herokuapp.com/'])
+const gun = Gun(['https://social-invest-platform.herokuapp.com/'])
+
