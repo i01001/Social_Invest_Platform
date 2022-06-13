@@ -11,32 +11,10 @@ import avatar2 from "../assets/avatar-2.png";
 import avatar3 from "../assets/avatar-3.png";
 import avatar4 from "../assets/avatar-4.png";
 
-const dummyDMs = [
-  {
-    id: 1,
-    name: "Mohammad",
-    avatar: avatar1,
-  },
-  {
-    id: 2,
-    name: "Ahmed",
-    avatar: avatar2,
-  },
-  {
-    id: 3,
-    name: "Abdullah",
-    avatar: avatar3,
-  },
-  {
-    id: 4,
-    name: "AbdulRahman",
-    avatar: avatar4,
-  },
-];
 
 const ConversationList = () => {
   const router = useRouter();
-  const [dms, setDMs] = useState(dummyDMs);
+  const [dms, setDMs] = useState([]);
   return (
     <div className={styles.conversations}>
       <div className={styles.conversationListTop}>
