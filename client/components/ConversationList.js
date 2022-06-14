@@ -9,7 +9,7 @@ const ConversationList = () => {
   const [dms, setDms] = useState([])
 
   useEffect( () => {
-    useConversationEffect()
+    useConversationEffect();
   }, [])
 
   const useConversationEffect = async () => {
