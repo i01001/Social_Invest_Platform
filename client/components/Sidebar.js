@@ -42,7 +42,7 @@ const Sidebar = () => {
     console.log("222222222222222222222")
 
     sidebarEffect();
-  }, []);
+  });
 
   const sidebarEffect = async () => {
     console.log("33333333333333333333333")
