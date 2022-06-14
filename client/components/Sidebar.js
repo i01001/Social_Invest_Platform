@@ -36,7 +36,7 @@ const dummyChannels = [
 const Sidebar = () => {
   console.log("111111111111111111111111111111111111")
   const router = useRouter();
-  const [channels, setChannels] = useState([]);
+  const [channels, setChannels] = useState(dummyChannels);
 
   useEffect(() => {
     console.log("222222222222222222222")
