@@ -35,10 +35,10 @@ const dummyChannels = [
 
 const Sidebar = () => {
   const router = useRouter();
-  const [channels, setChannels] = useState([]);
+  const [channels, setChannels] = useState(dummyChannels);
 
   useEffect(() => {
-    sidebarEffect();
+    // sidebarEffect();
   },[]);
 
   const sidebarEffect = async () => {
