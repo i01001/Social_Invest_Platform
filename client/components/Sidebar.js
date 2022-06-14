@@ -22,7 +22,7 @@ const Sidebar = () => {
       );
       const data = await response.json();
     setChannels(data);
-    // router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}`);
+    router.push(`?channel=${data[index].roomId}&name=${data[index].roomName}`);
   } catch (error) {
     console.log(error);
   }
