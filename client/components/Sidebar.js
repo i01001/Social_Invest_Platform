@@ -1,8 +1,54 @@
-import React from "react";
-import styles from "../styles/sidebar.module.css";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import RoomAvatar from "./RoomAvatar";
+// import React from "react";
+// import styles from "../styles/sidebar.module.css";
+// import { useEffect, useState } from "react";
+// import { useRouter } from "next/router";
+// import RoomAvatar from "./RoomAvatar";
+
+
+
+
+
+// const Sidebar = () => {
+//   const router = useRouter();
+//   const [channels, setChannels] = useState(dummyChannels);
+
+//   useEffect(() => {
+//     try {
+//       (async() => {const response = await fetch(
+//         `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
+//       )})
+
+//       (async() => {const data = await response.json()})
+//       setChannels(data)
+
+//       router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}`)
+      
+//     }catch(error) {
+//       console.error(error)
+//     }
+//   }, []); 
+  
+//   return (
+//     <div className={styles.wrapper}>
+//       {channels.map((channel, index) => (
+//         <RoomAvatar
+//           key={index}
+//           id={channel.id}
+//           avatar={channel.avatar}
+//           name={channel.name}
+//         />
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default Sidebar;
+
+
+import styles from '../styles/sidebar.module.css'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import RoomAvatar from './RoomAvatar'
 
 import avatar1 from "../assets/avatar-1.png";
 import avatar2 from "../assets/avatar-2.png";
@@ -34,35 +80,55 @@ const dummyChannels = [
 ];
 
 const Sidebar = () => {
-  const router = useRouter();
-  const [channels, setChannels] = useState(dummyChannels);
+  const router = useRouter()
+  const [channels, setChannels] = useState([])
 
-  useEffect(async() => {
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
-      )
+  // useEffect(async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
+  //     )
 
-      const data = await response.json()
-      setChannels(data)
+  //     const data = await response.json()
+  //     setChannels(data)
 
-      router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}`)
-    }
-     catch (error) {
-      console.error(error)
-    }
-  }, []); return (
+  //     router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}`)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }, [])
+
+
+  // useEffect(async() => {
+  //   try {
+  //     const response = await fetch(
+  //       `${process.env.NEXT_PUBLIC_API_URL}/getdms`,
+  //     )
+
+  //     const data = await response.json()
+  //     setChannels(data)
+
+  //     router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}`)
+  //   }
+  //    catch (error) {
+  //     console.error(error)
+  //   }
+  // }, []);
+
+  return (
     <div className={styles.wrapper}>
       {channels.map((channel, index) => (
         <RoomAvatar
           key={index}
-          id={channel.id}
+          id={channel.roomId}
           avatar={channel.avatar}
-          name={channel.name}
+          name={channel.roomName}
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar
+
+
