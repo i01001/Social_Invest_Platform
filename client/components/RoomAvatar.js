@@ -5,8 +5,8 @@ import styles from '../styles/roomAvatar.module.css'
 const RoomAvatar = ({ id, avatar, name }) => {
   const router = useRouter()
 
-  const changeUrl = () => {
-    router.push(`?channel=${id}&name=${name}`)
+  const changeUrl = async () => {
+    router.push(`?channel=${await id}&name=${await name}`)
   }
 
   return (
