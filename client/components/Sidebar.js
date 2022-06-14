@@ -35,7 +35,7 @@ const dummyChannels = [
 
 const Sidebar = () => {
   const router = useRouter();
-  const [channels, setChannels] = useState([]);
+  const [channels, setChannels] = useState(dummyChannels);
 
   useEffect(() => {
     sidebarEffect();
@@ -47,7 +47,6 @@ const Sidebar = () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
       );
-      // console.log("Ikhlas", response);
       const data = await response.json();
     setChannels(data);
 
