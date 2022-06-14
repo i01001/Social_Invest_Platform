@@ -1,22 +1,18 @@
-import { client } from "../../lib/client";
-
+import { client } from '../../lib/client'
 
 const query = `*[_type == "conversations" && isDm==false]{
-    roomId,
-    roomName,
-    "avatar": image.asset->url
+  roomId,
+  roomName,
+  "avatar": image.asset->url
 }`
 
 export default async (req, res) => {
+  try {
+    const sanityResponse = await client.fetch(query)
 
-  
-    try {
-      const sanityResponse = await client.fetch(query);
-  
-      res.status(200).send("Successful");
-    } catch (error) {
-      console.log(error);
-      res.status(500).send(error)
-    }
-  };
-
+    res.status(200).send(sanityResponse)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send(error)
+  }
+}
