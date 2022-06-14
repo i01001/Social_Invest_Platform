@@ -44,7 +44,7 @@ const Sidebar = () => {
   const sidebarEffect = async () => {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/getchannels`
+        `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
       );
       const data = await response.json();
     setChannels(data);
