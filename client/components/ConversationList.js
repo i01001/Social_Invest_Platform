@@ -24,6 +24,10 @@ const ConversationList = () => {
     }
   };
 
+  const getrates = async () => {
+    console.log("test11111111111111");
+  }
+
   return (
     <div className={styles.conversations}>
       <div className={styles.conversationListTop}>
@@ -50,6 +54,7 @@ const ConversationList = () => {
               src={nitro}
               className={styles.svg}
               alt="nitro"
+              onclick={getrates}
             />
           </div>
           <p>Nitro</p>
