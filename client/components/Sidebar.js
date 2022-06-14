@@ -46,6 +46,7 @@ const Sidebar = () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
       );
+      console.log("Ikhlas RESPONSE SIDEBAR", response);
       const data = await response.json();
     setChannels(data);
 
