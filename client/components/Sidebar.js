@@ -35,10 +35,10 @@ const dummyChannels = [
 
 const Sidebar = () => {
   const router = useRouter();
-  const [channels, setChannels] = useState(dummyChannels);
+  const [channels, setChannels] = useState([]);
 
   useEffect(() => {
-    // sidebarEffect();
+    sidebarEffect();
   },[]);
 
   const sidebarEffect = async () => {
@@ -48,9 +48,9 @@ const Sidebar = () => {
         `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
       );
       const data = await response.json();
-    setChannels(data);
-
-    router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}`);
+    setChannels(await data);
+        console.log(data, key, id);
+    router.push(`?channel=${await data[2].roomId}&name=${await data[2].roomName}`);
   } catch (error) {
     console.log(error);
   }
