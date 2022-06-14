@@ -51,6 +51,7 @@ const MessageForm = () => {
             width={25}
             src={plusFilled}
             className={styles.svg}
+            alt={name}
           />
         </div>
         <input
