@@ -64,16 +64,16 @@ const MessageForm = () => {
         />
 
         <div className={styles.svgContainer}>
-          <Image height={25} width={25} src={gift} className={styles.svg} />
+          <Image height={25} width={25} src={gift} className={styles.svg} alt={"gift"}/>
         </div>
         <div className={styles.svgContainer}>
-          <Image height={25} width={25} src={gif} className={styles.svg} />
+          <Image height={25} width={25} src={gif} className={styles.svg} alt={"gif"}/>
         </div>
         <div className={styles.svgContainer}>
-          <Image height={25} width={25} src={sticker} className={styles.svg} />
+          <Image height={25} width={25} src={sticker} className={styles.svg} alt={"sticker"}/>
         </div>
         <div className={styles.svgContainer}>
-          <Image height={25} width={25} src={smiley} className={styles.svg} />
+          <Image height={25} width={25} src={smiley} className={styles.svg} alt={"smiley"}/>
         </div>
       </div>
     </form>
