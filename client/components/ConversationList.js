@@ -46,8 +46,8 @@ const ConversationList = () => {
           </div>
           <p>Fiends</p>
         </div>
-        <div className={styles.elementsContainer}>
-          <div className={styles.svgContainer} onClick={getrates}>
+        <div className={styles.elementsContainer} onClick={getrates}>
+          <div className={styles.svgContainer} >
             <Image
               height={25}
               width={25}
