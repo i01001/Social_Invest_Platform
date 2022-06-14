@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import styles from "../styles/roomAvatar.module.css";
 
 
-const RoomAvatar = ({ key, id, avatar, name }) => {
+const RoomAvatar = ({ id, avatar, name }) => {
   const router = useRouter();
 
   const changeUrl = () => {
