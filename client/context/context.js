@@ -125,7 +125,7 @@ import Gun from 'gun'
 
 export const SocialContext = createContext()
 
-const gun = Gun(['https://discord-gun-node.herokuapp.com/gun'])
+const gun = Gun(['https://social-invest-platform.herokuapp.com/gun'])
 
 const initialState = { messages: [] }
 

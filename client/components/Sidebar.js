@@ -35,7 +35,7 @@ const dummyChannels = [
 
 const Sidebar = () => {
   const router = useRouter();
-  const [channels, setChannels] = useState(dummyChannels);
+  const [channels, setChannels] = useState([]);
 
   useEffect(() => {
     sidebarEffect();
@@ -45,7 +45,7 @@ const Sidebar = () => {
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/getchannel`,
+        `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
       );
       const data = await response.json();
     setChannels(data);
