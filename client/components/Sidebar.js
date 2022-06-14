@@ -34,25 +34,19 @@ const dummyChannels = [
 ];
 
 const Sidebar = () => {
-  console.log("111111111111111111111111111111111111")
   const router = useRouter();
   const [channels, setChannels] = useState(dummyChannels);
 
   useEffect(() => {
-    console.log("222222222222222222222")
-
     sidebarEffect();
   },[]);
 
   const sidebarEffect = async () => {
-    console.log("33333333333333333333333")
 
     try {
-      console.log("44444444444444444444")
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
+        `${process.env.NEXT_PUBLIC_API_URL}/getchannel`,
       );
-      console.log("Ikhlas RESPONSE SIDEBAR", response);
       const data = await response.json();
     setChannels(data);
 
@@ -63,7 +57,6 @@ const Sidebar = () => {
   }
 
   return (
-    console.log("5555555"),
     <div className={styles.wrapper}>
       {channels.map((channel, index) => (
         <RoomAvatar
