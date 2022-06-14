@@ -63,6 +63,7 @@ const Sidebar = () => {
   }
 
   return (
+    console.log("5555555"),
     <div className={styles.wrapper}>
       {channels.map((channel, index) => (
         <RoomAvatar
