@@ -3,7 +3,6 @@ import styles from "../styles/sidebar.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import RoomAvatar from "./RoomAvatar";
-// import { set } from "@project-serum/anchor/dist/cjs/utils/features";
 
 
 const Sidebar = () => {
