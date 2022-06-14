@@ -14,10 +14,11 @@ const ConversationList = () => {
 
   const useConversationEffect = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/getdms`,
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/getdms`,
       );
-
-      setDms(response.json());
+      const data2 = await response.json();
+      setDms(data2);
     } catch (error) {
       console.error(error);
     }
