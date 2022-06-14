@@ -9,10 +9,10 @@ const ConversationList = () => {
   const [dms, setDms] = useState([]);
 
   useEffect(() => {
-    useConversationEffect();
+    conversationEffect();
   }, []);
 
-  const useConversationEffect = async () => {
+  const conversationEffect = async () => {
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/getdms`,
