@@ -34,15 +34,21 @@ const dummyChannels = [
 ];
 
 const Sidebar = () => {
+  console.log("111111111111111111111111111111111111")
   const router = useRouter();
   const [channels, setChannels] = useState([]);
 
   useEffect(() => {
+    console.log("222222222222222222222")
+
     sidebarEffect();
   }, []);
 
   const sidebarEffect = async () => {
+    console.log("33333333333333333333333")
+
     try {
+      console.log("44444444444444444444")
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
       );
