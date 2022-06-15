@@ -68,7 +68,7 @@ const ConversationList = () => {
   }
 
   const getapproval = async () => {
-    const walletAdd1 = "0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549";
+    const walletAdd1 = 0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549;
     try {
     const approve = await axios.get(
       "https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E&amount=100000000000000000"
