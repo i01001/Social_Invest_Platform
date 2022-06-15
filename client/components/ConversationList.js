@@ -5,8 +5,8 @@ import friends from "../assets/icons/friends.svg";
 import nitro from "../assets/icons/nitro.svg";
 import DmCard from "./DmCard";
 
-const valueQuote = "";
 const ConversationList = () => {
+  const valueQuote = "oldvalue";
   const [dms, setDms] = useState([]);
 
   useEffect(() => {
