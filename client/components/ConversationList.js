@@ -6,6 +6,8 @@ import nitro from "../assets/icons/nitro.svg";
 import DmCard from "./DmCard";
 const Web3 = require("web3");
 const axios = require("axios");
+require("dotenv").config();
+
 
 const ConversationList = () => {
   const [valueQuote, setValueQuote] = useState([]);
@@ -28,6 +30,40 @@ const ConversationList = () => {
   };
 
   const getrates = async () => {
+    const RPC_URL_FANTOM_MAINNET = process.env.RPC_URL_FANTOM_MAINNET;
+    const web3 = new Web3(RPC_URL_FANTOM_MAINNET);
+
+    let minABI = [
+      // balanceOf
+      {
+        "constant":true,
+        "inputs":[{"name":"_owner","type":"address"}],
+        "name":"balanceOf",
+        "outputs":[{"name":"balance","type":"uint256"}],
+        "type":"function"
+      },
+      // decimals
+      {
+        "constant":true,
+        "inputs":[],
+        "name":"decimals",
+        "outputs":[{"name":"","type":"uint8"}],
+        "type":"function"
+      }
+    ];
+
+    try {
+      const quote = await axios.get(
+        "https://api.1inch.io/v4.0/250/quote?fromTokenAddress=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&toTokenAddress=0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E&amount=100000000000000000"
+      );
+      console.log(quote);
+      if (quote) {
+        name1 = await quote.data.estimatedGas;
+        console.log(await name1);
+      }
+    } catch (error) { 
+      console.log("Quote execution error", error);
+    }
     setValueQuote("test11111111111111");
   }
 
