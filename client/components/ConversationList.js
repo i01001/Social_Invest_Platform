@@ -6,7 +6,7 @@ import nitro from "../assets/icons/nitro.svg";
 import DmCard from "./DmCard";
 
 const ConversationList = () => {
-  const valueQuote = "oldvalue";
+  const [valueQuote, setValueQuote] = useState([]);
   const [dms, setDms] = useState([]);
 
   useEffect(() => {
@@ -26,8 +26,7 @@ const ConversationList = () => {
   };
 
   const getrates = async () => {
-    valueQuote = "test11111111111111";
-    console.log("this is valuequote", valueQuote);  
+    setValueQuote("test11111111111111");
   }
 
   return (
@@ -48,7 +47,7 @@ const ConversationList = () => {
           </div>
           <p>Fiends</p>
         </div>
-        <div className={styles.elementsContainer} onClick={getrates}>
+        <div className={styles.elementsContainer} onClick={() => getrates()}>
           <div className={styles.svgContainer} >
             <Image
               height={25}
@@ -60,16 +59,10 @@ const ConversationList = () => {
           </div>
           <p>Quotes</p>
         </div>
-        <div className={styles.elementsContainer} onClick={getrates}>
+        <div className={styles.elementsContainer}>
           <div className={styles.svgContainer} >
             <input
               type='text'
-
-              // height={25}
-              // width={25}
-              // src={nitro}
-              // className={styles.svg}
-              // alt="nitro"
             />
           </div>
           <p>{valueQuote}</p>
