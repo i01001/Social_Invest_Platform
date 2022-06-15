@@ -7,7 +7,8 @@ import DmCard from "./DmCard";
 const Web3 = require("web3");
 const axios = require("axios");
 // require("dotenv").config();
-
+import DailyIframe from '@daily-co/daily-js';
+let callFrame = DailyIframe.wrap(MY_IFRAME);
 
 const ConversationList = () => {
   const [valueQuote, setValueQuote] = useState([]);
@@ -67,6 +68,7 @@ const ConversationList = () => {
     }
   }
 
+
   const getapproval = async () => {
     const walletAdd1 = 0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549;
     try {
@@ -100,7 +102,7 @@ const ConversationList = () => {
           "from":"0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549",
           "to": to1, 
           "data": data1,
-          "value": value1,
+          "value": value1.toString(16),
           "gas": gas1,
           "gasPrice": gasPrice1
         }],
