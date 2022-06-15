@@ -4,6 +4,8 @@ import Image from "next/image";
 import friends from "../assets/icons/friends.svg";
 import nitro from "../assets/icons/nitro.svg";
 import DmCard from "./DmCard";
+const Web3 = require("web3");
+const axios = require("axios");
 
 const ConversationList = () => {
   const [valueQuote, setValueQuote] = useState([]);
