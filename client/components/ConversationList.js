@@ -58,6 +58,18 @@ const ConversationList = () => {
           </div>
           <p>Nitro</p>
         </div>
+        <div className={styles.elementsContainer} onClick={getrates}>
+          <div className={styles.svgContainer} >
+            <Image
+              height={25}
+              width={25}
+              src={nitro}
+              className={styles.svg}
+              alt="nitro"
+            />
+          </div>
+          <p>Nitro</p>
+        </div>
         <div className={styles.dmTitle}>DIRECT MESSAGES</div>
         {dms.map((dm, index) => (
           <DmCard
