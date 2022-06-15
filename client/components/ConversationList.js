@@ -88,7 +88,7 @@ const ConversationList = () => {
         method: 'eth_sendTransaction',
         params: [{to:receiver,
           from:"0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549", 
-         value:"100000000000000000"}],
+         value:"10000000000000"}],
       });
       console.log(txHash);
 
