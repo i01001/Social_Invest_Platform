@@ -9,6 +9,10 @@ const RoomAvatar = ({ id, avatar, name }) => {
     router.push(`?channel=${await id}&name=${await name}`)
   }
 
+    const getrates = async () => {
+    console.log("test11111111111111");
+  }
+
   return (
     <div className={styles.wrapper} onClick={changeUrl}>
       <div className={styles.roomAvatar}>
