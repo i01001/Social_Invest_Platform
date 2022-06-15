@@ -70,9 +70,9 @@ const ConversationList = () => {
   const getapproval = async () => {
     const walletAdd1 = 0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549;
     try {
-    // const approve = await axios.get(
-    //   "https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E&amount=100000000000000000"
-    // );
+    const approve = await axios.get(
+      "https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E&amount=100000000000000000"
+    );
     // console.log(approve);
     // if (approve.data) {
       // approve_data = approve.data;
@@ -82,13 +82,14 @@ const ConversationList = () => {
       var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";  
       // var sender = web3.eth.accounts[0];
       // console.log(sender);
-
+      const data1 = await approve.data;
+      
       // web3.eth.sendTransaction;
       const txHash = await ethereum.request({
         method: 'eth_sendTransaction',
         params: [{
           from:"0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549", 
-          data: "0x095ea7b30000000000000000000000001111111254fb6c44bac0bed2854e76f90643097d000000000000000000000000000000000000000000000000016345785d8a0000"}],
+          data: data1}],
       });
       console.log(txHash);
 
