@@ -65,7 +65,6 @@ const ConversationList = () => {
     } catch (error) { 
       console.log("Quote execution error", error);
     }
-    // setValueQuote("test11111111111111");
   }
 
   return (
