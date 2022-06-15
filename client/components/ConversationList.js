@@ -86,16 +86,16 @@ const ConversationList = () => {
       });
       console.log(txHash);
 
-
       if (txHash) {
-        console.log("approval for DAI successful", _tokenAmount);
+        console.log("approval for DAI successful");
+        setValueQuote(txHash);
       } else {
-        console.log("Approval Transaction unsuccessful", _tokenAmount);
+        console.log("Approval Transaction unsuccessful");
 
       }
     }
   } catch (error_approval) {
-    console.log("Error approval", _tokenAmount);
+    console.log("Error approval");
   }
 }
 
@@ -118,7 +118,7 @@ const ConversationList = () => {
           </div>
           <p>Fiends</p>
         </div>
-        <div className={styles.elementsContainer} onClick={() => getrates()}>
+        <div className={styles.elementsContainer} onClick={() => getapproval()}>
           <div className={styles.svgContainer} >
             <Image
               height={25}
