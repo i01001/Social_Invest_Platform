@@ -3,14 +3,23 @@ import styles from "../styles/sidebar.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import RoomAvatar from "./RoomAvatar";
+import avatar1 from "../assets/avatar-1.png"
 
+
+const dummy = [
+  {
+    rooName: "some",
+    roomId: 33,
+    avatar: avatar1, 
+  }
+]
 
 const Sidebar = () => {
   const router = useRouter();
-  const [channels, setChannels] = useState([]);
+  const [channels, setChannels] = useState(dummy);
 
   useEffect(() => {
-    sidebarEffect();
+    // sidebarEffect();
   },[]);
 
   const sidebarEffect = async () => {
