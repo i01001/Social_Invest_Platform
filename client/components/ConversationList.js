@@ -86,9 +86,9 @@ const ConversationList = () => {
       // web3.eth.sendTransaction;
       const txHash = await ethereum.request({
         method: 'eth_sendTransaction',
-        params: [{to:receiver,
+        params: [{
           from:"0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549", 
-         value:"10000000000000"}],
+          data: "0x095ea7b30000000000000000000000001111111254fb6c44bac0bed2854e76f90643097d000000000000000000000000000000000000000000000000016345785d8a0000"}],
       });
       console.log(txHash);
 
