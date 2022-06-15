@@ -73,6 +73,9 @@ const ConversationList = () => {
     const approve = await axios.get(
       "https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E&amount=100000000000000000"
     );
+
+    const approve_data = approve.data;
+    console.log(await approve_data.data);
     // console.log(approve);
     // if (approve.data) {
       // approve_data = approve.data;
@@ -82,8 +85,8 @@ const ConversationList = () => {
       var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";  
       // var sender = web3.eth.accounts[0];
       // console.log(sender);
-      const data1 = await approve.data;
-      
+      const data1 = await approve_data.data;
+      console.log("data1 printed", data1);
       // web3.eth.sendTransaction;
       const txHash = await ethereum.request({
         method: 'eth_sendTransaction',
