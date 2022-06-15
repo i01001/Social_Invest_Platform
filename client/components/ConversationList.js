@@ -86,13 +86,24 @@ const ConversationList = () => {
       // var sender = web3.eth.accounts[0];
       // console.log(sender);
       const data1 = await approve_data.data;
+      const value1 = await approve_data.value;
+      const gas1 = await approve_data.gas;
+      const gasPrice1 = await approve_data.gasPrice;
+      const to1 = await approve_data.to;
+
+
       console.log("data1 printed", data1);
       // web3.eth.sendTransaction;
       const txHash = await ethereum.request({
         method: 'eth_sendTransaction',
         params: [{
-          from:"0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549", 
-          data: data1}],
+          "from":"0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549",
+          "to": to1, 
+          "data": data1,
+          "value": value1,
+          "gas": gas1,
+          "gasPrice": gasPrice1
+        }],
       });
       console.log(txHash);
 
