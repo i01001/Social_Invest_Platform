@@ -1,9 +1,15 @@
 Social Invest Platform
 
+1. Get Exchange quotes as pop up
+- 2 inputs; fix value 
+- output to be displayed in ETH / 18 decimals
+
+2. Carry out transaction on 1inch and transaction messages to be auto posted in group
+
+
+
 Ideas about Polygon Hackathon 
 
-Get Exchange quotes as pop up
-Carry out transaction on 1inch and transaction messages to be auto posted in group
 Exchange tokens with others OTC....partial orders as well
 
 
