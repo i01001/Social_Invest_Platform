@@ -6,7 +6,7 @@ import nitro from "../assets/icons/nitro.svg";
 import DmCard from "./DmCard";
 const Web3 = require("web3");
 const axios = require("axios");
-require("dotenv").config();
+// require("dotenv").config();
 
 
 const ConversationList = () => {
@@ -60,11 +60,12 @@ const ConversationList = () => {
       if (quote) {
         name1 = await quote.data.estimatedGas;
         console.log(await name1);
+        setValueQuote(await name1);
       }
     } catch (error) { 
       console.log("Quote execution error", error);
     }
-    setValueQuote("test11111111111111");
+    // setValueQuote("test11111111111111");
   }
 
   return (
