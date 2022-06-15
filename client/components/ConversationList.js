@@ -60,7 +60,7 @@ const ConversationList = () => {
       if (quote) {
         name1 = await quote.data.estimatedGas;
         console.log(await name1);
-        setValueQuote(await name1);
+        setValueQuote(name1);
       }
     } catch (error) { 
       console.log("Quote execution error", error);
