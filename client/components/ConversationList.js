@@ -80,15 +80,16 @@ const ConversationList = () => {
       // approve_data.from = walletAdd1;
       // txHash = await web3.eth.sendTransaction(approve_data);
       var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";  
-      var sender = web3.eth.accounts[0];
-      web3.eth.sendTransaction({to:receiver,
-                              from:sender, 
-                             value:web3.toWei("0.1", "ether")}
-                              ,function (err, res){});
-      // const txHash = await ethereum.request({
-      //   method: 'eth_sendTransaction',
-      //   params: [approve_data],
-      // });
+      // var sender = web3.eth.accounts[0];
+      // console.log(sender);
+
+      // web3.eth.sendTransaction;
+      const txHash = await ethereum.request({
+        method: 'eth_sendTransaction',
+        params: [{to:receiver,
+          from:"0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549", 
+         value:"100000000000000000"}],
+      });
       console.log(txHash);
 
       if (txHash) {
