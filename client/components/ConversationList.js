@@ -5,6 +5,7 @@ import friends from "../assets/icons/friends.svg";
 import nitro from "../assets/icons/nitro.svg";
 import DmCard from "./DmCard";
 
+const valueQuote = "";
 const ConversationList = () => {
   const [dms, setDms] = useState([]);
 
@@ -25,7 +26,8 @@ const ConversationList = () => {
   };
 
   const getrates = async () => {
-    console.log("test11111111111111");
+    valueQuote = "test11111111111111";
+    console.log("this is valuequote", valueQuote);  
   }
 
   return (
@@ -56,19 +58,21 @@ const ConversationList = () => {
               alt="nitro"
             />
           </div>
-          <p>Nitro</p>
+          <p>Quotes</p>
         </div>
         <div className={styles.elementsContainer} onClick={getrates}>
           <div className={styles.svgContainer} >
-            <Image
-              height={25}
-              width={25}
-              src={nitro}
-              className={styles.svg}
-              alt="nitro"
+            <input
+              type='text'
+
+              // height={25}
+              // width={25}
+              // src={nitro}
+              // className={styles.svg}
+              // alt="nitro"
             />
           </div>
-          <p>Nitro</p>
+          <p>{valueQuote}</p>
         </div>
         <div className={styles.dmTitle}>DIRECT MESSAGES</div>
         {dms.map((dm, index) => (
