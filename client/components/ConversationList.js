@@ -58,7 +58,7 @@ const ConversationList = () => {
       );
       console.log(quote);
       if (quote) {
-        name1 = await quote.data.estimatedGas;
+        const name1 = await quote.data.estimatedGas;
         console.log(await name1);
         setValueQuote(name1);
       }
