@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@daily-co/daily-js": "^0.26.0",
     "@sanity/client": "^3.3.2",
     "axios": "^0.27.2",
     "gun": "^0.2020.1237",
