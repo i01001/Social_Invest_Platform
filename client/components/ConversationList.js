@@ -8,7 +8,7 @@ const Web3 = require("web3");
 const axios = require("axios");
 // require("dotenv").config();
 import DailyIframe from '@daily-co/daily-js';
-let callFrame = DailyIframe.wrap(MY_IFRAME);
+// let callFrame = DailyIframe.wrap(MY_IFRAME);
 
 const ConversationList = () => {
   const [valueQuote, setValueQuote] = useState([]);
