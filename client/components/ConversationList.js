@@ -62,8 +62,8 @@ const cssOverride = css`
 const ConversationList = () => {
   const [valueQuote, setValueQuote] = useState([]);
   const [dms, setDms] = useState([]);
-  const [stateN, setstateN] = useState(false);
-  const [modstat, setmodstat] = useState([]);
+  const [stateN, setstateN] = useState([]);
+  const [modstat, setmodstat] = useState(false);
   const {
     register,
     handleSubmit,
@@ -183,6 +183,7 @@ const ConversationList = () => {
     // <div className={styles.popListTop}>
     setstateN("asakkas");
     setmodstat("true");
+    // Modal isOpen=true;
 
     // <NewPage />
 
@@ -196,7 +197,6 @@ const ConversationList = () => {
   };
 
   return (
-    (
       <div className={styles.conversations}>
         <div className={styles.conversationListTop}>
           <input type="search" placeholder="Find or start a conversation" />
@@ -246,8 +246,7 @@ const ConversationList = () => {
             />
           ))}
         </div>
-      </div>
-    ),
+      </div>,
     (
       // <div className={styleA.wrapper}>
 
