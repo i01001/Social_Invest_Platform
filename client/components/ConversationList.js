@@ -72,7 +72,7 @@ const ConversationList = () => {
   const onSubmit = (data) => console.log(data);
   console.log(errors);
 
-  modstat("false");
+  setmodstat("false")
 
   useEffect(() => {
     conversationEffect();
