@@ -123,9 +123,9 @@ const ConversationList = () => {
 }
 
 const popQuote = async () => {
-  <div className={styles.conversationListTop}>
+  // <div className={styles.popListTop}>
     <h1>Title BIGGGGGGGGGGGGGGGGGGGG</h1>
-</div>
+// </div>
 }
 
 
