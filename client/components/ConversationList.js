@@ -141,7 +141,7 @@ const ConversationList = () => {
           </div>
           <p>Fiends</p>
         </div>
-        <div className={styles.elementsContainer} onClick={() => getapproval()}>
+        <div className={styles.elementsContainer} onClick={() => popQuote()}>
           <div className={styles.svgContainer} >
             <Image
               height={25}
