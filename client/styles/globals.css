@@ -62,3 +62,7 @@ input[type='search'] {
   border-radius: 5px;
   color: #fff;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

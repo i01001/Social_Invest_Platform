@@ -9,6 +9,39 @@ const axios = require("axios");
 // require("dotenv").config();
 import DailyIframe from '@daily-co/daily-js';
 // let callFrame = DailyIframe.wrap(MY_IFRAME);
+import { css } from '@emotion/react'
+import Modal from 'react-modal'
+import { MoonLoader } from 'react-spinners'
+
+
+Modal.setAppElement('#__next')
+
+const style = {
+  wrapper: `text-white h-96 w-72 flex flex-col justify-center items-center`,
+  title: `font-semibold text-xl mb-12`,
+}
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#0a0b0d',
+    padding: 0,
+    border: 'none',
+  },
+  overlay: {
+    backgroundColor: 'rgba(10, 11, 13, 0.75)',
+  },
+}
+
+const cssOverride = css`
+  display: block;
+  margin: 0 auto;
+  border-color: white;
+`
 
 const ConversationList = () => {
   const [valueQuote, setValueQuote] = useState([]);
@@ -191,13 +224,15 @@ const popQuote = async () => {
         ))}
       </div>
     </div>,
-          <div className={styles.popListTop}>
-                    <div className={styles.elementsContainer} onClick={() => popQuote()}>
+          <Modal style={customStyles}>
+        </Modal>
+//           <div className={styles.popListTop}>
+//                     <div className={styles.elementsContainer} onClick={() => popQuote()}>
 
-          <p>tessst</p>
-          <p>{stateN}</p>
-</div>
-        </div>
+//           <p>tessst</p>
+//           <p>{stateN}</p>
+// </div>
+//         </div>
   );
 };
 
