@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react'
 import { AddIcon, CopyIcon } from '@chakra-ui/icons'
 
-const newPage = () => (
+const NewPage = () => (
   <ChakraProvider resetCSS>
     <Alert>
       <AlertIcon />
@@ -33,4 +33,4 @@ const newPage = () => (
   </ChakraProvider>
 )
 
-export default newPage
+export default NewPage
