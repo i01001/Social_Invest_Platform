@@ -64,6 +64,9 @@ const ConversationList = () => {
   const [valueQuote, setValueQuote] = useState([]);
   const [dms, setDms] = useState([]);
   const [stateN, setstateN] = useState([]);
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
+  console.log(errors);
 
 
   useEffect(() => {
