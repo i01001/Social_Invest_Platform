@@ -246,9 +246,7 @@ const ConversationList = () => {
             />
           ))}
         </div>
-      </div>,
-    (
-      // <div className={styleA.wrapper}>
+        <div className={styleA.wrapper}>
 
       <Modal isOpen={modstat} style={customStyles}>
         <div className={style.wrapper}>
@@ -262,8 +260,9 @@ const ConversationList = () => {
           />
         </div>
       </Modal>
-    )
-    /* </div> */
+    </div>
+
+    // </div> 
     //           <div className={styles.popListTop}>
     //                     <div className={styles.elementsContainer} onClick={() => popQuote()}>
 
