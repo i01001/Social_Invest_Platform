@@ -10,6 +10,7 @@ export default function Home() {
   return (
     <div className={styles.wrapper}>
       <SideBar />
+      {/* <NewPage /> */}
       <div className={styles.main}>
         <ConversationList />
         <ChatView />
