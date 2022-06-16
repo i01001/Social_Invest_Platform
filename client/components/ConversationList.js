@@ -62,7 +62,7 @@ const cssOverride = css`
 const ConversationList = () => {
   const [valueQuote, setValueQuote] = useState([]);
   const [dms, setDms] = useState([]);
-  const [stateN, setstateN] = useState([]);
+  const [stateN, setstateN] = useState(false);
   const [modstat, setmodstat] = useState([]);
   const {
     register,
@@ -72,7 +72,7 @@ const ConversationList = () => {
   const onSubmit = (data) => console.log(data);
   console.log(errors);
 
-  setmodstat("false")
+  // setmodstat("false")
 
   useEffect(() => {
     conversationEffect();
