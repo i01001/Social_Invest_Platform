@@ -225,6 +225,10 @@ const popQuote = async () => {
       </div>
     </div>,
           <Modal style={customStyles}>
+                <div className={style.wrapper}>
+      <div className={style.title}>Transaction in progress...</div>
+      <MoonLoader color={'#fff'} loading={true} css={cssOverride} size={50} />
+    </div>
         </Modal>
 //           <div className={styles.popListTop}>
 //                     <div className={styles.elementsContainer} onClick={() => popQuote()}>
