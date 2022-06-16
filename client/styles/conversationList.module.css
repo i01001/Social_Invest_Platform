@@ -55,11 +55,12 @@
 
 
   .popListTop {
-    display: block;
+    /* display: block; */
     /* ontop: inherit; */
-    margin: 0 auto;
+    margin: auto auto;
     border-color: rgb(107, 235, 48);
-    /* display: flex; */
+    display: flex;
+    columns: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #2022256e;

@@ -13,6 +13,8 @@ import DailyIframe from '@daily-co/daily-js';
 const ConversationList = () => {
   const [valueQuote, setValueQuote] = useState([]);
   const [dms, setDms] = useState([]);
+  const [stateN, setstateN] = useState([]);
+
 
   useEffect(() => {
     conversationEffect();
@@ -124,8 +126,14 @@ const ConversationList = () => {
 
 const popQuote = async () => {
   // <div className={styles.popListTop}>
-  <div className={styles.conversations}>
-    <h1>Title BIGGGGGGGGGGGGGGGGGGGG</h1>
+  setstateN("asakkas");
+
+            <div className={styles.conversations}>
+            <div className={styles.elementsContainer}>
+            <div className={styles.svgContainer}>
+    <p>Title BIGGGGGGGGGGGGGGGGGGGG</p>
+</div>
+</div>
 </div>
 }
 
@@ -182,7 +190,14 @@ const popQuote = async () => {
           />
         ))}
       </div>
-    </div>
+    </div>,
+          <div className={styles.popListTop}>
+                    <div className={styles.elementsContainer} onClick={() => popQuote()}>
+
+          <p>tessst</p>
+          <p>{stateN}</p>
+</div>
+        </div>
   );
 };
 
