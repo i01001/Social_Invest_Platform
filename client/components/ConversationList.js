@@ -14,7 +14,7 @@ import Modal from 'react-modal'
 import { MoonLoader } from 'react-spinners'
 import React from 'react';
 import { useForm } from 'react-hook-form';
-
+import newPage from "./newPage"
 
 Modal.setAppElement('#__next')
 
@@ -249,7 +249,7 @@ const popQuote = async () => {
 
           <Modal isOpen={true} style={customStyles}>
                 <div className={style.wrapper}>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                {/* <form onSubmit={handleSubmit(onSubmit)}>
       <input type="text" placeholder="First name" {...register("First name", {required: true, maxLength: 80})} />
       <input type="text" placeholder="Last name" {...register("Last name", {required: true, maxLength: 100})} />
       <input type="text" placeholder="Email" {...register("Email", {required: true, pattern: /^\S+@\S+$/i})} />
@@ -265,7 +265,8 @@ const popQuote = async () => {
       <input {...register("Developer", { required: true })} type="radio" value="No" />
 
       <input type="submit" />
-    </form>
+    </form> */}
+    <newPage />
 
 {/* export default function App() {
   const { register, handleSubmit, formState: { errors } } = useForm();
