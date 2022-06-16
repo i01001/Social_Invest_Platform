@@ -63,6 +63,7 @@ const ConversationList = () => {
   const [valueQuote, setValueQuote] = useState([]);
   const [dms, setDms] = useState([]);
   const [stateN, setstateN] = useState([]);
+  const [modstat, setmodstat] = useState([]);
   const {
     register,
     handleSubmit,
@@ -70,6 +71,8 @@ const ConversationList = () => {
   } = useForm();
   const onSubmit = (data) => console.log(data);
   console.log(errors);
+
+  modstat("false");
 
   useEffect(() => {
     conversationEffect();
@@ -179,6 +182,7 @@ const ConversationList = () => {
   const popQuote = async () => {
     // <div className={styles.popListTop}>
     setstateN("asakkas");
+    setmodstat("true");
 
     // <NewPage />
 
@@ -247,7 +251,7 @@ const ConversationList = () => {
     (
       // <div className={styleA.wrapper}>
 
-      <Modal isOpen={true} style={customStyles}>
+      <Modal isOpen={modstat} style={customStyles}>
         <div className={style.wrapper}>
           <NewPage />
           {/* <div className={style.title}>Transaction in progress...</div> */}
