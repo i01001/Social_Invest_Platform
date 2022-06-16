@@ -175,6 +175,7 @@ const ConversationList = () => {
 const popQuote = async () => {
   // <div className={styles.popListTop}>
   setstateN("asakkas");
+  
 
             <div className={styles.conversations}>
             <div className={styles.elementsContainer}>
@@ -241,7 +242,7 @@ const popQuote = async () => {
     </div>,
         <div className={styleA.wrapper}>
 
-          <Modal style={customStyles}>
+          <Modal isOpen={true} style={customStyles}>
                 <div className={style.wrapper}>
       <div className={style.title}>Transaction in progress...</div>
       <MoonLoader color={'#fff'} loading={true} css={cssOverride} size={50} />
