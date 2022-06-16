@@ -266,7 +266,6 @@ const ConversationList = () => {
     //           <div className={styles.popListTop}>
     //                     <div className={styles.elementsContainer} onClick={() => popQuote()}>
 
-    //           <p>tessst</p>
     //           <p>{stateN}</p>
     // </div>
     //         </div>
