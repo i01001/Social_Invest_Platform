@@ -27,7 +27,7 @@ const NewPage = () => {
   const [quantValue, setquantValue] = useState();
   const [name1, setname1] = useState('');
   const [qErrormess, setqErrormess] = useState('');
-  const firstUpdate = useRef(true);
+  // const firstUpdate = useRef(true);
 
   
 
@@ -38,11 +38,18 @@ const NewPage = () => {
 // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
 // 0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E
 // 100000000000000000
+const useComponentDidMount = () => {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = true;
+  }, []);
+  return ref.current;
+};
+
+const isComponentMounted = useComponentDidMount();
 
 useEffect(() => {
-  if (firstUpdate.current) {
-    firstUpdate.current = false;
-  } else {
+  if(isComponentMounted) {    
   quoteFunction();
 }}, [quantValue, fromTok, ToTok]);
 
