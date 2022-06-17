@@ -29,7 +29,10 @@ const NewPage = () => {
   const [quantValue, setquantValue] = useState();
   const [name1, setname1] = useState('');
   const [qErrormess, setqErrormess] = useState('');
-  const [Entercount, setEntercount] = useState(1);
+  const [Entercount, setEntercount] = useState({
+    inc: 1,
+    count: 1,
+  });
 
   // setEntercount
   // const firstUpdate = useRef(true);
@@ -236,7 +239,11 @@ const enterPress = async () => {
   setfromTok(getValues("FromToken1"));     
   setToTok(getValues("ToToken"));    
   setquantValue(getValues("QuantityToken"));   
-  setEntercount(prevState + 1);
+  const inc = 1;
+  setEntercount(prevState => { return { 
+    ...prevState, 
+    count: prevState.count + Entercount.inc,
+  }});
 //   const quoteYes = await getValues("Quoteornot");      
    
 // console.log(await fromTok, ToTok, quantValue, quoteYes);
