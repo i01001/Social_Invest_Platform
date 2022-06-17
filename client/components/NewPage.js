@@ -295,8 +295,8 @@ return (
     <div style={styleQ}>
     <QuotesResult />
     </div>
-    <QuotesError />
     <TransferSuccess />
+    <QuotesError />
     </form>
   </ChakraProvider>
 )
