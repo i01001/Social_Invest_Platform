@@ -209,7 +209,7 @@ return (
     >
       SWAP TOKENS
     </Text>
-    <form onSubmit={handleSubmit((temp) => setTemp(JSON.stringify(temp)))}>
+    <form onSubmit={handleSubmit((temp) => settemp(JSON.stringify(temp)))}>
     <FromToken />
     <ToToken />
     <QuantityToken />
@@ -218,6 +218,7 @@ return (
     <QuotesResult />
     <QuotesError />
     <TransferSuccess />
+    <input type="submit" />
     </form>
   </ChakraProvider>
 )
