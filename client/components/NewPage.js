@@ -101,7 +101,7 @@ const EnterButton = () => (
     display="inline"
     pb={10}
     pt={3}
-    type="submit"
+    // type="submit"
     // onClick={() => enterAction()}
   >
     ENTER{' '}
