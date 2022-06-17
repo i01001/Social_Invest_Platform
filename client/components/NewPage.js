@@ -141,7 +141,7 @@ try {
   const quote = await axios.get(
     `https://api.1inch.io/v4.0/250/quote?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}`
   );
-  await quote;
+  // await quote;
   console.log(quote);
   if (quote) {
     setname1(await quote.data.toTokenAmount);
