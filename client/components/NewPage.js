@@ -17,6 +17,10 @@ import { ArrowForwardIcon, CloseIcon } from '@chakra-ui/icons'
 const NewPage = () => {
   const [temp, settemp] = useState([]);
 
+  const handleChange = (e, name) => {
+    settemp(prevState => ({ ...prevState, name: e.target.value }))
+  }
+
 const QuoteorSwap = () => (
   <Switch
     display="inline"
