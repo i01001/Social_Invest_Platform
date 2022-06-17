@@ -130,7 +130,7 @@ const Enterquote1 = () => (
     border={100}
     borderRadius={20}
     ml={100}
-    colorScheme="whiteAlpha"
+    colorScheme="whiteAlpha.500"
     letterSpacing="wide"
     fontSize="lg"
     leftIcon={<CloseIcon />}
@@ -211,7 +211,7 @@ const NewPage = () => (
       // backgroundColor="whiteAlpha.500"
       boxShadow={10}
       fontSize="lg"
-      color="whiteAlpha.500"
+      color="facebook.500"
     >
       QUOTES
     </Text>
@@ -236,7 +236,7 @@ const NewPage = () => (
       pr={10}
       pt={2}
       pb={2}
-      backgroundColor="whiteAlpha.500"
+      // backgroundColor="whiteAlpha.500"
       mt={20}
       mr={10}
       fontSize="lg"
