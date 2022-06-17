@@ -26,7 +26,9 @@ const NewPage = () => {
   const [ToTok, setToTok] = useState('');
   const [quantValue, setquantValue] = useState('');
   const [name1, setname1] = useState('');
+  const [qErrormess, setqErrormess] = useState('');
 
+  
 
   const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
   const styleE = { visibility: quoteErMessage.isHidden ? 'hidden' : 'visible' };
@@ -61,7 +63,7 @@ try {
 } catch (error) { 
   console.error("Quote execution error", error);
   setquoteErMessage({ isHidden:false});
-
+  setqErrormess(error);
 }
 }
 }
@@ -230,7 +232,7 @@ const QuotesError = () => (
     <AlertTitle mr={1} fontWeight="bold">
       ERROR:{' '}
     </AlertTitle>
-    <AlertDescription>Error in taking action</AlertDescription>
+    <AlertDescription>Request is having an issue: {qErrormess}</AlertDescription>
   </Alert>
 )
 
