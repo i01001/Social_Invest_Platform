@@ -41,8 +41,8 @@ const FromToken = () => (
     textAlign="center"
     fontSize="lg"
     // value="sdfsd"
-    // onChange={e => handleChange(e, 'addressTo')}
-    onChange={e => settemp(e.target.value)}
+    onChange={e => handleChange(e, 'settemp')}
+    // onChange={settemp(target.value)}
     color="facebook.500"
   />
 )
