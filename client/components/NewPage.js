@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect, useState } from "react";
 import {
   ChakraProvider,
   Switch,
@@ -14,6 +15,7 @@ import { ArrowForwardIcon, CloseIcon } from '@chakra-ui/icons'
 
 
 const NewPage = () => {
+  const [temp, setTemp] = useState([]);
 
 const QuoteorSwap = () => (
   <Switch
@@ -40,11 +42,13 @@ const FromToken = () => (
     fontSize="lg"
     value="sdfsd"
     // onChange={e => handleChange(e, 'addressTo')}
-    onChange={e => setMessage(e.target.value)}
+    // onChange={e => setMessage(e.target.value)}
     color="facebook.500"
   />
 )
-const temp = FromToken.value;
+// setTemp(FromToken.value);
+
+// const temp = FromToken.value;
 console.log(temp);
 
 const ToToken = () => (

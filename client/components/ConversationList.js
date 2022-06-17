@@ -181,7 +181,7 @@ const ConversationList = () => {
 
   const popQuote = async () => {
     // <div className={styles.popListTop}>
-    setstateN("asakkas");
+    // setstateN("asakkas");
     setmodstat("true");
     // Modal isOpen=true;
 
