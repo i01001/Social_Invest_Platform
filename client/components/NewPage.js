@@ -15,7 +15,14 @@ import { ArrowForwardIcon, CloseIcon } from '@chakra-ui/icons'
 
 
 const NewPage = () => {
-  const [temp, settemp] = useState([]);
+  const [temp, settemp] = useState({
+    
+  });
+
+  const [formData, setFormData] = useState({
+    addressTo: '',
+    amount: '',
+  })
 
   const handleChange = (e, name) => {
     settemp(prevState => ({ ...prevState, name: e.target.value }))
