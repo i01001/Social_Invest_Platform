@@ -119,7 +119,7 @@ console.log(await fromTok, ToTok, quantValue);
 
 try {
   const quote = await axios.get(
-    `https://api.1inch.io/v4.0/250/quote?fromTokenAddress={fromTok}&toTokenAddress={ToTok}&amount={quantValue}`
+    `https://api.1inch.io/v4.0/250/quote?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}`
   );
   console.log(quote);
   if (quote) {
