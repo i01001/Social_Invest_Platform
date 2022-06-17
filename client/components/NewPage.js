@@ -63,7 +63,7 @@ try {
 } catch (error) { 
   console.error("Quote execution error", error);
   setquoteErMessage({ isHidden:false});
-  setqErrormess(error);
+  setqErrormess("Quote execution error");
 }
 }
 }
@@ -302,7 +302,9 @@ return (
     <QuotesResult />
     </div>
     <TransferSuccess />
+    <div style={styleE}>
     <QuotesError />
+    </div>
     </form>
   </ChakraProvider>
 )
