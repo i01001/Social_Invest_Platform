@@ -42,7 +42,7 @@ const FromToken = () => (
     fontSize="lg"
     value="sdfsd"
     // onChange={e => handleChange(e, 'addressTo')}
-    // onChange={e => setMessage(e.target.value)}
+    onChange={e => setTemp(FromToken.value)}
     color="facebook.500"
   />
 )
