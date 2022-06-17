@@ -15,6 +15,7 @@ import { ArrowForwardIcon, CloseIcon } from '@chakra-ui/icons'
 const QuoteorSwap = () => (
   <Switch
     display="inline"
+    // isChecked 
     mt={20}
     fontWeight="bold"
     backgroundColor="whiteAlpha.500"
