@@ -108,7 +108,8 @@ const EnterButton = () => (
 )
 
 const enterPress = async () => {
-  const inter1 = await inputRecord.FromToken1.value
+  const inter1 = await getValues(["inputRecord.FromToken1"])
+  // const inter1 = await inputRecord.FromToken1.value
 console.log(await inter1)
 }
 
