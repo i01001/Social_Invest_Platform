@@ -16,7 +16,7 @@ import { ArrowForwardIcon, CloseIcon } from '@chakra-ui/icons'
 
 const NewPage = () => {
   const [inputRecord, setinputRecord] = useState('');
-  const { register, handleSubmit } = useForm();
+  const { register, getValues, handleSubmit } = useForm();
 
 
 
@@ -43,7 +43,7 @@ const FromToken = () => (
     fontWeight="bold"
     textAlign="center"
     fontSize="lg"
-    id="fromTok"
+    // id="fromTok"
     {...register("FromToken1")}
     color="facebook.500"
   />
@@ -101,16 +101,19 @@ const EnterButton = () => (
     pb={10}
     pt={3}
     type="submit"
-    onClick={() => enterPress()}
+    onClick={() => {
+      enterPress();
+    }}
   >
     ENTER{' '}
   </Button>
 )
 
 const enterPress = async () => {
-  const inter1 = await getValues(["inputRecord.FromToken1"])
-  // const inter1 = await inputRecord.FromToken1.value
-console.log(await inter1)
+  const fromTok = getValues("FromToken1");     
+  const ToTok = getValues("ToToken");    
+  const quantValue = getValues("QuantityToken");      
+console.log(await fromTok, ToTok, quantValue);
 }
 
 const ExitButton = () => (
@@ -216,7 +219,8 @@ return (
     >
       SWAP TOKENS
     </Text>
-    <form onSubmit={handleSubmit((inputRecord) => setinputRecord(JSON.stringify(inputRecord)))}>
+    <form onSubmit={
+      handleSubmit((inputRecord) => setinputRecord(JSON.stringify(inputRecord)))}>
     <FromToken />
     <ToToken />
     <QuantityToken />
