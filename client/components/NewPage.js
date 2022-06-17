@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 import {
   ChakraProvider,
   Switch,
@@ -16,7 +16,7 @@ import { ArrowForwardIcon, CloseIcon } from '@chakra-ui/icons'
 
 const NewPage = () => {
   const [temp, settemp] = useState('');
-  const { register, handleSubmit } = useForm();
+  // const { register, handleSubmit } = useForm();
 
 
 
@@ -43,9 +43,9 @@ const FromToken = () => (
     fontWeight="bold"
     textAlign="center"
     fontSize="lg"
-    value={temp}
+    // value={temp}
     // onChange={e => settemp(e.target.value)}
-    {...register("FromToken")}
+    // {...register("FromToken")}
     // onBlur={onChange}
     // onChange={event => settemp(event.target.value)}
     color="facebook.500"
@@ -209,7 +209,7 @@ return (
     >
       SWAP TOKENS
     </Text>
-    <form onSubmit={handleSubmit((temp) => settemp(JSON.stringify(temp)))}>
+    {/* <form onSubmit={handleSubmit((temp) => settemp(JSON.stringify(temp)))}> */}
     <FromToken />
     <ToToken />
     <QuantityToken />
@@ -218,8 +218,8 @@ return (
     <QuotesResult />
     <QuotesError />
     <TransferSuccess />
-    <input type="submit" />
-    </form>
+    {/* <input type="submit" /> */}
+    {/* </form> */}
   </ChakraProvider>
 )
 }
