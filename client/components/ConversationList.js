@@ -251,6 +251,7 @@ const ConversationList = () => {
       <Modal isOpen={modstat} style={customStyles}>
         <div className={style.wrapper}>
           <NewPage />
+          
           {/* <div className={style.title}>Transaction in progress...</div>
           <MoonLoader
             color={"#fff"}
