@@ -41,7 +41,7 @@ const FromToken = () => (
     textAlign="center"
     fontSize="lg"
     value={temp}
-    onInput={e => settemp(e.target.value)}
+    onChange={e => settemp(e.target.value)}
     // onChange={event => settemp(event.target.value)}
     color="facebook.500"
   />
