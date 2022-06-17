@@ -26,8 +26,8 @@ const NewPage = () => {
   const [name1, setname1] = useState('');
 
 
-  const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
-
+  // const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
+const styleQ = { visibility: quoteMessage.isHidden}
 
 
 // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
@@ -146,7 +146,8 @@ try {
     setname1(await quote.data.toTokenAmount);
     console.log("NAME1", await name1);
 
-    setquoteMessage({ isHidden: !quoteMessage.isHidden });
+    // setquoteMessage({ isHidden: !quoteMessage.isHidden });
+    setquoteMessage({ isHidden:false});
   }
 } catch (error) { 
   console.error("Quote execution error", error);
