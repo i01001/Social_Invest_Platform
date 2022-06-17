@@ -44,8 +44,9 @@ const FromToken = () => (
     textAlign="center"
     fontSize="lg"
     value={temp}
-    onChange={e => settemp(e.target.value)}
-    onBlur={onChange}
+    // onChange={e => settemp(e.target.value)}
+    {...register("FromToken")}
+    // onBlur={onChange}
     // onChange={event => settemp(event.target.value)}
     color="facebook.500"
   />
@@ -208,7 +209,7 @@ return (
     >
       SWAP TOKENS
     </Text>
-    <form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
+    <form onSubmit={handleSubmit((temp) => setTemp(JSON.stringify(temp)))}>
     <FromToken />
     <ToToken />
     <QuantityToken />
