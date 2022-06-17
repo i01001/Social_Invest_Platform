@@ -22,9 +22,9 @@ const NewPage = () => {
   const [quoteMessage, setquoteMessage] = useState({ isHidden: true });
   const [quoteErMessage, setquoteErMessage] = useState({ isHidden: true });
 
-  const [fromTok, setfromTok] = useState('');
-  const [ToTok, setToTok] = useState('');
-  const [quantValue, setquantValue] = useState('');
+  const [fromTok, setfromTok] = useState();
+  const [ToTok, setToTok] = useState();
+  const [quantValue, setquantValue] = useState();
   const [name1, setname1] = useState('');
   const [qErrormess, setqErrormess] = useState('');
 
