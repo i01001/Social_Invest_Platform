@@ -59,7 +59,7 @@ const isComponentMounted = useComponentDidMount();
 useEffect(() => {
   if(isComponentMounted) {    
   quoteFunction();
-}}, [quantValue, fromTok, ToTok]);
+}}, [quantValue, fromTok, ToTok, Entercount]);
 
 const quoteFunction = async () => {
 const quoteYes = await getValues("Quoteornot");      
