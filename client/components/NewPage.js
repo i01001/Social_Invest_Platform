@@ -19,6 +19,7 @@ import { ArrowForwardIcon, CloseIcon } from '@chakra-ui/icons'
 const NewPage = () => {
   const [inputRecord, setinputRecord] = useState('');
   const { register, getValues, handleSubmit } = useForm();
+  const [quoteMessage, setquoteMessage] = useState({ isHidden: false });
 
 
 
