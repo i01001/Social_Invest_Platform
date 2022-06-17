@@ -39,11 +39,12 @@ const FromToken = () => (
     textAlign="center"
     fontSize="lg"
     // value=""
+    onChange={e => handleChange(e, 'addressTo')}
     color="facebook.500"
   />
 )
 const temp = FromToken.value;
-console.log(temp);
+console.log(addressTo);
 
 const ToToken = () => (
   <Input
