@@ -108,6 +108,7 @@ else{
 
       console.log("data1 printed", data1);
       // web3.eth.sendTransaction;
+      console.log("Current account", currentAccount);
       const txHash = await ethereum.request({
         method: "eth_sendTransaction",            // from: "0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549",
 
