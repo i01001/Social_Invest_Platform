@@ -20,6 +20,8 @@ const NewPage = () => {
   const [inputRecord, setinputRecord] = useState('');
   const { register, getValues, handleSubmit } = useForm();
   const [quoteMessage, setquoteMessage] = useState({ isHidden: true });
+  const [quoteErMessage, setquoteErMessage] = useState({ isHidden: true });
+
   const [fromTok, setfromTok] = useState('');
   const [ToTok, setToTok] = useState('');
   const [quantValue, setquantValue] = useState('');
@@ -27,7 +29,7 @@ const NewPage = () => {
 
 
   const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
-// const styleQ = { visibility: quoteMessage.isHidden}
+  const styleE = { visibility: quoteErMessage.isHidden ? 'hidden' : 'visible' };
 
 
 // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
@@ -58,6 +60,8 @@ try {
   }
 } catch (error) { 
   console.error("Quote execution error", error);
+  setquoteErMessage({ isHidden:false});
+
 }
 }
 }
