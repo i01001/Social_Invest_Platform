@@ -29,6 +29,9 @@ const NewPage = () => {
   const [quantValue, setquantValue] = useState();
   const [name1, setname1] = useState('');
   const [qErrormess, setqErrormess] = useState('');
+  const [Entercount, setEntercount] = useState(1);
+
+  // setEntercount
   // const firstUpdate = useRef(true);
 
   // const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
@@ -233,7 +236,7 @@ const enterPress = async () => {
   setfromTok(getValues("FromToken1"));     
   setToTok(getValues("ToToken"));    
   setquantValue(getValues("QuantityToken"));   
-  setEntercount()
+  setEntercount(prevState + 1);
 //   const quoteYes = await getValues("Quoteornot");      
    
 // console.log(await fromTok, ToTok, quantValue, quoteYes);
