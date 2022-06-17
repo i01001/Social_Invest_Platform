@@ -34,7 +34,33 @@ const NewPage = () => {
 // 0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E
 // 100000000000000000
 
+useEffect(() => {
+  quoteFunction();
+}, [quantValue]);
 
+const quoteFunction = async () => {
+const quoteYes = await getValues("Quoteornot");      
+   
+console.log(await fromTok, ToTok, quantValue, quoteYes);
+
+if(!quoteYes){
+try {
+  const quote = await axios.get(
+    `https://api.1inch.io/v4.0/250/quote?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}`
+  );
+  console.log(quote);
+  if (quote) {
+    setname1(await quote.data.toTokenAmount);
+    console.log("NAME1", await name1);
+
+    // setquoteMessage({ isHidden: !quoteMessage.isHidden });
+    setquoteMessage({ isHidden:false});
+  }
+} catch (error) { 
+  console.error("Quote execution error", error);
+}
+}
+}
 
 const QuoteorSwap = () => (
   <Switch
@@ -131,27 +157,27 @@ const enterPress = async () => {
   setfromTok(getValues("FromToken1"));     
   setToTok(getValues("ToToken"));    
   setquantValue(getValues("QuantityToken"));   
-  const quoteYes = await getValues("Quoteornot");      
+//   const quoteYes = await getValues("Quoteornot");      
    
-console.log(await fromTok, ToTok, quantValue, quoteYes);
+// console.log(await fromTok, ToTok, quantValue, quoteYes);
 
-if(!quoteYes){
-try {
-  const quote = await axios.get(
-    `https://api.1inch.io/v4.0/250/quote?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}`
-  );
-  console.log(quote);
-  if (quote) {
-    setname1(await quote.data.toTokenAmount);
-    console.log("NAME1", await name1);
+// if(!quoteYes){
+// try {
+//   const quote = await axios.get(
+//     `https://api.1inch.io/v4.0/250/quote?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}`
+//   );
+//   console.log(quote);
+//   if (quote) {
+//     setname1(await quote.data.toTokenAmount);
+//     console.log("NAME1", await name1);
 
-    // setquoteMessage({ isHidden: !quoteMessage.isHidden });
-    setquoteMessage({ isHidden:false});
-  }
-} catch (error) { 
-  console.error("Quote execution error", error);
-}
-}
+//     // setquoteMessage({ isHidden: !quoteMessage.isHidden });
+//     setquoteMessage({ isHidden:false});
+//   }
+// } catch (error) { 
+//   console.error("Quote execution error", error);
+// }
+// }
 }
 
 
