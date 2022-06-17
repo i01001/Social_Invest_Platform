@@ -19,7 +19,18 @@ import { ArrowForwardIcon, CloseIcon } from '@chakra-ui/icons'
 const NewPage = () => {
   const [inputRecord, setinputRecord] = useState('');
   const { register, getValues, handleSubmit } = useForm();
-  const [quoteMessage, setquoteMessage] = useState({ isHidden: false });
+  const [quoteMessage, setquoteMessage] = useState({ isHidden: true });
+
+  const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
+  const fromTok = ''
+  const ToTok = ''
+  const quantValue = ''
+  const name1 = ''
+
+
+// 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
+// 0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E
+// 100000000000000000
 
 
 
@@ -115,9 +126,9 @@ const EnterButton = () => (
 )
 
 const enterPress = async () => {
-  const fromTok = getValues("FromToken1");     
-  const ToTok = getValues("ToToken");    
-  const quantValue = getValues("QuantityToken");   
+  fromTok = getValues("FromToken1");     
+  ToTok = getValues("ToToken");    
+  quantValue = getValues("QuantityToken");   
   const quoteYes = getValues("Quoteornot");      
    
 console.log(await fromTok, ToTok, quantValue, quoteYes);
@@ -130,8 +141,11 @@ try {
   );
   console.log(quote);
   if (quote) {
-    const name1 = await quote.data.toTokenAmount;
+    name1 = await quote.data.toTokenAmount;
     console.log("NAME1", await name1);
+
+    setquoteMessage({ isHidden: !quoteMessage.isHidden });
+
   }
 } catch (error) { 
   console.error("Quote execution error", error);
@@ -173,7 +187,7 @@ const QuotesResult = () => (
       QUOTES:
     </AlertTitle>
     <AlertDescription>
-      Quotation for from Token 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE to Token 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE for Quantity 10000000000000000000 is: 10000000000000000000 {' '}
+      `Quotation for from Token ${fromTok} to Token ${ToTok} for Quantity ${quantValue} is: ${name1}` {' '}
     </AlertDescription>
   </Alert>
 )
@@ -250,8 +264,9 @@ return (
     <QuantityToken />
     <ExitButton />
     <EnterButton />
-    {/* <div quoteShow={} */}
+    <div style={styleQ}>
     <QuotesResult />
+    </div>
     <QuotesError />
     <TransferSuccess />
     </form>
