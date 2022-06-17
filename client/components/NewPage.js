@@ -35,6 +35,7 @@ const FromToken = () => (
     fontWeight="bold"
     textAlign="center"
     fontSize="lg"
+    value="aisia"
     color="facebook.500"
   />
 )
