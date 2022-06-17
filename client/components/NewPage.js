@@ -129,18 +129,6 @@ const QuotesResult = () => (
   </Alert>
 )
 
-// const QuoteResult = () => (
-//   <AlertTitle mr={1} fontWeight="bold">
-//     QUOTEwwwwwwwS:
-//   </AlertTitle>
-// )
-
-// const QuoteError = () => (
-//   <AlertTitle mr={1} fontWeight="bold">
-//     ERROR:{' '}
-//   </AlertTitle>
-// )
-
 const QuotesError = () => (
   <Alert status="error" variant="solid" mt={5}>
     <AlertIcon />
@@ -150,12 +138,6 @@ const QuotesError = () => (
     <AlertDescription>Error in taking action</AlertDescription>
   </Alert>
 )
-
-// const QuoteResult2 = () => (
-//   <AlertTitle mr={1} fontWeight="bold">
-//     TRANSFER:
-//   </AlertTitle>
-// )
 
 const TransferSuccess = () => (
   <Alert status="success" variant="solid" mt={5}>
