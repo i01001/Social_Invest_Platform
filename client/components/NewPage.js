@@ -101,7 +101,7 @@ const EnterButton = () => (
     display="inline"
     pb={10}
     pt={3}
-    // type="submit"
+    type="submit"
     // onClick={() => enterAction()}
   >
     ENTER{' '}
@@ -215,7 +215,7 @@ return (
     >
       SWAP TOKENS
     </Text>
-    <form onChange={handleSubmit((temp) => settemp(JSON.stringify(temp)))}>
+    <form onSubmit={handleSubmit((temp) => settemp(JSON.stringify(temp)))}>
     <FromToken />
     <ToToken />
     <QuantityToken />
