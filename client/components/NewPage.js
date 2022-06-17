@@ -1,6 +1,8 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+const Web3 = require("web3");
+const axios = require("axios");
 import {
   ChakraProvider,
   Switch,
@@ -114,7 +116,21 @@ const enterPress = async () => {
   const ToTok = getValues("ToToken");    
   const quantValue = getValues("QuantityToken");      
 console.log(await fromTok, ToTok, quantValue);
+
+try {
+  const quote = await axios.get(
+    `https://api.1inch.io/v4.0/250/quote?fromTokenAddress={fromTok}&toTokenAddress={ToTok}&amount={quantValue}`
+  );
+  console.log(quote);
+  if (quote) {
+    const name1 = await quote.data.toTokenAmount;
+    console.log(await name1);
+  }
+} catch (error) { 
+  console.error("Quote execution error", error);
 }
+}
+
 
 const ExitButton = () => (
   <Button
