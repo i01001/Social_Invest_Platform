@@ -128,9 +128,9 @@ const EnterButton = () => (
 )
 
 const enterPress = async () => {
-  setfromTok(await getValues("FromToken1"));     
-  setToTok(await getValues("ToToken"));    
-  setquantValue(await getValues("QuantityToken"));   
+  setfromTok(getValues("FromToken1"));     
+  setToTok(getValues("ToToken"));    
+  setquantValue(getValues("QuantityToken"));   
   const quoteYes = await getValues("Quoteornot");      
    
 console.log(await fromTok, ToTok, quantValue, quoteYes);
@@ -140,7 +140,6 @@ try {
   const quote = await axios.get(
     `https://api.1inch.io/v4.0/250/quote?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}`
   );
-  // await quote;
   console.log(quote);
   if (quote) {
     setname1(await quote.data.toTokenAmount);
