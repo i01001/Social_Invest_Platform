@@ -1,42 +1,3 @@
-// import React from 'react'
-// import {
-//   ChakraProvider,
-//   Alert,
-//   AlertIcon,
-//   AlertTitle,
-//   AlertDescription,
-//   Button
-// } from '@chakra-ui/react'
-// import { AddIcon, CopyIcon } from '@chakra-ui/icons'
-
-// const NewPage = () => (
-  
-//   <ChakraProvider resetCSS>
-//     <Alert>
-//       <AlertIcon />
-//       <AlertTitle mr={1} fontWeight="bold">
-//         Alert title
-//       </AlertTitle>
-//       <AlertDescription>Need to enter Metamask</AlertDescription>
-//     </Alert>
-//     <Button
-//       variant="outline"
-//       size="lg"
-//       colorScheme="blue"
-//       leftIcon={<AddIcon />}
-//       rightIcon={<CopyIcon />}
-//       display="inline-block"
-//       justifyContent="center"
-//       ml={500}
-//     >
-//       Button text
-//     </Button>
-//   </ChakraProvider>
-// )
-
-// export default NewPage
-
-
 import React from 'react'
 import {
   ChakraProvider,
@@ -149,7 +110,7 @@ const QuotesResult = () => (
       QUOTES:
     </AlertTitle>
     <AlertDescription>
-      Quotation for from Token to Token Quantity is:{' '}
+      Quotation for from Token 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE to Token 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE for Quantity 10000000000000000000 is: 10000000000000000000 {' '}
     </AlertDescription>
   </Alert>
 )
