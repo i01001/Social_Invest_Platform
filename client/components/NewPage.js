@@ -14,18 +14,8 @@ import {
 import { ArrowForwardIcon, CloseIcon } from '@chakra-ui/icons'
 
 const NewPage = () => {
-  const [temp, settemp] = useState({
-    fromtoken: '',
-  });
+  const [temp, settemp] = useState('');
 
-  // const [formData, setFormData] = useState({
-  //   addressTo: '',
-  //   amount: '',
-  // })
-
-  const handleChange = (e, name) => {
-    settemp(prevState => ({ ...prevState, name: e.target.value }))
-  }
 
 const QuoteorSwap = () => (
   <Switch
@@ -50,9 +40,7 @@ const FromToken = () => (
     fontWeight="bold"
     textAlign="center"
     fontSize="lg"
-    // value="sdfsd"
-    onChange={e => handleChange(e, 'settemp')}
-    // onChange={settemp(target.value)}
+    onChange={event => settemp(event.target.value)}
     color="facebook.500"
   />
 )
