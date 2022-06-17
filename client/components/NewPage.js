@@ -35,7 +35,7 @@ const FromToken = () => (
     fontWeight="bold"
     textAlign="center"
     fontSize="lg"
-    value="aisia"
+    // value=""
     color="facebook.500"
   />
 )
@@ -197,8 +197,8 @@ const NewPage = () => (
     <FromToken />
     <ToToken />
     <QuantityToken />
-    <EnterButton />
     <ExitButton />
+    <EnterButton />
     <QuotesResult />
     <QuotesError />
     <TransferSuccess />
