@@ -21,6 +21,8 @@ const NewPage = () => {
   const { register, getValues, handleSubmit } = useForm();
   const [quoteMessage, setquoteMessage] = useState({ isHidden: true });
   const [quoteErMessage, setquoteErMessage] = useState({ isHidden: true });
+  const [transferMessage, settransferMessage] = useState({ isHidden: true });
+
 
   const [fromTok, setfromTok] = useState();
   const [ToTok, setToTok] = useState();
@@ -29,11 +31,10 @@ const NewPage = () => {
   const [qErrormess, setqErrormess] = useState('');
   // const firstUpdate = useRef(true);
 
-  
-
   // const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
   const styleE = { display: quoteErMessage.isHidden ? 'none' : 'block' };
   const styleQ = { display: quoteMessage.isHidden ? 'none' : 'block' };
+  const styleT = { display: transferMessage.isHidden ? 'none' : 'block' };
 
 
 // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
