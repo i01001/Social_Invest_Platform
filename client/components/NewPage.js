@@ -208,7 +208,7 @@ const NewPage = () => (
       opacity={1}
       mr={10}
       mt={20}
-      backgroundColor="whiteAlpha.500"
+      // backgroundColor="whiteAlpha.500"
       boxShadow={10}
       fontSize="lg"
       color="whiteAlpha.500"
@@ -256,3 +256,4 @@ const NewPage = () => (
 )
 
 export default NewPage
+
