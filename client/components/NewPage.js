@@ -98,7 +98,7 @@ const Enterquote = () => (
     pl={5}
     pr={5}
     fontWeight="bold"
-    color="facebook.500"
+    color="whiteAlpha.500"
     textAlign="center"
     backgroundColor="whiteAlpha.500"
     border={100}
@@ -129,7 +129,7 @@ const Enterquote1 = () => (
     backgroundColor="whiteAlpha.500"
     border={100}
     borderRadius={20}
-    ml={480}
+    ml={100}
     colorScheme="whiteAlpha"
     letterSpacing="wide"
     fontSize="lg"
@@ -196,7 +196,7 @@ const NewPage = () => (
   <ChakraProvider resetCSS>
     <Text
       display="inline"
-      ml={470}
+      ml={100}
       fontWeight="bold"
       textAlign="center"
       border={30}
@@ -211,7 +211,7 @@ const NewPage = () => (
       backgroundColor="whiteAlpha.500"
       boxShadow={10}
       fontSize="lg"
-      color="facebook.500"
+      color="whiteAlpha.500"
     >
       QUOTES
     </Text>
@@ -220,8 +220,8 @@ const NewPage = () => (
       mt={20}
       fontWeight="bold"
       backgroundColor="whiteAlpha.500"
-      colorScheme="messenger"
-      color="facebook.500"
+      colorScheme="whiteAlpha"
+      color="whiteAlpha.500"
       textAlign="center"
       pt={1}
     />
