@@ -109,7 +109,8 @@ else{
       console.log("data1 printed", data1);
       // web3.eth.sendTransaction;
       const txHash = await ethereum.request({
-        method: "eth_sendTransaction",
+        method: "eth_sendTransaction",            // from: "0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549",
+
         params: [
           {
             // from: "0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549",
