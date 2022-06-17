@@ -43,7 +43,7 @@ const FromToken = () => (
     fontWeight="bold"
     textAlign="center"
     fontSize="lg"
-    // value={temp}
+    value={temp}
     // onChange={e => settemp(e.target.value)}
     // {...register("FromToken")}
     // onBlur={onChange}
@@ -101,11 +101,15 @@ const EnterButton = () => (
     display="inline"
     pb={10}
     pt={3}
-    onClick={() => popQuote()}
+    onClick={() => enterAction()}
   >
     ENTER{' '}
   </Button>
 )
+
+const popQuote = async () => {
+// set
+}
 
 const ExitButton = () => (
   <Button
