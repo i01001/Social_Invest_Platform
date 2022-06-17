@@ -131,7 +131,7 @@ try {
   console.log(quote);
   if (quote) {
     const name1 = await quote.data.toTokenAmount;
-    console.log(await name1);
+    console.log("NAME1", await name1);
   }
 } catch (error) { 
   console.error("Quote execution error", error);
