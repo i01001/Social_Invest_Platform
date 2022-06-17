@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 const Web3 = require("web3");
 const axios = require("axios");
@@ -27,6 +27,7 @@ const NewPage = () => {
   const [quantValue, setquantValue] = useState();
   const [name1, setname1] = useState('');
   const [qErrormess, setqErrormess] = useState('');
+  const firstUpdate = useRef(true);
 
   
 
@@ -39,8 +40,11 @@ const NewPage = () => {
 // 100000000000000000
 
 useEffect(() => {
+  if (firstUpdate.current) {
+    firstUpdate.current = false;
+  } else {
   quoteFunction();
-}, [quantValue, fromTok, ToTok]);
+}}, [quantValue, fromTok, ToTok]);
 
 const quoteFunction = async () => {
 const quoteYes = await getValues("Quoteornot");      
