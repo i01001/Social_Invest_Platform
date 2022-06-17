@@ -107,7 +107,7 @@ const EnterButton = () => (
 )
 
 const enterPress = async () => {
-  const inter1 = await inputRecord.FromToken
+  const inter1 = await inputRecord.map
 console.log(await inter1)
 }
 
