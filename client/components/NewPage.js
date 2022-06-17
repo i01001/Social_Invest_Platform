@@ -98,7 +98,7 @@ const Enterquote = () => (
     pl={5}
     pr={5}
     fontWeight="bold"
-    color="whiteAlpha.500"
+    color="white"
     textAlign="center"
     backgroundColor="whiteAlpha.500"
     border={100}
@@ -124,13 +124,13 @@ const Enterquote1 = () => (
     pl={5}
     pr={5}
     fontWeight="bold"
-    color="facebook.500"
+    color="white"
     textAlign="center"
     backgroundColor="whiteAlpha.500"
     border={100}
     borderRadius={20}
     ml={100}
-    colorScheme="whiteAlpha.500"
+    colorScheme="whiteAlpha"
     letterSpacing="wide"
     fontSize="lg"
     leftIcon={<CloseIcon />}
