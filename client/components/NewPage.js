@@ -188,7 +188,7 @@ const QuotesResult = () => (
       QUOTES:
     </AlertTitle>
     <AlertDescription>
-      `Quotation for from Token ${fromTok} to Token ${ToTok} for Quantity ${quantValue} is: ${name1}` {' '}
+      Quotation: To convert {quantValue} tokens of {fromTok} would give <div fontWeight="bold">{name1}</div>  tokens of {ToTok}{' '}
     </AlertDescription>
   </Alert>
 )
