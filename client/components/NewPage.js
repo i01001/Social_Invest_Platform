@@ -31,8 +31,9 @@ const NewPage = () => {
 
   
 
-  const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
+  // const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
   const styleE = { visibility: quoteErMessage.isHidden ? 'hidden' : 'visible' };
+  const styleQ = { display: quoteMessage.isHidden ? 'none' : 'block' };
 
 
 // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
