@@ -32,7 +32,7 @@ const NewPage = () => {
   
 
   // const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
-  const styleE = { visibility: quoteErMessage.isHidden ? 'hidden' : 'visible' };
+  const styleE = { display: quoteErMessage.isHidden ? 'none' : 'block' };
   const styleQ = { display: quoteMessage.isHidden ? 'none' : 'block' };
 
 
