@@ -20,12 +20,14 @@ const NewPage = () => {
   const [inputRecord, setinputRecord] = useState('');
   const { register, getValues, handleSubmit } = useForm();
   const [quoteMessage, setquoteMessage] = useState({ isHidden: true });
+  const [fromTok, setfromTok] = useState('');
+  const [ToTok, setToTok] = useState('');
+  const [quantValue, setquantValue] = useState('');
+  const [name1, setname1] = useState('');
+
 
   const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
-  const fromTok = ''
-  const ToTok = ''
-  const quantValue = ''
-  const name1 = ''
+
 
 
 // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
@@ -126,9 +128,9 @@ const EnterButton = () => (
 )
 
 const enterPress = async () => {
-  fromTok = getValues("FromToken1");     
-  ToTok = getValues("ToToken");    
-  quantValue = getValues("QuantityToken");   
+  setfromTok(getValues("FromToken1"));     
+  setToTok(getValues("ToToken"));    
+  setquantValue(getValues("QuantityToken"));   
   const quoteYes = getValues("Quoteornot");      
    
 console.log(await fromTok, ToTok, quantValue, quoteYes);
@@ -141,11 +143,10 @@ try {
   );
   console.log(quote);
   if (quote) {
-    name1 = await quote.data.toTokenAmount;
+    setname1(await quote.data.toTokenAmount);
     console.log("NAME1", await name1);
 
     setquoteMessage({ isHidden: !quoteMessage.isHidden });
-
   }
 } catch (error) { 
   console.error("Quote execution error", error);
