@@ -43,6 +43,7 @@ const FromToken = () => (
   />
 )
 const temp = FromToken.value;
+console.log(temp);
 
 const ToToken = () => (
   <Input
