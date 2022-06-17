@@ -194,9 +194,10 @@ const QuotesResult2 = () => (
 
 const NewPage = () => (
   <ChakraProvider resetCSS>
+    <br></br>
     <Text
       display="inline"
-      ml={100}
+      ml={90}
       fontWeight="bold"
       textAlign="center"
       border={30}
@@ -210,7 +211,7 @@ const NewPage = () => (
       mt={20}
       // backgroundColor="whiteAlpha.500"
       boxShadow={10}
-      fontSize="lg"
+      fontSize="xl"
       color="facebook.500"
     >
       QUOTES
@@ -239,7 +240,7 @@ const NewPage = () => (
       // backgroundColor="whiteAlpha.500"
       mt={20}
       mr={10}
-      fontSize="lg"
+      fontSize="xl"
       color="facebook.500"
     >
       SWAP TOKENS
