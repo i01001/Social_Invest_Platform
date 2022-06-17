@@ -12,6 +12,19 @@ import {
 } from '@chakra-ui/react'
 import { ArrowForwardIcon, CloseIcon } from '@chakra-ui/icons'
 
+const QuoteorSwap = () => (
+  <Switch
+    display="inline"
+    mt={20}
+    fontWeight="bold"
+    backgroundColor="whiteAlpha.500"
+    colorScheme="messenger"
+    color="facebook.500"
+    textAlign="center"
+    pt={1}
+  />
+)
+
 const FromToken = () => (
   <Input
     size="md"
@@ -177,16 +190,7 @@ const NewPage = () => (
     >
       QUOTES
     </Text>
-    <Switch
-      display="inline"
-      mt={20}
-      fontWeight="bold"
-      backgroundColor="whiteAlpha.500"
-      colorScheme="whiteAlpha"
-      color="whiteAlpha.500"
-      textAlign="center"
-      pt={1}
-    />
+    <QuoteorSwap />
     <Text
       display="inline"
       ml={8}
