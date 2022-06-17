@@ -233,6 +233,7 @@ const enterPress = async () => {
   setfromTok(getValues("FromToken1"));     
   setToTok(getValues("ToToken"));    
   setquantValue(getValues("QuantityToken"));   
+  setEntercount()
 //   const quoteYes = await getValues("Quoteornot");      
    
 // console.log(await fromTok, ToTok, quantValue, quoteYes);
