@@ -128,10 +128,10 @@ const EnterButton = () => (
 )
 
 const enterPress = async () => {
-  setfromTok(getValues("FromToken1"));     
-  setToTok(getValues("ToToken"));    
-  setquantValue(getValues("QuantityToken"));   
-  const quoteYes = getValues("Quoteornot");      
+  setfromTok(await getValues("FromToken1"));     
+  setToTok(await getValues("ToToken"));    
+  setquantValue(await getValues("QuantityToken"));   
+  const quoteYes = await getValues("Quoteornot");      
    
 console.log(await fromTok, ToTok, quantValue, quoteYes);
 
