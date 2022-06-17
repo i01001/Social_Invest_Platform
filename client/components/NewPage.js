@@ -25,7 +25,7 @@ const FromToken = () => (
   />
 )
 
-const FromToken1 = () => (
+const ToToken = () => (
   <Input
     size="md"
     mt={15}
@@ -38,7 +38,7 @@ const FromToken1 = () => (
   />
 )
 
-const FromToken2 = () => (
+const QuantityToken = () => (
   <Input
     size="md"
     mt={15}
@@ -51,7 +51,7 @@ const FromToken2 = () => (
   />
 )
 
-const Enterquote = () => (
+const EnterButton = () => (
   <Button
     variant="solid"
     size="lg"
@@ -77,7 +77,7 @@ const Enterquote = () => (
   </Button>
 )
 
-const Enterquote1 = () => (
+const ExitButton = () => (
   <Button
     variant="solid"
     size="lg"
@@ -207,10 +207,10 @@ const NewPage = () => (
       SWAP TOKENS
     </Text>
     <FromToken />
-    <FromToken1 />
-    <FromToken2 />
-    <Enterquote1 />
-    <Enterquote />
+    <ToToken />
+    <QuantityToken />
+    <EnterButton />
+    <ExitButton />
     <QuotesResult />
     <QuotesResult1 />
     <QuotesResult2 />
