@@ -187,7 +187,7 @@ const QuotesResult = () => (
     <AlertTitle mr={1} fontWeight="bold">
       QUOTES:
     </AlertTitle>
-    <AlertDescription><AlertTitle fontWeight="bold"> {name1} TOKENS</AlertTitle>Conversion of {quantValue} tokens of {fromTok} to {ToTok}{' '}
+    <AlertDescription><AlertTitle fontWeight="bold" color="red"> {name1} TOKENS</AlertTitle>Conversion of {quantValue} tokens of {fromTok} to {ToTok}{' '}
     </AlertDescription>
   </Alert>
 )
