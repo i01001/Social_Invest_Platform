@@ -100,13 +100,15 @@ const EnterButton = () => (
     pb={10}
     pt={3}
     type="submit"
+    onClick={() => enterPress()}
   >
     ENTER{' '}
   </Button>
 )
 
-const popQuote = async () => {
-// set
+const enterPress = async () => {
+  const inter1 = await inputRecord.FromToken
+console.log(await inter1)
 }
 
 const ExitButton = () => (
@@ -163,7 +165,7 @@ const TransferSuccess = () => (
     <AlertTitle mr={1} fontWeight="bold">
       TRANSFER:
     </AlertTitle>
-    <AlertDescription>{temp}</AlertDescription>
+    <AlertDescription>{inputRecord}</AlertDescription>
   </Alert>
 )
 
@@ -212,7 +214,7 @@ return (
     >
       SWAP TOKENS
     </Text>
-    <form onSubmit={handleSubmit((inputRecord) => settemp(JSON.stringify(inputRecord)))}>
+    <form onSubmit={handleSubmit((inputRecord) => setinputRecord(JSON.stringify(inputRecord)))}>
     <FromToken />
     <ToToken />
     <QuantityToken />
