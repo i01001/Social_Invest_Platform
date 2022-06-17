@@ -115,19 +115,19 @@ const QuotesResult = () => (
   </Alert>
 )
 
-const QuoteResult = () => (
-  <AlertTitle mr={1} fontWeight="bold">
-    QUOTES:
-  </AlertTitle>
-)
+// const QuoteResult = () => (
+//   <AlertTitle mr={1} fontWeight="bold">
+//     QUOTEwwwwwwwS:
+//   </AlertTitle>
+// )
 
-const QuoteResult1 = () => (
-  <AlertTitle mr={1} fontWeight="bold">
-    ERROR:{' '}
-  </AlertTitle>
-)
+// const QuoteError = () => (
+//   <AlertTitle mr={1} fontWeight="bold">
+//     ERROR:{' '}
+//   </AlertTitle>
+// )
 
-const QuotesResult1 = () => (
+const QuotesError = () => (
   <Alert status="error" variant="solid" mt={5}>
     <AlertIcon />
     <AlertTitle mr={1} fontWeight="bold">
@@ -137,13 +137,13 @@ const QuotesResult1 = () => (
   </Alert>
 )
 
-const QuoteResult2 = () => (
-  <AlertTitle mr={1} fontWeight="bold">
-    TRANSFER:
-  </AlertTitle>
-)
+// const QuoteResult2 = () => (
+//   <AlertTitle mr={1} fontWeight="bold">
+//     TRANSFER:
+//   </AlertTitle>
+// )
 
-const QuotesResult2 = () => (
+const TransferSuccess = () => (
   <Alert status="success" variant="solid" mt={5}>
     <AlertIcon />
     <AlertTitle mr={1} fontWeight="bold">
@@ -212,8 +212,8 @@ const NewPage = () => (
     <EnterButton />
     <ExitButton />
     <QuotesResult />
-    <QuotesResult1 />
-    <QuotesResult2 />
+    <QuotesError />
+    <TransferSuccess />
   </ChakraProvider>
 )
 
