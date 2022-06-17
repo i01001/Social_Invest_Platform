@@ -20,10 +20,10 @@ const NewPage = () => {
   const [inputRecord, setinputRecord] = useState('');
   const { register, getValues, handleSubmit } = useForm();
   const [quoteMessage, setquoteMessage] = useState({ isHidden: true });
-  const [fromTok, setfromTok] = useState(0);
-  const [ToTok, setToTok] = useState(0);
+  const [fromTok, setfromTok] = useState('');
+  const [ToTok, setToTok] = useState('');
   const [quantValue, setquantValue] = useState('');
-  const [name1, setname1] = useState(0);
+  const [name1, setname1] = useState('');
 
 
   const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
