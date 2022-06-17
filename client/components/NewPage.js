@@ -26,8 +26,8 @@ const NewPage = () => {
   const [name1, setname1] = useState('');
 
 
-  // const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
-const styleQ = { visibility: quoteMessage.isHidden}
+  const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
+// const styleQ = { visibility: quoteMessage.isHidden}
 
 
 // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
@@ -141,6 +141,7 @@ try {
   const quote = await axios.get(
     `https://api.1inch.io/v4.0/250/quote?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}`
   );
+  await quote;
   console.log(quote);
   if (quote) {
     setname1(await quote.data.toTokenAmount);
