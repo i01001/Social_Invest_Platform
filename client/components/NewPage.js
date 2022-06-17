@@ -38,13 +38,14 @@ const FromToken = () => (
     fontWeight="bold"
     textAlign="center"
     fontSize="lg"
-    // value=""
-    onChange={e => handleChange(e, 'addressTo')}
+    value="sdfsd"
+    // onChange={e => handleChange(e, 'addressTo')}
+    onChange={e => setMessage(e.target.value)}
     color="facebook.500"
   />
 )
 const temp = FromToken.value;
-console.log(addressTo);
+console.log(temp);
 
 const ToToken = () => (
   <Input
