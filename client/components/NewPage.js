@@ -32,6 +32,8 @@ const QuoteorSwap = () => (
     colorScheme="messenger"
     color="facebook.500"
     textAlign="center"
+    {...register("Quoteornot")}
+
     pt={1}
   />
 )
@@ -114,23 +116,26 @@ const EnterButton = () => (
 const enterPress = async () => {
   const fromTok = getValues("FromToken1");     
   const ToTok = getValues("ToToken");    
-  const quantValue = getValues("QuantityToken");      
-console.log(await fromTok, ToTok, quantValue);
+  const quantValue = getValues("QuantityToken");   
+  const quoteYes = getValues("Quoteornot");      
+   
+console.log(await fromTok, ToTok, quantValue, quoteYes);
 
-const quoteYes = QuoteorSwap.isChecked;
-
-// try {
-//   const quote = await axios.get(
-//     `https://api.1inch.io/v4.0/250/quote?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}`
-//   );
-//   console.log(quote);
-//   if (quote) {
-//     const name1 = await quote.data.toTokenAmount;
-//     console.log(await name1);
-//   }
-// } catch (error) { 
-//   console.error("Quote execution error", error);
-// }
+// const quoteYes = QuoteorSwap.isChecked;
+if(!quoteYes){
+try {
+  const quote = await axios.get(
+    `https://api.1inch.io/v4.0/250/quote?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}`
+  );
+  console.log(quote);
+  if (quote) {
+    const name1 = await quote.data.toTokenAmount;
+    console.log(await name1);
+  }
+} catch (error) { 
+  console.error("Quote execution error", error);
+}
+}
 }
 
 
