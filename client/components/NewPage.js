@@ -43,7 +43,7 @@ const FromToken = () => (
     fontWeight="bold"
     textAlign="center"
     fontSize="lg"
-    id="1"
+    id="fromTok"
     {...register("FromToken1")}
     color="facebook.500"
   />
@@ -108,7 +108,7 @@ const EnterButton = () => (
 )
 
 const enterPress = async () => {
-  const inter1 = await inputRecord(1)
+  const inter1 = await inputRecord.FromToken1.value
 console.log(await inter1)
 }
 
