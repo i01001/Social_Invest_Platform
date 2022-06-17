@@ -12,6 +12,9 @@ import {
 } from '@chakra-ui/react'
 import { ArrowForwardIcon, CloseIcon } from '@chakra-ui/icons'
 
+
+const NewPage = () => {
+
 const QuoteorSwap = () => (
   <Switch
     display="inline"
@@ -39,6 +42,7 @@ const FromToken = () => (
     color="facebook.500"
   />
 )
+const temp = FromToken.value;
 
 const ToToken = () => (
   <Input
@@ -146,11 +150,12 @@ const TransferSuccess = () => (
     <AlertTitle mr={1} fontWeight="bold">
       TRANSFER:
     </AlertTitle>
-    <AlertDescription>Transfer has been successful</AlertDescription>
+    <AlertDescription>`Transfer has been successful{temp}</AlertDescription>
   </Alert>
 )
 
-const NewPage = () => (
+
+return (
   <ChakraProvider resetCSS>
     <br></br>
     <Text
@@ -204,6 +209,7 @@ const NewPage = () => (
     <TransferSuccess />
   </ChakraProvider>
 )
+}
 
 export default NewPage
 
