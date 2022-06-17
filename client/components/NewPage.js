@@ -40,7 +40,7 @@ const NewPage = () => {
 
 useEffect(() => {
   quoteFunction();
-}, [quantValue]);
+}, [quantValue, fromTok, ToTok]);
 
 const quoteFunction = async () => {
 const quoteYes = await getValues("Quoteornot");      
