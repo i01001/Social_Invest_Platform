@@ -84,7 +84,7 @@ const EnterButton = () => (
     backgroundColor="whiteAlpha.500"
     border={100}
     borderRadius={20}
-    ml={40}
+    ml={60}
     colorScheme="whiteAlpha"
     rightIcon={<ArrowForwardIcon />}
     letterSpacing="wide"
@@ -110,7 +110,7 @@ const ExitButton = () => (
     backgroundColor="whiteAlpha.500"
     border={100}
     borderRadius={20}
-    ml={100}
+    ml={260}
     colorScheme="whiteAlpha"
     letterSpacing="wide"
     fontSize="lg"
@@ -161,7 +161,7 @@ return (
     <br></br>
     <Text
       display="inline"
-      ml={90}
+      ml={240}
       fontWeight="bold"
       textAlign="center"
       border={30}
@@ -175,7 +175,7 @@ return (
       mt={20}
       // backgroundColor="whiteAlpha.500"
       boxShadow={10}
-      fontSize="xl"
+      fontSize="2xl"
       color="facebook.500"
     >
       QUOTES
@@ -195,7 +195,7 @@ return (
       // backgroundColor="whiteAlpha.500"
       mt={20}
       mr={10}
-      fontSize="xl"
+      fontSize="2xl"
       color="facebook.500"
     >
       SWAP TOKENS
