@@ -73,12 +73,14 @@ try {
     // setquoteMessage({ isHidden: !quoteMessage.isHidden });
     setquoteMessage({ isHidden:false});
     setquoteErMessage({ isHidden:true});
+    settransferMessage({ isHidden:true});
 
   }
 } catch (error) { 
   console.error("Quote execution error", error);
   setquoteErMessage({ isHidden:false});
   setquoteMessage({ isHidden:true});
+  settransferMessage({ isHidden:true});
   setqErrormess("Quote execution error");
 }
 }
@@ -317,7 +319,9 @@ return (
     <div style={styleQ}>
     <QuotesResult />
     </div>
+    <div style={styleT}>
     <TransferSuccess />
+    </div>
     <div style={styleE}>
     <QuotesError />
     </div>
