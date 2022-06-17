@@ -135,7 +135,6 @@ const enterPress = async () => {
    
 console.log(await fromTok, ToTok, quantValue, quoteYes);
 
-// const quoteYes = QuoteorSwap.isChecked;
 if(!quoteYes){
 try {
   const quote = await axios.get(
