@@ -15,6 +15,8 @@ import { MoonLoader } from "react-spinners";
 import React from "react";
 import { useForm } from "react-hook-form";
 import NewPage from "./NewPage";
+import { useContext } from 'react'
+import { SocialContext } from '../context/context'
 
 Modal.setAppElement("#__next");
 
@@ -63,12 +65,15 @@ const ConversationList = () => {
   const [valueQuote, setValueQuote] = useState([]);
   const [dms, setDms] = useState([]);
   const [stateN, setstateN] = useState([]);
-  const [modstat, setmodstat] = useState(false);
+  // const [modstat, setmodstat] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const { modstat, setmodstat } = useContext(SocialContext);
+
   const onSubmit = (data) => console.log(data);
   console.log(errors);
 
@@ -197,73 +202,72 @@ const ConversationList = () => {
   };
 
   return (
-      <div className={styles.conversations}>
-        <div className={styles.conversationListTop}>
-          <input type="search" placeholder="Find or start a conversation" />
-        </div>
-        <div className={styles.conversationsContainer}>
-          <div className={styles.elementsContainer}>
-            <div className={styles.svgContainer}>
-              <Image
-                height={25}
-                width={25}
-                src={friends}
-                className={styles.svg}
-                alt="friends"
-              />
-            </div>
-            <p>Fiends</p>
-          </div>
-          <div className={styles.elementsContainer} onClick={() => popQuote()}>
-            <div className={styles.svgContainer}>
-              <Image
-                height={25}
-                width={25}
-                src={nitro}
-                className={styles.svg}
-                alt="nitro"
-              />
-            </div>
-            <p>Quotes</p>
-          </div>
-          <div className={styles.elementsContainer}>
-            <div className={styles.svgContainer}>
-              <input type="text" />
-            </div>
-            <p>{valueQuote}</p>
-          </div>
-          <div className={styles.dmTitle}>DIRECT MESSAGES</div>
-          {dms.map((dm, index) => (
-            <DmCard
-              key={index}
-              name={dm.name}
-              id={dm.id}
-              avatar={
-                dm.avatar ||
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3OCSMFIW5fZ3vSN6yGpD-w-6SsL2_ZPA_sw&usqp=CAU"
-              }
-              status="online"
+    <div className={styles.conversations}>
+      <div className={styles.conversationListTop}>
+        <input type="search" placeholder="Find or start a conversation" />
+      </div>
+      <div className={styles.conversationsContainer}>
+        <div className={styles.elementsContainer}>
+          <div className={styles.svgContainer}>
+            <Image
+              height={25}
+              width={25}
+              src={friends}
+              className={styles.svg}
+              alt="friends"
             />
-          ))}
+          </div>
+          <p>Fiends</p>
         </div>
-        <div className={styleA.wrapper}>
+        <div className={styles.elementsContainer} onClick={() => popQuote()}>
+          <div className={styles.svgContainer}>
+            <Image
+              height={25}
+              width={25}
+              src={nitro}
+              className={styles.svg}
+              alt="nitro"
+            />
+          </div>
+          <p>Quotes</p>
+        </div>
+        <div className={styles.elementsContainer}>
+          <div className={styles.svgContainer}>
+            <input type="text" />
+          </div>
+          <p>{valueQuote}</p>
+        </div>
+        <div className={styles.dmTitle}>DIRECT MESSAGES</div>
+        {dms.map((dm, index) => (
+          <DmCard
+            key={index}
+            name={dm.name}
+            id={dm.id}
+            avatar={
+              dm.avatar ||
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3OCSMFIW5fZ3vSN6yGpD-w-6SsL2_ZPA_sw&usqp=CAU"
+            }
+            status="online"
+          />
+        ))}
+      </div>
+      <div className={styleA.wrapper}>
+        <Modal isOpen={modstat} style={customStyles}>
+          <div className={style.wrapper}>
+            <NewPage />
 
-      <Modal isOpen={modstat} style={customStyles}>
-        <div className={style.wrapper}>
-          <NewPage />
-          
-          {/* <div className={style.title}>Transaction in progress...</div>
+            {/* <div className={style.title}>Transaction in progress...</div>
           <MoonLoader
             color={"#fff"}
             loading={true}
             css={cssOverride}
             size={50}
           /> */}
-        </div>
-      </Modal>
+          </div>
+        </Modal>
+      </div>
+      //{" "}
     </div>
-
-    // </div> 
     //           <div className={styles.popListTop}>
     //                     <div className={styles.elementsContainer} onClick={() => popQuote()}>
 

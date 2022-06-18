@@ -17,7 +17,6 @@ import {
   AlertDescription,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon, CloseIcon } from "@chakra-ui/icons";
-import {modstat, setmodstat} from "./ConversationList"
 
 const NewPage = () => {
   const [inputRecord, setinputRecord] = useState("");
@@ -38,6 +37,8 @@ const NewPage = () => {
     inc: 1,
     count: 1,
   });
+
+  const { modstat, setmodstat } = useContext(SocialContext);
 
   // const firstUpdate = useRef(true);
   // const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
@@ -315,7 +316,7 @@ const NewPage = () => {
   };
 
   const exitPress = async () => {
-    setmodstat("false")
+    setmodstat(false)
   }
 
   const ExitButton = () => (

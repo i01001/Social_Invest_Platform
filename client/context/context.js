@@ -26,6 +26,8 @@ export const SocialProvider = ({ children }) => {
   const [placeholder, setPlaceholder] = useState("Message...");
   const [messageText, setMessageText] = useState("");
   const [currentUser, setCurrentUser] = useState();
+  const [modstat, setmodstat] = useState(false);
+
 
   useEffect(() => {
     checkIfWalletIsConnected();
@@ -158,6 +160,8 @@ export const SocialProvider = ({ children }) => {
         gun,
         connectWallet,
         currentUser,
+        modstat,
+        setmodstat,
       }}
     >
       {children}
