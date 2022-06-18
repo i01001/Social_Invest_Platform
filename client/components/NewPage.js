@@ -94,62 +94,72 @@ const NewPage = () => {
     } else {
       console.log("Current account", await currentAccount);
 
-      try {
-        const approve = await axios.get(
-          `https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=${ToTok}&amount=${quantValue}`
-        );
+        if(fromTok != "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE")
+        {
+          console.log("Not base FROM Token");
+        }
+        else{
+          try {
 
-        const approve_data = approve.data;
-        console.log(await approve);
-        console.log(await approve_data.data);
-        // var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";
-        const data1 = await approve_data.data;
-        const value1 = await approve_data.value;
-        const gas1 = await approve_data.gas;
-        const gasPrice1 = await approve_data.gasPrice;
-        const to1 = await approve_data.to;
-        console.log(await to1);
+          console.log("base FROM Token");
 
-        console.log("data1 printed", data1);
-        // web3.eth.sendTransaction;
-        const txHash = await ethereum.request({
-          method: "eth_sendTransaction",
-
-          params: [
-            {
-              from: currentAccount,
-              to: to1,
-              data: data1,
-              value: value1.toString(16),
-              gas: gas1,
-              gasPrice: gasPrice1,
-            },
-          ],
-        });
-        console.log(txHash);
-
-        if (txHash) {
-          console.log("approval for DAI successful");
-          setValueQuote(txHash);
-          setquoteErMessage({ isHidden: true });
-          setquoteMessage({ isHidden: true });
-          settransferMessage({ isHidden: false });
-        } else {
-          console.log("Approval Transaction unsuccessful");
+          const approve = await axios.get(
+            `https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=${ToTok}&amount=${quantValue}`
+          );
+  
+          const approve_data = approve.data;
+          console.log(await approve);
+          console.log(await approve_data.data);
+          // var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";
+          const data1 = await approve_data.data;
+          const value1 = await approve_data.value;
+          const gas1 = await approve_data.gas;
+          const gasPrice1 = await approve_data.gasPrice;
+          const to1 = await approve_data.to;
+          console.log(await to1);
+  
+          console.log("data1 printed", data1);
+          // web3.eth.sendTransaction;
+          const txHash = await ethereum.request({
+            method: "eth_sendTransaction",
+  
+            params: [
+              {
+                from: currentAccount,
+                to: to1,
+                data: data1,
+                value: value1.toString(16),
+                gas: gas1,
+                gasPrice: gasPrice1,
+              },
+            ],
+          });
+          console.log(txHash);
+  
+          if (txHash) {
+            console.log("approval for DAI successful");
+            setValueQuote(txHash);
+            setquoteErMessage({ isHidden: true });
+            setquoteMessage({ isHidden: true });
+            settransferMessage({ isHidden: false });
+          } else {
+            console.log("Approval Transaction unsuccessful");
+            setquoteErMessage({ isHidden: false });
+            setquoteMessage({ isHidden: true });
+            settransferMessage({ isHidden: true });
+            setqErrormess("Approval Transaction unsuccessful");
+          }
+          // }
+        } catch (error_approval) {
+          console.log("Error approval");
           setquoteErMessage({ isHidden: false });
           setquoteMessage({ isHidden: true });
           settransferMessage({ isHidden: true });
-          setqErrormess("Approval Transaction unsuccessful");
+          setqErrormess("Error in approval");
         }
-        // }
-      } catch (error_approval) {
-        console.log("Error approval");
-        setquoteErMessage({ isHidden: false });
-        setquoteMessage({ isHidden: true });
-        settransferMessage({ isHidden: true });
-        setqErrormess("Error in approval");
       }
-    }
+        };
+        
   };
 
   const QuoteorSwap = () => (
