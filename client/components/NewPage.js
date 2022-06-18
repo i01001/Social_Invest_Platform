@@ -17,6 +17,7 @@ import {
   AlertDescription,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon, CloseIcon } from "@chakra-ui/icons";
+import {modstat, setmodstat} from "./ConversationList"
 
 const NewPage = () => {
   const [inputRecord, setinputRecord] = useState("");
@@ -313,6 +314,10 @@ const NewPage = () => {
     });
   };
 
+  const exitPress = async () => {
+    setmodstat("false")
+  }
+
   const ExitButton = () => (
     <Button
       variant="solid"
@@ -334,6 +339,9 @@ const NewPage = () => {
       display="inline"
       pb={10}
       pt={3}
+      onClick={() => {
+        exitPress();
+      }}
     >
       EXIT
     </Button>
