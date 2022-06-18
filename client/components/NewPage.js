@@ -147,7 +147,7 @@ const NewPage = () => {
               setquoteMessage({ isHidden: true });
               settransferMessage({ isHidden: true });
               setqErrormess("Approval Transaction unsuccessful");
-              // return
+              return
             }
             // }
           } catch (error_approval) {
@@ -156,7 +156,7 @@ const NewPage = () => {
             setquoteMessage({ isHidden: true });
             settransferMessage({ isHidden: true });
             setqErrormess("Error in approval");
-            // return
+            return
           }
         }
 
