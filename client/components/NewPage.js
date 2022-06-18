@@ -49,7 +49,6 @@ const NewPage = () => {
   // 0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E
   // 100000000000000000
 
-
   const useComponentDidMount = () => {
     const ref = useRef();
     useEffect(() => {
@@ -97,75 +96,120 @@ const NewPage = () => {
       console.log("Current account", await currentAccount);
       const lowerBaseToken = await fromTok.toLowerCase();
       console.log(await lowerBaseToken);
-        if(lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
-        {
-          try {
+      if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
+        try {
+          const approve = await axios.get(
+            `https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=${ToTok}&amount=${quantValue}`
+          );
 
-            const approve = await axios.get(
-              `https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=${ToTok}&amount=${quantValue}`
-            );
-    
-            const approve_data = approve.data;
-            console.log(await approve);
-            console.log(await approve_data.data);
-            // var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";
-            const data1 = await approve_data.data;
-            const value1 = await approve_data.value;
-            const gas1 = await approve_data.gas;
-            const gasPrice1 = await approve_data.gasPrice;
-            const to1 = await approve_data.to;
-            console.log(await to1);
-    
-            console.log("data1 printed", data1);
-            // web3.eth.sendTransaction;
-            const txHash = await ethereum.request({
-              method: "eth_sendTransaction",
-    
-              params: [
-                {
-                  from: currentAccount,
-                  to: to1,
-                  data: data1,
-                  value: value1.toString(16),
-                  gas: gas1,
-                  gasPrice: gasPrice1,
-                },
-              ],
-            });
-            console.log(txHash);
-    
-            if (txHash) {
-              console.log("approval for DAI successful");
-              setValueQuote(txHash);
-              setquoteErMessage({ isHidden: true });
-              setquoteMessage({ isHidden: true });
-              settransferMessage({ isHidden: false });
-              settApprovalMessage("Approval to transfer has been successful")
-            } else {
-              console.log("Approval Transaction unsuccessful");
-              setquoteErMessage({ isHidden: false });
-              setquoteMessage({ isHidden: true });
-              settransferMessage({ isHidden: true });
-              setqErrormess("Approval Transaction unsuccessful");
-              return
-            }
-            // }
-          } catch (error_approval) {
-            console.log("Error approval");
+          const approve_data = approve.data;
+          console.log(await approve);
+          console.log(await approve_data.data);
+          // var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";
+          const data1 = await approve_data.data;
+          const value1 = await approve_data.value;
+          const gas1 = await approve_data.gas;
+          const gasPrice1 = await approve_data.gasPrice;
+          const to1 = await approve_data.to;
+          console.log(await to1);
+
+          console.log("data1 printed", data1);
+          // web3.eth.sendTransaction;
+          const txHash = await ethereum.request({
+            method: "eth_sendTransaction",
+
+            params: [
+              {
+                from: currentAccount,
+                to: to1,
+                data: data1,
+                value: value1.toString(16),
+                gas: gas1,
+                gasPrice: gasPrice1,
+              },
+            ],
+          });
+          console.log(txHash);
+
+          if (txHash) {
+            console.log("approval for DAI successful");
+            setquoteErMessage({ isHidden: true });
+            setquoteMessage({ isHidden: true });
+            settransferMessage({ isHidden: false });
+            settApprovalMessage("Approval to transfer has been successful");
+          } else {
+            console.log("Approval Transaction unsuccessful");
             setquoteErMessage({ isHidden: false });
             setquoteMessage({ isHidden: true });
             settransferMessage({ isHidden: true });
-            setqErrormess("Error in approval");
-            return
+            setqErrormess("Approval Transaction unsuccessful");
+            return;
           }
+          // }
+        } catch (error_approval) {
+          console.log("Error approval");
+          setquoteErMessage({ isHidden: false });
+          setquoteMessage({ isHidden: true });
+          settransferMessage({ isHidden: true });
+          setqErrormess("Error in approval");
+          return;
         }
-
-        
-
-          // No approval required
-          console.log("POST APPROVAL")
       }
-        
+      console.log("POST APPROVAL");
+      try {
+        const swap_transfer = await axios.get(
+          `https://api.1inch.io/v4.0/250/swap?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}&fromAddress=${currentAccount}&slippage=0.1&disableEstimate=true`
+        );
+        console.log(swap_transfer);
+        if (swap_transfer.data) {
+          swap_data = swap_transfer.data;
+          swap_data.tx.gas = 1000000;
+          const data2 = await swap_data.data;
+          const value2 = await swap_data.value;
+          const gas2 = await swap_data.gas;
+          const gasPrice2 = await swap_data.gasPrice;
+          const to2 = await swap_data.to;
+        }
+        const txHash2 = await ethereum.request({
+          method: "eth_sendTransaction",
+
+          params: [
+            {
+              from: currentAccount,
+              to: to2,
+              data: data2,
+              value: value2.toString(16),
+              gas: gas2,
+              gasPrice: gasPrice2,
+            },
+          ],
+        });
+        console.log(txHash2);
+
+        if (txHash2) {
+          console.log("transfer successful!!!");
+          setquoteErMessage({ isHidden: true });
+          setquoteMessage({ isHidden: true });
+          settransferMessage({ isHidden: false });
+          settApprovalMessage("Transfer has been successful!!");
+        } else {
+          console.log("Transaction unsuccessful");
+          setquoteErMessage({ isHidden: false });
+          setquoteMessage({ isHidden: true });
+          settransferMessage({ isHidden: true });
+          setqErrormess("Transaction has been unsuccessful");
+          return;
+        }
+        // }
+      } catch (error_transfer) {
+        console.error("Error in Transfer");
+        setquoteErMessage({ isHidden: false });
+        setquoteMessage({ isHidden: true });
+        settransferMessage({ isHidden: true });
+        setqErrormess("Error in Transfer!");
+        return;
+      }
+    }
   };
 
   const QuoteorSwap = () => (
