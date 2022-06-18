@@ -17,6 +17,8 @@ import { useForm } from "react-hook-form";
 import NewPage from "./NewPage";
 import { useContext } from 'react'
 import { SocialContext } from '../context/context'
+import Iframe from 'react-iframe'
+
 
 Modal.setAppElement("#__next");
 
@@ -252,10 +254,17 @@ const ConversationList = () => {
         ))}
       </div>
       <div className={styleA.wrapper}>
-      <iframe src="https://windowsreport.com/"></iframe>
         <Modal isOpen={modstat} style={customStyles}>
-          {/* <div className={style.wrapper}> */}
+          <div className={style.wrapper}>
             {/* <NewPage /> */}
+<Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
+        width="1400px"
+        height="900px"
+        id="myId"
+        className="myClassname"
+        display="initial"
+        allow="camera; microphone"
+        position="relative"/>
             {/* <iframe src="https://web3-video-call.herokuapp.com/"></iframe> */}
             {/* <div className={style.title}>Transaction in progress...</div>
           <MoonLoader
@@ -264,7 +273,7 @@ const ConversationList = () => {
             css={cssOverride}
             size={50}
           /> */}
-          {/* </div> */}
+          </div>
         </Modal>
       </div>
       {/* //{" "} */}
