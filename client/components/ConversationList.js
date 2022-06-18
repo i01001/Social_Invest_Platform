@@ -231,12 +231,12 @@ const ConversationList = () => {
           </div>
           <p>1inch Quotes & Token Swap</p>
         </div>
-        <div className={styles.elementsContainer}>
+        {/* <div className={styles.elementsContainer}>
           <div className={styles.svgContainer}>
             <input type="text" />
           </div>
           <p>{valueQuote}</p>
-        </div>
+        </div> */}
         <div className={styles.dmTitle}>DIRECT MESSAGES</div>
         {dms.map((dm, index) => (
           <DmCard
