@@ -23,6 +23,8 @@ const NewPage = () => {
   const { register, getValues, handleSubmit } = useForm();
   const [quoteMessage, setquoteMessage] = useState({ isHidden: true });
   const [quoteErMessage, setquoteErMessage] = useState({ isHidden: true });
+  const [tApprovalMessage, settApprovalMessage] = useState("");
+
   const [transferMessage, settransferMessage] = useState({ isHidden: true });
   const { roomName, currentAccount, connectWallet } = useContext(SocialContext);
 
@@ -97,69 +99,72 @@ const NewPage = () => {
       console.log(await lowerBaseToken);
         if(lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
         {
-          console.log("Not base FROM Token");
-        }
-        else{
           try {
 
-          console.log("base FROM Token");
-
-          const approve = await axios.get(
-            `https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=${ToTok}&amount=${quantValue}`
-          );
-  
-          const approve_data = approve.data;
-          console.log(await approve);
-          console.log(await approve_data.data);
-          // var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";
-          const data1 = await approve_data.data;
-          const value1 = await approve_data.value;
-          const gas1 = await approve_data.gas;
-          const gasPrice1 = await approve_data.gasPrice;
-          const to1 = await approve_data.to;
-          console.log(await to1);
-  
-          console.log("data1 printed", data1);
-          // web3.eth.sendTransaction;
-          const txHash = await ethereum.request({
-            method: "eth_sendTransaction",
-  
-            params: [
-              {
-                from: currentAccount,
-                to: to1,
-                data: data1,
-                value: value1.toString(16),
-                gas: gas1,
-                gasPrice: gasPrice1,
-              },
-            ],
-          });
-          console.log(txHash);
-  
-          if (txHash) {
-            console.log("approval for DAI successful");
-            setValueQuote(txHash);
-            setquoteErMessage({ isHidden: true });
-            setquoteMessage({ isHidden: true });
-            settransferMessage({ isHidden: false });
-          } else {
-            console.log("Approval Transaction unsuccessful");
+            const approve = await axios.get(
+              `https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=${ToTok}&amount=${quantValue}`
+            );
+    
+            const approve_data = approve.data;
+            console.log(await approve);
+            console.log(await approve_data.data);
+            // var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";
+            const data1 = await approve_data.data;
+            const value1 = await approve_data.value;
+            const gas1 = await approve_data.gas;
+            const gasPrice1 = await approve_data.gasPrice;
+            const to1 = await approve_data.to;
+            console.log(await to1);
+    
+            console.log("data1 printed", data1);
+            // web3.eth.sendTransaction;
+            const txHash = await ethereum.request({
+              method: "eth_sendTransaction",
+    
+              params: [
+                {
+                  from: currentAccount,
+                  to: to1,
+                  data: data1,
+                  value: value1.toString(16),
+                  gas: gas1,
+                  gasPrice: gasPrice1,
+                },
+              ],
+            });
+            console.log(txHash);
+    
+            if (txHash) {
+              console.log("approval for DAI successful");
+              setValueQuote(txHash);
+              setquoteErMessage({ isHidden: true });
+              setquoteMessage({ isHidden: true });
+              settransferMessage({ isHidden: false });
+              settApprovalMessage("Approval to transfer has been successful")
+            } else {
+              console.log("Approval Transaction unsuccessful");
+              setquoteErMessage({ isHidden: false });
+              setquoteMessage({ isHidden: true });
+              settransferMessage({ isHidden: true });
+              setqErrormess("Approval Transaction unsuccessful");
+              return
+            }
+            // }
+          } catch (error_approval) {
+            console.log("Error approval");
             setquoteErMessage({ isHidden: false });
             setquoteMessage({ isHidden: true });
             settransferMessage({ isHidden: true });
-            setqErrormess("Approval Transaction unsuccessful");
+            setqErrormess("Error in approval");
+            return
           }
-          // }
-        } catch (error_approval) {
-          console.log("Error approval");
-          setquoteErMessage({ isHidden: false });
-          setquoteMessage({ isHidden: true });
-          settransferMessage({ isHidden: true });
-          setqErrormess("Error in approval");
         }
-      }
+
+        
+        else{
+          // No approval required
         };
+      }
         
   };
 
@@ -329,7 +334,7 @@ const NewPage = () => {
       <AlertTitle mr={1} fontWeight="bold">
         TRANSFER:
       </AlertTitle>
-      <AlertDescription>{inputRecord}</AlertDescription>
+      <AlertDescription>{tApprovalMessage}</AlertDescription>
     </Alert>
   );
 
