@@ -75,7 +75,7 @@ const NewPage = () => {
     if (!quoteYes) {
       try {
         const quote = await axios.get(
-          `https://api.1inch.io/v4.0/250/quote?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}`
+          `https://api.1inch.io/v4.0/137/quote?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}`
         );
         console.log(quote);
         if (quote) {
@@ -101,7 +101,7 @@ const NewPage = () => {
       if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
         try {
           const approve = await axios.get(
-            `https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=${ToTok}&amount=${quantValue}`
+            `https://api.1inch.io/v4.0/137/approve/transaction?tokenAddress=${ToTok}&amount=${quantValue}`
           );
 
           const approve_data = approve.data;
@@ -160,7 +160,7 @@ const NewPage = () => {
       console.log("POST APPROVAL");
       try {
         const swap_transfer = await axios.get(
-          `https://api.1inch.io/v4.0/250/swap?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}&fromAddress=${currentAccount}&slippage=0.1&disableEstimate=true`
+          `https://api.1inch.io/v4.0/137/swap?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}&fromAddress=${currentAccount}&slippage=0.1&disableEstimate=true`
         );
         console.log(swap_transfer);
         if (swap_transfer.data) {
