@@ -27,7 +27,6 @@ export const SocialProvider = ({ children }) => {
   const [messageText, setMessageText] = useState("");
   const [currentUser, setCurrentUser] = useState();
   const [modstat, setmodstat] = useState(false);
-  const [VideoPop, setVideoPop] = useState({ isHidden: true });
 
 
   useEffect(() => {
@@ -163,8 +162,6 @@ export const SocialProvider = ({ children }) => {
         currentUser,
         modstat,
         setmodstat,
-        VideoPop,
-        setVideoPop,
       }}
     >
       {children}

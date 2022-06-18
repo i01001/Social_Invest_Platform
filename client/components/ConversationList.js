@@ -67,7 +67,8 @@ const ConversationList = () => {
   const [valueQuote, setValueQuote] = useState([]);
   const [dms, setDms] = useState([]);
   const [stateN, setstateN] = useState([]);
-  const { TradePop, setTradePop } = useState({ isHidden: true });
+  const [TradePop, setTradePop] = useState({ isHidden: true });
+  const [VideoPop, setVideoPop] = useState({ isHidden: true });
 
   // const [modstat, setmodstat] = useState(false);
   const {
@@ -77,12 +78,10 @@ const ConversationList = () => {
   } = useForm();
 
   const { modstat, setmodstat } = useContext(SocialContext);
-  const { VideoPop, setVideoPop } = useContext(SocialContext);
 
 
   const styleV = { display: VideoPop.isHidden ? "none" : "block" };
   const styleTrade = { display: TradePop.isHidden ? "none" : "block" };
-
 
   const onSubmit = (data) => console.log(data);
   console.log(errors);
@@ -196,9 +195,9 @@ const ConversationList = () => {
   const popQuote = async () => {
     // <div className={styles.popListTop}>
     // setstateN("asakkas");
-    setmodstat("true");
-    setVideoPop("false");
-    setTradePop("true");
+    setmodstat(true);
+    // setVideoPop({ isHidden: true });
+    setTradePop({ isHidden: false });
 
 
     // Modal isOpen=true;
@@ -215,9 +214,10 @@ const ConversationList = () => {
   };
 
   const popVideo = async () => {
-    setVideoPop("true");
-    setTradePop("false");
-    setmodstat("true");
+    setVideoPop({ isHidden: false });
+    setTradePop({ isHidden: true });
+    setmodstat(true);
+    console.log("video")
 
   } 
 
@@ -226,8 +226,8 @@ const ConversationList = () => {
       <div className={styles.conversationListTop}>
         <input type="search" placeholder="Find or start a conversation" />
       </div>
-      <div className={styles.conversationsContainer} onClick={() => popVideo()}>
-        <div className={styles.elementsContainer}>
+      <div className={styles.conversationsContainer}>
+        <div className={styles.elementsContainer} onClick={() => popVideo()}>
           <div className={styles.svgContainer}>
             <Image
               height={35}
@@ -277,7 +277,7 @@ const ConversationList = () => {
             <div style={styleTrade}>
             <NewPage />
             </div>
-
+         
             <div style={styleV}>
         <Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
         width="1400px"
@@ -288,7 +288,7 @@ const ConversationList = () => {
         allow="camera; microphone"
         position="relative"/>
       </div>
-
+      </div>
             {/* <div className={style.title}>Transaction in progress...</div>
           <MoonLoader
             color={"#fff"}
@@ -296,7 +296,7 @@ const ConversationList = () => {
             css={cssOverride}
             size={50}
           /> */}
-          </div>
+        
         </Modal>
     </div>
   </div>
