@@ -24,8 +24,8 @@ const NewPage = () => {
   const [quoteMessage, setquoteMessage] = useState({ isHidden: true });
   const [quoteErMessage, setquoteErMessage] = useState({ isHidden: true });
   const [tApprovalMessage, settApprovalMessage] = useState("");
-
   const [transferMessage, settransferMessage] = useState({ isHidden: true });
+
   const { roomName, currentAccount, connectWallet } = useContext(SocialContext);
 
   const [fromTok, setfromTok] = useState();
@@ -40,12 +40,15 @@ const NewPage = () => {
 
   const { modstat, setmodstat } = useContext(SocialContext);
 
+
   // const firstUpdate = useRef(true);
   // const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
 
   const styleE = { display: quoteErMessage.isHidden ? "none" : "block" };
   const styleQ = { display: quoteMessage.isHidden ? "none" : "block" };
   const styleT = { display: transferMessage.isHidden ? "none" : "block" };
+
+
 
   // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
   // 0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E

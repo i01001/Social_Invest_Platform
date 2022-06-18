@@ -75,11 +75,14 @@ const ConversationList = () => {
   } = useForm();
 
   const { modstat, setmodstat } = useContext(SocialContext);
+  const { VideoPop, setVideoPop } = useContext(SocialContext);
+
+  const styleV = { display: VideoPop.isHidden ? "none" : "block" };
+
 
   const onSubmit = (data) => console.log(data);
   console.log(errors);
 
-  // setmodstat("false")
 
   useEffect(() => {
     conversationEffect();
@@ -203,13 +206,17 @@ const ConversationList = () => {
     // </div>
   };
 
+  const popVideo = async () => {
+    setVideoPop("true");
+  } 
+
   return (
     <div className={styles.conversations}>
       <div className={styles.conversationListTop}>
         <input type="search" placeholder="Find or start a conversation" />
       </div>
-      <div className={styles.conversationsContainer}>
-        {/* <div className={styles.elementsContainer}>
+      <div className={styles.conversationsContainer} onClick={() => popVideo()}>
+        <div className={styles.elementsContainer}>
           <div className={styles.svgContainer}>
             <Image
               height={25}
@@ -219,8 +226,8 @@ const ConversationList = () => {
               alt="friends"
             />
           </div>
-          <p>Add Friends and Groups</p>
-        </div> */}
+          <p>GROUP Video Call</p>
+        </div>
         <div className={styles.elementsContainer} onClick={() => popQuote()}>
           <div className={styles.svgContainer}>
             <Image
@@ -228,10 +235,10 @@ const ConversationList = () => {
               width={35}
               src={exchange}
               className={styles.svg}
-              alt="nitro"
+              alt="exchange"
             />
           </div>
-          <p>Polygon Trading</p>
+          <p>Polygon Network Tokens Trading</p>
         </div>
         {/* <div className={styles.elementsContainer}>
           <div className={styles.svgContainer}>
@@ -256,16 +263,8 @@ const ConversationList = () => {
       <div className={styleA.wrapper}>
         <Modal isOpen={modstat} style={customStyles}>
           <div className={style.wrapper}>
-            {/* <NewPage /> */}
-<Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
-        width="1400px"
-        height="900px"
-        id="myId"
-        className="myClassname"
-        display="initial"
-        allow="camera; microphone"
-        position="relative"/>
-            {/* <iframe src="https://web3-video-call.herokuapp.com/"></iframe> */}
+            <NewPage />
+
             {/* <div className={style.title}>Transaction in progress...</div>
           <MoonLoader
             color={"#fff"}
@@ -275,9 +274,18 @@ const ConversationList = () => {
           /> */}
           </div>
         </Modal>
+        <div style={VideoPop}>
+        <Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
+        width="1400px"
+        height="900px"
+        id="myId"
+        className="myClassname"
+        display="initial"
+        allow="camera; microphone"
+        position="relative"/>
       </div>
-      {/* //{" "} */}
     </div>
+  </div>
     //           <div className={styles.popListTop}>
     //                     <div className={styles.elementsContainer} onClick={() => popQuote()}>
 
