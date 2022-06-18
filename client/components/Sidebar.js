@@ -19,7 +19,7 @@ const Sidebar = () => {
   const [channels, setChannels] = useState(dummy);
 
   useEffect(() => {
-    // sidebarEffect();
+    sidebarEffect();
   },[]);
 
   const sidebarEffect = async () => {
