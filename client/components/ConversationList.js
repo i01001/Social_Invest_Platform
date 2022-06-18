@@ -266,7 +266,7 @@ const ConversationList = () => {
           </div>
         </Modal>
       </div>
-      //{" "}
+      {/* //{" "} */}
     </div>
     //           <div className={styles.popListTop}>
     //                     <div className={styles.elementsContainer} onClick={() => popQuote()}>
