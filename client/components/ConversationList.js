@@ -252,11 +252,11 @@ const ConversationList = () => {
         ))}
       </div>
       <div className={styleA.wrapper}>
+      <iframe src="https://windowsreport.com/"></iframe>
         <Modal isOpen={modstat} style={customStyles}>
-          <div className={style.wrapper}>
+          {/* <div className={style.wrapper}> */}
             {/* <NewPage /> */}
             {/* <iframe src="https://web3-video-call.herokuapp.com/"></iframe> */}
-            <iframe src="https://www.google.com"></iframe>
             {/* <div className={style.title}>Transaction in progress...</div>
           <MoonLoader
             color={"#fff"}
@@ -264,7 +264,7 @@ const ConversationList = () => {
             css={cssOverride}
             size={50}
           /> */}
-          </div>
+          {/* </div> */}
         </Modal>
       </div>
       {/* //{" "} */}
