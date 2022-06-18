@@ -6,7 +6,7 @@ export default async (req, res) => {
   const userDoc = {
     _type: 'users',
     _id: `${userAddress}-user`,
-    name: 'Unnamed',
+    name: userAddress,
     walletAddress: userAddress,
   }
 
