@@ -161,9 +161,9 @@ const NewPage = () => {
         }
 
         
-        else{
+
           // No approval required
-        };
+          console.log("POST APPROVAL")
       }
         
   };
