@@ -207,7 +207,7 @@ const ConversationList = () => {
         <input type="search" placeholder="Find or start a conversation" />
       </div>
       <div className={styles.conversationsContainer}>
-        <div className={styles.elementsContainer}>
+        {/* <div className={styles.elementsContainer}>
           <div className={styles.svgContainer}>
             <Image
               height={25}
@@ -218,7 +218,7 @@ const ConversationList = () => {
             />
           </div>
           <p>Add Friends and Groups</p>
-        </div>
+        </div> */}
         <div className={styles.elementsContainer} onClick={() => popQuote()}>
           <div className={styles.svgContainer}>
             <Image
