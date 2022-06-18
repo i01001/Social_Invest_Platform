@@ -1,18 +1,27 @@
 Social Invest Platform
 
+Done
 1. Get Exchange quotes as pop up
 - 2 inputs; fix value 
-- output to be displayed in ETH / 18 decimals
 
+
+
+Pending
 2. Carry out transaction on 1inch and transaction messages to be auto posted in group
-
-
-
-Ideas about Polygon Hackathon 
 
 Exchange tokens with others OTC....partial orders as well
 
 
+Display Modal loading when transaction in progress 
+Exchange / Swap
+- output to be displayed in ETH / 18 decimals
+
+Add channels auto and make it public 
+Add friends option
+
+
+
+Ideas about Polygon Hackathon 
 
 Place to monitor mood of market 
 Display of greed and fear index
@@ -29,7 +38,6 @@ Get search to be working
 
 Add login with unstoppable domains 
 
-Add friends button
 Join Channels option? think of implementing
 
 Top trades of the day / week / month / year on the group / channel

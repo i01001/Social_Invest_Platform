@@ -1,6 +1,8 @@
 import React from 'react'
 import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { useContext } from 'react'
+import { SocialContext } from '../context/context'
 const Web3 = require("web3");
 const axios = require("axios");
 import {
@@ -22,6 +24,7 @@ const NewPage = () => {
   const [quoteMessage, setquoteMessage] = useState({ isHidden: true });
   const [quoteErMessage, setquoteErMessage] = useState({ isHidden: true });
   const [transferMessage, settransferMessage] = useState({ isHidden: true });
+  const { roomName, currentAccount, connectWallet } = useContext(SocialContext)
 
 
   const [fromTok, setfromTok] = useState();
@@ -92,12 +95,15 @@ try {
 }
 else{
   const walletAdd1 = 0xaf87b6479f9ca8d3bae56dead220bce44a709549;
+  console.log("Current account", await currentAccount);
+
     try {
       const approve = await axios.get(
-        "https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E&amount=100000000000000000"
+        `https://api.1inch.io/v4.0/250/approve/transaction?tokenAddress=${ToTok}&amount=${quantValue}`
       );
 
       const approve_data = approve.data;
+      console.log(await approve);
       console.log(await approve_data.data);
       var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";
       const data1 = await approve_data.data;
@@ -108,13 +114,11 @@ else{
 
       console.log("data1 printed", data1);
       // web3.eth.sendTransaction;
-      console.log("Current account", currentAccount);
       const txHash = await ethereum.request({
-        method: "eth_sendTransaction",            // from: "0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549",
+        method: "eth_sendTransaction",            
 
         params: [
           {
-            // from: "0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549",
             from: currentAccount,
             to: to1,
             data: data1,
@@ -129,15 +133,29 @@ else{
       if (txHash) {
         console.log("approval for DAI successful");
         setValueQuote(txHash);
-      } else {
+        setquoteErMessage({ isHidden:true});
+        setquoteMessage({ isHidden:true});
+        settransferMessage({ isHidden:false});
+      } 
+      else {
         console.log("Approval Transaction unsuccessful");
+        setquoteErMessage({ isHidden:false});
+        setquoteMessage({ isHidden:true});
+        settransferMessage({ isHidden:true});
+        setqErrormess("Approval Transaction unsuccessful");
+
       }
       // }
     } catch (error_approval) {
       console.log("Error approval");
+      setquoteErMessage({ isHidden:false});
+      setquoteMessage({ isHidden:true});
+      settransferMessage({ isHidden:true});
+      setqErrormess("Error in approval");
+
     }
-}
-}
+
+}}
 
 const QuoteorSwap = () => (
   <Switch
