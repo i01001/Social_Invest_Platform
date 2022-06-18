@@ -222,14 +222,14 @@ const ConversationList = () => {
         <div className={styles.elementsContainer} onClick={() => popQuote()}>
           <div className={styles.svgContainer}>
             <Image
-              height={25}
-              width={25}
+              height={35}
+              width={35}
               src={exchange}
               className={styles.svg}
               alt="nitro"
             />
           </div>
-          <p>1inch Quotes & Token Swap</p>
+          <p>Polygon Trading</p>
         </div>
         {/* <div className={styles.elementsContainer}>
           <div className={styles.svgContainer}>
