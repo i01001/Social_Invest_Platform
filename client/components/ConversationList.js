@@ -217,7 +217,7 @@ const ConversationList = () => {
               alt="friends"
             />
           </div>
-          <p>Fiends</p>
+          <p>Add Friends and Groups</p>
         </div>
         <div className={styles.elementsContainer} onClick={() => popQuote()}>
           <div className={styles.svgContainer}>
@@ -229,7 +229,7 @@ const ConversationList = () => {
               alt="nitro"
             />
           </div>
-          <p>Quotes</p>
+          <p>1inch Quotes & Token Swap</p>
         </div>
         <div className={styles.elementsContainer}>
           <div className={styles.svgContainer}>
