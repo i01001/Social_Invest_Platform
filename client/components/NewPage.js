@@ -93,8 +93,9 @@ const NewPage = () => {
       }
     } else {
       console.log("Current account", await currentAccount);
-
-        if(fromTok != "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE")
+      const lowerBaseToken = await fromTok.toLowerCase();
+      console.log(await lowerBaseToken);
+        if(lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
         {
           console.log("Not base FROM Token");
         }
