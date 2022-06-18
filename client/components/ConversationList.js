@@ -255,7 +255,8 @@ const ConversationList = () => {
         <Modal isOpen={modstat} style={customStyles}>
           <div className={style.wrapper}>
             {/* <NewPage /> */}
-            <iframe src="web3-video-call.herokuapp.com/"></iframe>
+            {/* <iframe src="https://web3-video-call.herokuapp.com/"></iframe> */}
+            <iframe src="https://www.google.com"></iframe>
             {/* <div className={style.title}>Transaction in progress...</div>
           <MoonLoader
             color={"#fff"}
