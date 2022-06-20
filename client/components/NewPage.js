@@ -177,7 +177,7 @@ const NewPage = () => {
         console.log("swap transfer data [data]", await swapA.tx);
 
         console.log("swap transfer data [data]", await swapC.data);
-        console.log("swap transfer data [data]", await swapA.to);
+        console.log("swap transfer data [data]", await swapC.to);
 
         // if (await swap_transfer.data) {
         //   swap_data = swap_transfer.data;
@@ -194,18 +194,16 @@ console.log("TEST");
         const txHash2 = await ethereum.request({
           method: "eth_sendTransaction",
 
-          params: [swapC],
-
-
-            // {
-            //   from: currentAccount,
-            //   to: to2,
-            //   data: data2,
-            //   value: value2.toString(16),
-            //   // gas: gas2,
-            //   // gasPrice: gasPrice2,
-            // },
-          // ],
+          params: [
+            {
+              from: currentAccount,
+              to: swapC.data,
+              data: swapC.data,
+              value: swapC.value.toString(16),
+              // gas: gas2,
+              // gasPrice: gasPrice2,
+            },
+          ],
         });
         console.log("TX transfer hash", txHash2);
 
