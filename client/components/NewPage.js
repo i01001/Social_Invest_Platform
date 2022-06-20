@@ -110,7 +110,6 @@ const NewPage = () => {
           const approve_data = approve.data;
           console.log("APPROVE PRINT", await approve);
           console.log("APRROVE DATA PRINT", await approve_data.data);
-          var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";
           const data1 = await approve_data.data;
           const value1 = await approve_data.value;
           const gas1 = await approve_data.gas;
@@ -130,7 +129,7 @@ const NewPage = () => {
             params: [
               {
                 from: currentAccount,
-                to: '0x8f3cf7ad23cd3cadbd9735aff958023239c6a063',
+                to: ToTok,
                 data: data1,
                 // value: '0',
                 // value: value1.toString(16),
@@ -211,7 +210,7 @@ console.log("TEST");
             {
               from: currentAccount,
               to: swapCto,
-              data: swapCdata._hex,
+              data: swapCdata,
               value: swapCval.toString(16),
               // gas: gas2,
               // gasPrice: gasPrice2,
