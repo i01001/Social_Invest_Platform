@@ -3,6 +3,8 @@ import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { SocialContext } from "../context/context";
+import { contractABI, contractAddress } from '../lib/constants';
+import { ethers } from 'ethers';
 const Web3 = require("web3");
 const axios = require("axios");
 import {
@@ -74,6 +76,23 @@ const OTCPage = () => {
     const quoteYes = await getValues("Quoteornot");
 
     console.log(await fromTok, ToTok, quantValue, quoteYes);
+
+
+
+    const getEthereumContract = () => {
+        const provider = new ethers.providers.Web3Provider(ethereum)
+        const signer = provider.getSigner()
+        const OTCContract = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          signer,
+        )
+      
+        return OTCContract
+      }
+
+
+
 
     if (!quoteYes) {
       try {
@@ -323,7 +342,7 @@ const OTCPage = () => {
   }
 
   const TestingButton = async () => {
-    
+
   }
 
   const ExitButton = () => (
