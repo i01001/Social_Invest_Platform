@@ -233,7 +233,7 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
             setquoteErMessage({ isHidden: true });
             setquoteMessage({ isHidden: true });
             settransferMessage({ isHidden: false });
-            settApprovalMessage("Transfer has been successful!!");
+            settApprovalMessage(`Transaction carried out!! https://polygonscan.com/tx/{txHash2}`);
             return
           } else {
             console.log("Transaction unsuccessful");
@@ -261,9 +261,9 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
             },
           ],
         });
-        
+
         const i = 0;
-        while(i < 30){
+        while(i < 15){
           await new Promise(r => setTimeout(r, 2000));
           console.log("count of i", i);
           i++;
@@ -275,7 +275,7 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
             setquoteErMessage({ isHidden: true });
             setquoteMessage({ isHidden: true });
             settransferMessage({ isHidden: false });
-            settApprovalMessage("Transfer has been successful!!");
+            settApprovalMessage(`Transaction carried out!! https://polygonscan.com/tx/{txHash2}`);
           } else {
             console.log("Transaction unsuccessful");
             setquoteErMessage({ isHidden: false });
