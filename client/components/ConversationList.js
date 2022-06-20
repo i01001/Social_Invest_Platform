@@ -309,13 +309,14 @@ const ConversationList = () => {
               <OTCPage />
             </div>
       {/* </div> */}
-            {/* <div className={style.title}>Transaction in progress...</div>
+      {/* <div className={style.title}>Transaction in progress...</div>
           <MoonLoader
             color={"#fff"}
             loading={true}
             css={cssOverride}
             size={50}
           /> */}
+
                  </Modal>
                   <Modal isOpen={modVstat} style={customStyles}>
 
