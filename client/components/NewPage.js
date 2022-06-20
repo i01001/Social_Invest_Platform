@@ -167,7 +167,7 @@ const NewPage = () => {
         console.log("1");
         console.log("SWAP TRANSFER", await swap_transfer);
         console.log("2");
-        console.log("swap transfer data", await swap_transfer.data);
+        console.log("swap transfer data", await swap_transfer.data.data);
         console.log("3");
         console.log("swap transfer data", await swap_transfer.data);
         console.log("4");
