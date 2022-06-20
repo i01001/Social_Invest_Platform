@@ -119,6 +119,9 @@ const NewPage = () => {
           console.log("TO TOKEN", await to1);
 
           console.log("data1 printed", data1);
+          console.log("current printed", currentAccount);
+          console.log("value printed", value1);
+
           // web3.eth.sendTransaction;
           const txHash = await ethereum.request({
             method: "eth_sendTransaction",
