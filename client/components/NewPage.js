@@ -175,7 +175,7 @@ const NewPage = () => {
         if (await swap_transfer.data) {
           swap_data = swap_transfer.data;
           swap_data.tx.gas = 1000000;
-          const data2 = await swap_data.data;
+          const data2 = await swap_data;
           const value2 = await swap_data.value;
           const gas2 = await swap_data.gas;
           const gasPrice2 = await swap_data.gasPrice;
