@@ -221,7 +221,7 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
         });
 
         const i = 0;
-        while(i < 30){
+        while(i < 15){
           await new Promise(r => setTimeout(r, 2000));
           console.log("count of i", i);
           i++;
