@@ -169,40 +169,21 @@ const NewPage = () => {
         const swap_transfer = await axios.get(
           `https://api.1inch.io/v4.0/137/swap?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}&fromAddress=${currentAccount}&slippage=0.1&disableEstimate=true`
         );
-        console.log("1");
-        console.log("SWAP TRANSFER", await swap_transfer);
-        console.log("2");
-        const swapA = await swap_transfer.data;
-        const swapB = await swapA.data;
-        const swapC = await swapA.tx;
-        const swapCdata = await swapC.data;
-        const swapCto = await swapC.to;
-        const swapCval = await swapC.value;
-        const swapCdata_hex = await swapC.data_hex;
 
-        
-        console.log("swap transfer data", await swapA);
-        console.log("3");
-        console.log("swap transfer data", await swapB);
-        console.log("4");
-        console.log("swap transfer data [data]", await swapA.tx);
-
-        console.log("swap transfer data [data]", await swapCdata);
-        console.log("swap transfer data [data]", await swapCto);
-        console.log("value", swapCval);
-
-        // if (await swap_transfer.data) {
-        //   swap_data = swap_transfer.data;
-        //   swap_data.tx.gas = 1000000;
-        //   const data2 = await swap_data;
-        //   const value2 = await swap_data.value;
-        //   const gas2 = await swap_data.gas;
-        //   const gasPrice2 = await swap_data.gasPrice;
-        //   const to2 = await swap_data.to;
-        // }
-        // console.log("To2 ", await to2);
-        // console.log("data2", await data2);
+        if (await swap_transfer.data) {
+          const swapA = await swap_transfer.data;
+          const swapB = await swapA.data;
+          const swapC = await swapA.tx;
+          const swapCdata = await swapC.data;
+          const swapCto = await swapC.to;
+          const swapCval = await swapC.value;
+          const swapCdata_hex = await swapC.data_hex;
+        }
+        console.log("To2 ", await to2);
+        console.log("data2", await data2);
 console.log("TEST");
+
+if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
         const txHash2 = await ethereum.request({
           method: "eth_sendTransaction",
 
@@ -217,6 +198,23 @@ console.log("TEST");
             },
           ],
         });
+      }
+      else{
+        const txHash2 = await ethereum.request({
+          method: "eth_sendTransaction",
+
+          params: [
+            {
+              from: currentAccount,
+              to: swapCto,
+              data: swapCdata,
+              value: swapCval.toString(16),
+              // gas: gas2,
+              // gasPrice: gasPrice2,
+            },
+          ],
+        });
+      }
         console.log("TX transfer hash", txHash2);
 
         if (txHash2) {
