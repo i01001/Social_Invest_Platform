@@ -118,6 +118,8 @@ const NewPage = () => {
           const to1 = await approve_data.to;
           console.log("TO TOKEN", await to1);
 
+          const gas2= 1000000;
+
           console.log("data1 printed", data1);
           console.log("current printed", currentAccount);
           console.log("value printed", value1);
@@ -130,10 +132,10 @@ const NewPage = () => {
                 from: currentAccount,
                 to: receiver,
                 data: data1,
-                value: 0,
+                value: '0',
                 // value: value1.toString(16),
-                // gas: 1000000,
-                gasPrice: gasPrice1,
+                gas: gas2.toString(16),
+                // gasPrice: gasPrice1,
               },
             ],
           });
