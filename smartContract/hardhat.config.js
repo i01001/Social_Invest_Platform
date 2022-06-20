@@ -18,6 +18,7 @@ module.exports = {
   networks: {
     mumbai: {
       url: 'https://rpc-mumbai.maticvigil.com',
+      chainId: 80001,
       accounts:
         process.env.PRIVATE_KEY,
     },
