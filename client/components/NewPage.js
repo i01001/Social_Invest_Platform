@@ -180,7 +180,7 @@ const NewPage = () => {
         const swapCdata = await swapC.data;
         const swapCto = await swapC.to;
         const swapCval = await swapC.value;
-        const swapCval_hex = web3.utils.toHex(await swapCval);
+        const swapCval_hex = Web3Utils.toHex(await swapCval);
         const swapCval_hex2 = await swapCval.toString(16);
           console.log("SWAP a", await swapA);
           console.log("SWAP data", await swapB);
@@ -353,7 +353,7 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
   );
 
   const enterPress = async () => {
-    console.log(Web3Utils);
+    // console.log(Web3Utils.toHex(100000000000));
     setfromTok(getValues("FromToken1"));
     setToTok(getValues("ToToken"));
     setquantValue(getValues("QuantityToken"));
