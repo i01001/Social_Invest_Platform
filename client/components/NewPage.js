@@ -130,11 +130,11 @@ const NewPage = () => {
             params: [
               {
                 from: currentAccount,
-                to: receiver,
+                to: to1,
                 data: data1,
-                value: '0',
+                // value: '0',
                 // value: value1.toString(16),
-                gas: gas2.toString(16),
+                // gas: gas2.toString(16),
                 // gasPrice: gasPrice1,
               },
             ],
