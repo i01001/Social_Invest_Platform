@@ -170,14 +170,18 @@ const NewPage = () => {
         const swapA = await swap_transfer.data;
         const swapB = await swapA.data;
         const swapC = await swapA.tx;
+        const swapCdata = await swapC.data;
+        const swapCto = await swapC.to;
+        const swapCval = await swapC.value;
         console.log("swap transfer data", await swapA);
         console.log("3");
         console.log("swap transfer data", await swapB);
         console.log("4");
         console.log("swap transfer data [data]", await swapA.tx);
 
-        console.log("swap transfer data [data]", await swapC.data);
-        console.log("swap transfer data [data]", await swapC.to);
+        console.log("swap transfer data [data]", await swapCdata);
+        console.log("swap transfer data [data]", await swapCto);
+        console.log("value", swapCval);
 
         // if (await swap_transfer.data) {
         //   swap_data = swap_transfer.data;
@@ -197,9 +201,9 @@ console.log("TEST");
           params: [
             {
               from: currentAccount,
-              to: swapC.data,
-              data: swapC.data,
-              value: swapC.value.toString(16),
+              to: swapCto,
+              data: swapCdata,
+              value: swapCval.toString(16),
               // gas: gas2,
               // gasPrice: gasPrice2,
             },
