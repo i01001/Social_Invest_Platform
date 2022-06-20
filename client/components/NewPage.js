@@ -108,15 +108,15 @@ const NewPage = () => {
           );
 
           const approve_data = approve.data;
-          console.log(await approve);
-          console.log(await approve_data.data);
+          console.log("APPROVE PRINT", await approve);
+          console.log("APRROVE DATA PRINT", await approve_data.data);
           // var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";
           const data1 = await approve_data.data;
           const value1 = await approve_data.value;
           const gas1 = await approve_data.gas;
           const gasPrice1 = await approve_data.gasPrice;
           const to1 = await approve_data.to;
-          console.log(await to1);
+          console.log("TO TOKEN", await to1);
 
           console.log("data1 printed", data1);
           // web3.eth.sendTransaction;
@@ -183,8 +183,8 @@ const NewPage = () => {
               to: to2,
               data: data2,
               // value: value2.toString(16),
-              gas: gas2,
-              gasPrice: gasPrice2,
+              // gas: gas2,
+              // gasPrice: gasPrice2,
             },
           ],
         });
