@@ -81,7 +81,6 @@ const NewPage = () => {
     console.log(await fromTok, ToTok, quantValue, quoteYes);
 
     if (!quoteYes) {
-      console.log(Web3Utils);
       try {
         const quote = await axios.get(
           `https://api.1inch.io/v4.0/137/quote?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}`
@@ -354,6 +353,7 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
   );
 
   const enterPress = async () => {
+    console.log(Web3Utils);
     setfromTok(getValues("FromToken1"));
     setToTok(getValues("ToToken"));
     setquantValue(getValues("QuantityToken"));
