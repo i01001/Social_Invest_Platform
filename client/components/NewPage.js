@@ -176,7 +176,7 @@ const NewPage = () => {
         const swapCdata = await swapC.data;
         const swapCto = await swapC.to;
         const swapCval = await swapC.value;
-        const swapCval_hex = await utils.hexlify(swapCval);
+        // const swapCval_hex = await utils.hexlify(swapCval);
         const swapCval_hex2 = await swapCval.toString(16);
           console.log("SWAP a", await swapA);
           console.log("SWAP data", await swapB);
