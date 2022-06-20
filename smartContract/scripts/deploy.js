@@ -1,4 +1,4 @@
-
+const hre = require("hardhat");
 
 const main = async () => {
     const sTPlatformFactory = await hre.ethers.getContractFactory('STPlatform')
