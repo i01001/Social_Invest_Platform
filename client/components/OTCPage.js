@@ -329,7 +329,7 @@ const OTCPage = () => {
     const ACDMContract = 0xE3cf96b99c06eADC26E92ac3a01dac64E9f5bF68;
     const quantityT = 5000000000000000000000;
     const maticAmount = 10000000000000000;
-
+    console.log("contract", contract);
     console.log("abi", contractABI);
     console.log("contract address", contractAddress);
     var dataN = await web3.eth.contract(contractABI).at(contractAddress).createOrder.getData(ACDMContract,quantityT,maticAmount);
