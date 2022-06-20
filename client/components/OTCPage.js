@@ -341,9 +341,9 @@ const OTCPage = () => {
           from: currentAccount,
           to: to2,
           data: data2,
-          value: value2.toString(16),
-          gas: gas2,
-          gasPrice: gasPrice2,
+          // value: value2.toString(16),
+          // gas: gas2,
+          // gasPrice: gasPrice2,
         },
       ],
     });
