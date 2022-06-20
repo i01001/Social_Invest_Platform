@@ -130,7 +130,7 @@ const NewPage = () => {
             params: [
               {
                 from: currentAccount,
-                to: to1,
+                to: '0x1111111254fb6c44bac0bed2854e76f90643097d',
                 data: data1,
                 // value: '0',
                 // value: value1.toString(16),
