@@ -207,7 +207,7 @@ const ConversationList = () => {
     setmodstat(true);
     // setVideoPop({ isHidden: true });
     setTradePop({ isHidden: false });
-    // setOTCPop({ isHidden: true });
+    setOTCPop({ isHidden: true });
 
 
   };
@@ -217,7 +217,7 @@ const ConversationList = () => {
     // setVideoPop({ isHidden: true });
 
     setmodstat(true);
-    // setTradePop({ isHidden: true });
+    setTradePop({ isHidden: true });
     setOTCPop({ isHidden: false });
   }
 
@@ -225,7 +225,7 @@ const ConversationList = () => {
     if (!currentAccount) return;
     setmodstat(true);
     setVideoPop({ isHidden: false });
-    // setTradePop({ isHidden: true });
+    // setTradePop({ isHidden: true });e
     // setOTCPop({ isHidden: true });
   } 
 
@@ -297,19 +297,9 @@ const ConversationList = () => {
             <div style={styleTrade}>
             <NewPage />
             </div>
-            {/* <div style={styleOTC}>
+            <div style={styleOTC}>
               <OTCPage />
-            </div> */}
-            {/* <div style={styleV}>
-        <Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
-        width="1400px"
-        height="900px"
-        id="myId"
-        className="myClassname"
-        display="initial"
-        allow="camera; microphone"
-        position="relative"/>
-      </div> */}
+            </div>
       {/* </div> */}
             {/* <div className={style.title}>Transaction in progress...</div>
           <MoonLoader
@@ -318,7 +308,16 @@ const ConversationList = () => {
             css={cssOverride}
             size={50}
           /> */}
-        
+               <div style={styleV}>
+        <Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
+        width="1400px"
+        height="900px"
+        id="myId"
+        className="myClassname"
+        display="initial"
+        allow="camera; microphone"
+        position="relative"/>
+      </div>
         </Modal>
     </div>
   </div>
