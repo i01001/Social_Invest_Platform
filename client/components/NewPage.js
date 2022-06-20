@@ -110,7 +110,7 @@ const NewPage = () => {
           const approve_data = approve.data;
           console.log("APPROVE PRINT", await approve);
           console.log("APRROVE DATA PRINT", await approve_data.data);
-          // var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";
+          var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";
           const data1 = await approve_data.data;
           const value1 = await approve_data.value;
           const gas1 = await approve_data.gas;
@@ -128,8 +128,9 @@ const NewPage = () => {
             params: [
               {
                 from: currentAccount,
-                to: to1,
-                data: data1,
+                to: receiver,
+                // data: data1,
+                value: 0,
                 // value: value1.toString(16),
                 // gas: gas1,
                 // gasPrice: gasPrice1,
