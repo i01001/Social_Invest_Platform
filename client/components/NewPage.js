@@ -6,8 +6,10 @@ import { SocialContext } from "../context/context";
 const Web3 = require("web3");
 const axios = require("axios");
 import { ethers } from 'ethers';
-import { use } from '@maticnetwork/maticjs'
-import { Web3ClientPlugin } from '@maticnetwork/maticjs-web3'
+import { use } from '@maticnetwork/maticjs';
+import { Web3ClientPlugin } from '@maticnetwork/maticjs-web3';
+const Web3Utils = require('web3-utils');
+
 import {
   ChakraProvider,
   Switch,
