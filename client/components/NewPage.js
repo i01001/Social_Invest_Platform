@@ -176,7 +176,7 @@ const NewPage = () => {
         const swapCdata = await swapC.data;
         const swapCto = await swapC.to;
         const swapCval = await swapC.value;
-        const swapCval_hex = await swapCval_hex;
+        const swapCval_hex = await swapCval._hex;
         const swapCval_hex2 = await swapCval.toString(16);
           console.log("SWAP a", await swapA);
           console.log("SWAP data", await swapB);
@@ -226,7 +226,7 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
               from: currentAccount,
               to: swapCto,
               data: swapCdata,
-              value: swapCval.toString(16),
+              value: swapCval_hex,
               // gas: gas2,
               // gasPrice: gasPrice2,
             },
