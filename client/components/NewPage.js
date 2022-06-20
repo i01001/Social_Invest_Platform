@@ -122,19 +122,18 @@ const NewPage = () => {
           // web3.eth.sendTransaction;
           const txHash = await ethereum.request({
             method: "eth_sendTransaction",
-
             params: [
               {
                 from: currentAccount,
                 to: to1,
                 data: data1,
                 // value: value1.toString(16),
-                gas: gas1,
-                gasPrice: gasPrice1,
+                // gas: gas1,
+                // gasPrice: gasPrice1,
               },
             ],
           });
-          console.log(txHash);
+          console.log("TX hash approval", txHash);
 
           if (txHash) {
             console.log("approval for DAI successful");
