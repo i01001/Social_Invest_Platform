@@ -169,16 +169,35 @@ const NewPage = () => {
         const swap_transfer = await axios.get(
           `https://api.1inch.io/v4.0/137/swap?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}&fromAddress=${currentAccount}&slippage=0.1&disableEstimate=true`
         );
+        const swapA = await swap_transfer.data;
+        const swapB = await swapA.data;
+        const swapC = await swapA.tx;
+        const swapCdata = await swapC.data;
+        const swapCto = await swapC.to;
+        const swapCval = await swapC.value;
+        const swapCval_hex = await swapCval_hex;
+        const swapCval_hex2 = await swapCval.toString(16);
+          console.log("SWAP a", await swapA);
+          console.log("SWAP data", await swapB);
+          console.log("swap transfer", await swap_transfer);
+          console.log("swap C", await swapC);
+          console.log("swapCdata", await swapCdata);
+          console.log("swapcto", await swapCto);
+          console.log("swapCval", await swapCval);
+          console.log("swapC val to hex", await swapCval)
+          console.log("swapC val to hex", await swapCval_hex)
+          console.log("swapC val to hex", await swapCval_hex2)
 
-        if (await swap_transfer.data) {
-          const swapA = await swap_transfer.data;
-          const swapB = await swapA.data;
-          const swapC = await swapA.tx;
-          const swapCdata = await swapC.data;
-          const swapCto = await swapC.to;
-          const swapCval = await swapC.value;
-          const swapCdata_hex = await swapC.data_hex;
-        }
+
+        // if (await swap_transfer.data) {
+          // const swapA = await swap_transfer.data;
+          // const swapB = await swapA.data;
+          // const swapC = await swapA.tx;
+          // const swapCdata = await swapC.data;
+          // const swapCto = await swapC.to;
+          // const swapCval = await swapC.value;
+          // const swapCdata_hex = await swapC.data_hex;
+        // }
         console.log("To2 ", await to2);
         console.log("data2", await data2);
 console.log("TEST");
