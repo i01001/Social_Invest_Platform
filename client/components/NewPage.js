@@ -165,7 +165,7 @@ const NewPage = () => {
           `https://api.1inch.io/v4.0/137/swap?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}&fromAddress=${currentAccount}&slippage=0.1&disableEstimate=true`
         );
         console.log(swap_transfer);
-        if (swap_transfer.data) {
+        if (await swap_transfer.data) {
           swap_data = swap_transfer.data;
           swap_data.tx.gas = 1000000;
           const data2 = await swap_data.data;
@@ -174,6 +174,9 @@ const NewPage = () => {
           const gasPrice2 = await swap_data.gasPrice;
           const to2 = await swap_data.to;
         }
+        console.log("To2 ", await to2);
+        console.log("data2", await data2);
+
         const txHash2 = await ethereum.request({
           method: "eth_sendTransaction",
 
@@ -188,7 +191,7 @@ const NewPage = () => {
             },
           ],
         });
-        console.log(txHash2);
+        console.log("TX transfer hash", txHash2);
 
         if (txHash2) {
           console.log("transfer successful!!!");
