@@ -203,21 +203,22 @@ const ConversationList = () => {
     if (!currentAccount) return;
     // <div className={styles.popListTop}>
     // setstateN("asakkas");
+    setVideoPop({ isHidden: true });
     setmodstat(true);
     // setVideoPop({ isHidden: true });
     setTradePop({ isHidden: false });
     setOTCPop({ isHidden: true });
-    setVideoPop({ isHidden: true });
 
 
   };
 
   const popOTC = async () => {
     if (!currentAccount) return;
+    setVideoPop({ isHidden: true });
+
     setmodstat(true);
     setTradePop({ isHidden: true });
     setOTCPop({ isHidden: false });
-    setVideoPop({ isHidden: true });
   }
 
   const popVideo = async () => {
