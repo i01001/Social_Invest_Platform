@@ -164,7 +164,14 @@ const NewPage = () => {
         const swap_transfer = await axios.get(
           `https://api.1inch.io/v4.0/137/swap?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}&fromAddress=${currentAccount}&slippage=0.1&disableEstimate=true`
         );
-        console.log(swap_transfer);
+        console.log("1");
+        console.log("SWAP TRANSFER", await swap_transfer);
+        console.log("2");
+        console.log("swap transfer TX", await swap_transfer.tx);
+        console.log("3");
+        console.log("swap transfer data", await swap_transfer.data);
+        console.log("4");
+        console.log("swap transfer TX data", await swap_transfer.tx.data);
         if (await swap_transfer.data) {
           swap_data = swap_transfer.data;
           swap_data.tx.gas = 1000000;
