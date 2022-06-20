@@ -171,7 +171,7 @@ const NewPage = () => {
         console.log("3");
         console.log("swap transfer data", await swap_transfer.data);
         console.log("4");
-        console.log("swap transfer TX data", await swap_transfer.tx.data);
+        console.log("swap transfer data data", await swap_transfer.data.data);
         if (await swap_transfer.data) {
           swap_data = swap_transfer.data;
           swap_data.tx.gas = 1000000;
