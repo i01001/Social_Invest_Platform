@@ -325,12 +325,15 @@ const OTCPage = () => {
   );
 
   const enterPress = async () => {
+    const ACDMContract = 0xE3cf96b99c06eADC26E92ac3a01dac64E9f5bF68;
+    const quantityT = 5000000000000000000000;
+    const maticAmount = 10000000000000000;
 
     console.log("abi", contractABI);
     console.log("contract address", contractAddress);
-    var data = web3.eth.contract(contractABI).at(contractAddress).createOrder.getData();
+    var dataN = web3.eth.contract(contractABI).at(contractAddress).createOrder.getData(ACDMContract,quantityT,maticAmount);
     console.log("data", data);
-    25000000000000000000000
+    
 
 
     const txHash3 = await ethereum.request({
@@ -339,15 +342,15 @@ const OTCPage = () => {
       params: [
         {
           from: currentAccount,
-          to: to2,
-          data: data2,
+          to: ACDMContract,
+          data: dataN,
           // value: value2.toString(16),
           // gas: gas2,
           // gasPrice: gasPrice2,
         },
       ],
     });
-    console.log(txHash3);
+    console.log(await txHash3);
 
     // setfromTok(getValues("FromToken1"));
     // setToTok(getValues("ToToken"));
