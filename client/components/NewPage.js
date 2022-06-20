@@ -219,6 +219,32 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
             },
           ],
         });
+
+        const i = 0;
+        while(i < 30){
+          await new Promise(r => setTimeout(r, 2000));
+          console.log("count of i", i);
+          i++;
+        }
+          console.log("TX transfer hash", await txHash2);
+  
+          if (txHash2) {
+            console.log("transfer successful!!!");
+            setquoteErMessage({ isHidden: true });
+            setquoteMessage({ isHidden: true });
+            settransferMessage({ isHidden: false });
+            settApprovalMessage("Transfer has been successful!!");
+            return
+          } else {
+            console.log("Transaction unsuccessful");
+            setquoteErMessage({ isHidden: false });
+            setquoteMessage({ isHidden: true });
+            settransferMessage({ isHidden: true });
+            setqErrormess("Transaction has been unsuccessful");
+            return;
+          }
+
+
       }
       else {
         const txHash2 = await ethereum.request({
@@ -235,31 +261,34 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
             },
           ],
         });
+        
+        const i = 0;
+        while(i < 30){
+          await new Promise(r => setTimeout(r, 2000));
+          console.log("count of i", i);
+          i++;
+        }
+          console.log("TX transfer hash", await txHash2);
+  
+          if (txHash2) {
+            console.log("transfer successful!!!");
+            setquoteErMessage({ isHidden: true });
+            setquoteMessage({ isHidden: true });
+            settransferMessage({ isHidden: false });
+            settApprovalMessage("Transfer has been successful!!");
+          } else {
+            console.log("Transaction unsuccessful");
+            setquoteErMessage({ isHidden: false });
+            setquoteMessage({ isHidden: true });
+            settransferMessage({ isHidden: true });
+            setqErrormess("Transaction has been unsuccessful");
+            return;
+          }
+
       }
       // await txHash2.wait();
 
-      const i = 0;
-      while(i < 30){
-        await new Promise(r => setTimeout(r, 2000));
-        console.log("count of i", i);
-        i++;
-      }
-        console.log("TX transfer hash", await txHash2);
-
-        if (txHash2) {
-          console.log("transfer successful!!!");
-          setquoteErMessage({ isHidden: true });
-          setquoteMessage({ isHidden: true });
-          settransferMessage({ isHidden: false });
-          settApprovalMessage("Transfer has been successful!!");
-        } else {
-          console.log("Transaction unsuccessful");
-          setquoteErMessage({ isHidden: false });
-          setquoteMessage({ isHidden: true });
-          settransferMessage({ isHidden: true });
-          setqErrormess("Transaction has been unsuccessful");
-          return;
-        }
+      
       
         // }
       // } catch (error_transfer) {
