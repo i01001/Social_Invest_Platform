@@ -71,8 +71,9 @@ const ConversationList = () => {
   const [TradePop, setTradePop] = useState({ isHidden: true });
   const [VideoPop, setVideoPop] = useState({ isHidden: true });
   const [OTCPop, setOTCPop] = useState({ isHidden: true });
+  const [modVstat, setmodVstat] = useState(false);
 
-  
+   
 
 
   // const [modstat, setmodstat] = useState(false);
@@ -83,6 +84,7 @@ const ConversationList = () => {
   } = useForm();
 
   const { modstat, setmodstat, currentAccount } = useContext(SocialContext);
+
 
 
   const styleV = { display: VideoPop.isHidden ? "none" : "block" };
@@ -223,15 +225,15 @@ const ConversationList = () => {
 
   const popVideo = async () => {
     if (!currentAccount) return;
-    setmodstat(true);
+    setmodVstat(true);
     setVideoPop({ isHidden: false });
-    setTradePop({ isHidden: true });
+    // setTradePop({ isHidden: true });
     // setOTCPop({ isHidden: true });
   } 
 
   const closeVideo = async () => {
     setVideoPop({ isHidden: true });
-    setmodstat(false);
+    setmodVstat(false);
     console.log("CLOSSSSSSSSSSSSSSSSSSSSSSING")
   }
 
@@ -314,6 +316,9 @@ const ConversationList = () => {
             css={cssOverride}
             size={50}
           /> */}
+                 </Modal>
+                  <Modal isOpen={modVstat} style={customStyles}>
+
                     <div className={styles.elementsContainer} onClick={() => closeVideo()}>
                <div style={styleV}>
         <Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
