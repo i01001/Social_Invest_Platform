@@ -325,16 +325,33 @@ const OTCPage = () => {
   );
 
   const enterPress = async () => {
-    setfromTok(getValues("FromToken1"));
-    setToTok(getValues("ToToken"));
-    setquantValue(getValues("QuantityToken"));
-    const inc = 1;
-    setEntercount((prevState) => {
-      return {
-        ...prevState,
-        count: prevState.count + Entercount.inc,
-      };
+
+    const txHash3 = await ethereum.request({
+      method: "eth_sendTransaction",
+
+      params: [
+        {
+          from: currentAccount,
+          to: to2,
+          data: data2,
+          value: value2.toString(16),
+          gas: gas2,
+          gasPrice: gasPrice2,
+        },
+      ],
     });
+    console.log(txHash3);
+
+    // setfromTok(getValues("FromToken1"));
+    // setToTok(getValues("ToToken"));
+    // setquantValue(getValues("QuantityToken"));
+    // const inc = 1;
+    // setEntercount((prevState) => {
+    //   return {
+    //     ...prevState,
+    //     count: prevState.count + Entercount.inc,
+    //   };
+    // });
   };
 
   const exitPress = async () => {
