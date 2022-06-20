@@ -170,7 +170,7 @@ const NewPage = () => {
         }
       }
       console.log("POST APPROVAL");
-      try {
+      
         const swap_transfer = await axios.get(
           `https://api.1inch.io/v4.0/137/swap?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}&fromAddress=${currentAccount}&slippage=0.1&disableEstimate=true`
         );
@@ -262,15 +262,16 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
           setqErrormess("Transaction has been unsuccessful");
           return;
         }
+      
         // }
-      } catch (error_transfer) {
-        console.error("Error in Transfer");
-        setquoteErMessage({ isHidden: false });
-        setquoteMessage({ isHidden: true });
-        settransferMessage({ isHidden: true });
-        setqErrormess("Error in Transfer!");
-        return;
-      }
+      // } catch (error_transfer) {
+      //   console.error("Error in Transfer");
+      //   setquoteErMessage({ isHidden: false });
+      //   setquoteMessage({ isHidden: true });
+      //   settransferMessage({ isHidden: true });
+      //   setqErrormess("Error in Transfer!");
+      //   return;
+      // }
     }
   };
 
