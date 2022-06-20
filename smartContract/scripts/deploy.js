@@ -2,7 +2,7 @@ const hre = require("hardhat");
 require("@nomiclabs/hardhat-waffle");
 
 const main = async () => {
-    const sTPlatformFactory = await ethers.getContractFactory('STPlatform')
+    const sTPlatformFactory = await ethers.getContractFactory("STPlatform")
     const STPlatformContract = await sTPlatformFactory.deploy()
   
     await STPlatformContract.deployed()
