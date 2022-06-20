@@ -236,7 +236,7 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
           ],
         });
       }
-      await txHash2.wait()
+      await txHash2.wait();
 
       const i = 0;
       while(i < 30){
