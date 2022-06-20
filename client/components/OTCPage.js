@@ -334,11 +334,11 @@ const OTCPage = () => {
     console.log("contract address", contractAddress);
     // var dataN = await web3.eth.contract(contractABI).at(contractAddress).createOrder.getData(ACDMContract,quantityT,maticAmount);
     
-    var dataN = await contract(contractABI).at(contractAddress).createOrder.getData(ACDMContract,quantityT,maticAmount);
+    // var dataN = await contract(contractABI).at(contractAddress).createOrder.getData(ACDMContract,quantityT,maticAmount);
     var dataN2 = await contract.createOrder.getData(ACDMContract,quantityT,maticAmount);
 
     
-    console.log("data", dataN);
+    // console.log("data", dataN);
     console.log("data2", dataN2);
     
 
