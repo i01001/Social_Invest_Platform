@@ -49,7 +49,8 @@ const OTCPage = () => {
   const styleE = { display: quoteErMessage.isHidden ? "none" : "block" };
   const styleQ = { display: quoteMessage.isHidden ? "none" : "block" };
   const styleT = { display: transferMessage.isHidden ? "none" : "block" };
-
+  
+  var web3 = new Web3('');
 
 
   // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
