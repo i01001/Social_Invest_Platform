@@ -198,8 +198,6 @@ const NewPage = () => {
           // const swapCval = await swapC.value;
           // const swapCdata_hex = await swapC.data_hex;
         // }
-        console.log("To2 ", await to2);
-        console.log("data2", await data2);
 console.log("TEST");
 
 if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
