@@ -202,7 +202,7 @@ console.log("TEST");
             {
               from: currentAccount,
               to: swapCto,
-              data: swapCdata,
+              data: swapCdata._hex,
               value: swapCval.toString(16),
               // gas: gas2,
               // gasPrice: gasPrice2,
