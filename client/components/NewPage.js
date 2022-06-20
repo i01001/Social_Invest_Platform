@@ -239,12 +239,10 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
       // await txHash2.wait();
 
       const i = 0;
-      while(i < 30){
+      while(i < 10){
         await new Promise(r => setTimeout(r, 2000));
         console.log("count of i", i);
         i++;
-        if (txHash2)
-        break;
       }
         console.log("TX transfer hash", await txHash2);
 
