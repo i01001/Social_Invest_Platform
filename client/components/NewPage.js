@@ -233,7 +233,7 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
             setquoteErMessage({ isHidden: true });
             setquoteMessage({ isHidden: true });
             settransferMessage({ isHidden: false });
-            settApprovalMessage(`Transaction carried out!! https://polygonscan.com/tx/{txHash2}`);
+            settApprovalMessage(`Transaction carried out!! https://polygonscan.com/tx/${txHash2}`);
             return
           } else {
             console.log("Transaction unsuccessful");
@@ -275,7 +275,7 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
             setquoteErMessage({ isHidden: true });
             setquoteMessage({ isHidden: true });
             settransferMessage({ isHidden: false });
-            settApprovalMessage(`Transaction carried out!! https://polygonscan.com/tx/{txHash2}`);
+            settApprovalMessage(`Transaction carried out!! https://polygonscan.com/tx/${txHash2}`);
           } else {
             console.log("Transaction unsuccessful");
             setquoteErMessage({ isHidden: false });
