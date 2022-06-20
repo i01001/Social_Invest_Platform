@@ -236,12 +236,12 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
           ],
         });
       }
-      while(i < 30 && txHash2 === undefined){
+      while(i < 30 && (typeof txHash2 != "undefined")){
         await new Promise(r => setTimeout(r, 2000));
         console.log("count of i", i);
         i++;
-
       }
+      
         console.log("TX transfer hash", await txHash2);
 
         if (await txHash2) {
