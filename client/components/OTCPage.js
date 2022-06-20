@@ -322,6 +322,10 @@ const OTCPage = () => {
     setmodstat(false)
   }
 
+  const TestingButton = async () => {
+    
+  }
+
   const ExitButton = () => (
     <Button
       variant="solid"
@@ -348,6 +352,36 @@ const OTCPage = () => {
       }}
     >
       EXIT
+    </Button>
+  );
+
+  
+  const TestButton = () => (
+    <Button
+      variant="solid"
+      size="lg"
+      mt={15}
+      pl={5}
+      pr={5}
+      fontWeight="bold"
+      color="white"
+      textAlign="center"
+      backgroundColor="whiteAlpha.500"
+      border={100}
+      borderRadius={20}
+      ml={260}
+      colorScheme="whiteAlpha"
+      letterSpacing="wide"
+      fontSize="lg"
+      leftIcon={<CloseIcon />}
+      display="inline"
+      pb={10}
+      pt={3}
+      onClick={() => {
+        TestingButton();
+      }}
+    >
+      TestButton
     </Button>
   );
 
@@ -447,6 +481,7 @@ const OTCPage = () => {
         <ToToken />
         <QuantityToken />
         <ExitButton />
+        <TestButton />
         <EnterButton />
         <div style={styleQ}>
           <QuotesResult />
