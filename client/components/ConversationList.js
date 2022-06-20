@@ -15,6 +15,7 @@ import { MoonLoader } from "react-spinners";
 import React from "react";
 import { useForm } from "react-hook-form";
 import NewPage from "./NewPage";
+import OTCPage from "./OTCPage";
 import { useContext } from 'react'
 import { SocialContext } from '../context/context'
 import Iframe from 'react-iframe'
@@ -69,6 +70,10 @@ const ConversationList = () => {
   const [stateN, setstateN] = useState([]);
   const [TradePop, setTradePop] = useState({ isHidden: true });
   const [VideoPop, setVideoPop] = useState({ isHidden: true });
+  const [OTCPop, setOTCPop] = useState({ isHidden: true });
+
+  
+
 
   // const [modstat, setmodstat] = useState(false);
   const {
@@ -82,6 +87,8 @@ const ConversationList = () => {
 
   const styleV = { display: VideoPop.isHidden ? "none" : "block" };
   const styleTrade = { display: TradePop.isHidden ? "none" : "block" };
+  const styleOTC = { display: OTCPop.isHidden ? "none" : "block" };
+
 
   const onSubmit = (data) => console.log(data);
   console.log(errors);
@@ -204,8 +211,9 @@ const ConversationList = () => {
   const popOTC = async () => {
     if (!currentAccount) return;
     setmodstat(true);
-    setTradePop({ isHidden: false });
-
+    setTradePop({ isHidden: true });
+    setOTCPop({ isHidden: false });
+    setVideoPop({ isHidden: true });
   }
 
   const popVideo = async () => {
@@ -285,7 +293,9 @@ const ConversationList = () => {
             <div style={styleTrade}>
             <NewPage />
             </div>
-         
+            <div style={style.styleOTC}>
+              <OTCPage />
+            </div>
             <div style={styleV}>
         <Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
         width="1400px"
