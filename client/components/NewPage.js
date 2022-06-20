@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { SocialContext } from "../context/context";
 const Web3 = require("web3");
 const axios = require("axios");
+import { ethers } from 'ethers';
 import {
   ChakraProvider,
   Switch,
