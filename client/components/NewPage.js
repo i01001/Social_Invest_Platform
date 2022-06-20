@@ -236,9 +236,9 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
           ],
         });
       }
-        console.log("TX transfer hash", txHash2);
+        console.log("TX transfer hash", await txHash2);
 
-        if (txHash2) {
+        if (await txHash2) {
           console.log("transfer successful!!!");
           setquoteErMessage({ isHidden: true });
           setquoteMessage({ isHidden: true });
