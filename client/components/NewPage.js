@@ -173,6 +173,9 @@ const NewPage = () => {
         const swapCdata = await swapC.data;
         const swapCto = await swapC.to;
         const swapCval = await swapC.value;
+        const swapCdata_hex = await swapC.data_hex;
+
+        
         console.log("swap transfer data", await swapA);
         console.log("3");
         console.log("swap transfer data", await swapB);
