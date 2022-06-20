@@ -51,7 +51,7 @@ const OTCPage = () => {
   const styleT = { display: transferMessage.isHidden ? "none" : "block" };
   
   var web3 = new Web3("https://rpc-mumbai.maticvigil.com");
-
+  var contract = new web3.eth.Contract(contractABI, contractAddress);
 
   // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
   // 0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E
