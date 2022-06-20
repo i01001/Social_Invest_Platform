@@ -344,6 +344,8 @@ const OTCPage = () => {
     console.log("data3", data3);
 
 
+    web3.eth.getChainId().then(console.log);
+
 
     const txHash3 = await ethereum.request({
       method: "eth_sendTransaction",
