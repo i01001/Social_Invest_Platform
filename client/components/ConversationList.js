@@ -203,21 +203,21 @@ const ConversationList = () => {
     if (!currentAccount) return;
     // <div className={styles.popListTop}>
     // setstateN("asakkas");
-    setVideoPop({ isHidden: true });
+    // setVideoPop({ isHidden: true });
     setmodstat(true);
     // setVideoPop({ isHidden: true });
     setTradePop({ isHidden: false });
-    setOTCPop({ isHidden: true });
+    // setOTCPop({ isHidden: true });
 
 
   };
 
   const popOTC = async () => {
     if (!currentAccount) return;
-    setVideoPop({ isHidden: true });
+    // setVideoPop({ isHidden: true });
 
     setmodstat(true);
-    setTradePop({ isHidden: true });
+    // setTradePop({ isHidden: true });
     setOTCPop({ isHidden: false });
   }
 
@@ -225,8 +225,8 @@ const ConversationList = () => {
     if (!currentAccount) return;
     setmodstat(true);
     setVideoPop({ isHidden: false });
-    setTradePop({ isHidden: true });
-    setOTCPop({ isHidden: true });
+    // setTradePop({ isHidden: true });
+    // setOTCPop({ isHidden: true });
   } 
 
   return (
@@ -293,14 +293,14 @@ const ConversationList = () => {
       </div>
       <div className={styleA.wrapper}>
         <Modal isOpen={modstat} style={customStyles}>
-          <div className={style.wrapper}>
+          {/* <div className={style.wrapper}> */}
             <div style={styleTrade}>
             <NewPage />
             </div>
-            <div style={styleOTC}>
+            {/* <div style={styleOTC}>
               <OTCPage />
-            </div>
-            <div style={styleV}>
+            </div> */}
+            {/* <div style={styleV}>
         <Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
         width="1400px"
         height="900px"
@@ -309,8 +309,8 @@ const ConversationList = () => {
         display="initial"
         allow="camera; microphone"
         position="relative"/>
-      </div>
-      </div>
+      </div> */}
+      {/* </div> */}
             {/* <div className={style.title}>Transaction in progress...</div>
           <MoonLoader
             color={"#fff"}
