@@ -329,6 +329,8 @@ const OTCPage = () => {
     console.log("abi", contractABI);
     console.log("contract address", contractAddress);
     var data = web3.eth.contract(contractABI).at(contractAddress).createOrder.getData();
+    console.log("data", data);
+    25000000000000000000000
 
 
     const txHash3 = await ethereum.request({
