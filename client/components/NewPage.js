@@ -199,7 +199,7 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
           ],
         });
       }
-      else{
+      else {
         const txHash2 = await ethereum.request({
           method: "eth_sendTransaction",
 
