@@ -167,11 +167,14 @@ const NewPage = () => {
         console.log("1");
         console.log("SWAP TRANSFER", await swap_transfer);
         console.log("2");
-        console.log("swap transfer data", await swap_transfer.data.data);
+        const swapA = await swap_transfer.data;
+        const swapB = await swapA.data;
+        const swapC = await swapA.tx;
+        console.log("swap transfer data", await swapA);
         console.log("3");
-        console.log("swap transfer data", await swap_transfer.data);
+        console.log("swap transfer data", await swapB);
         console.log("4");
-        console.log("swap transfer data [data]", await swap_transfer.data[data]);
+        console.log("swap transfer data [data]", await swapA.tx);
         if (await swap_transfer.data) {
           swap_data = swap_transfer.data;
           swap_data.tx.gas = 1000000;
@@ -187,16 +190,18 @@ const NewPage = () => {
         const txHash2 = await ethereum.request({
           method: "eth_sendTransaction",
 
-          params: [
-            {
-              from: currentAccount,
-              to: to2,
-              data: data2,
-              value: value2.toString(16),
-              // gas: gas2,
-              // gasPrice: gasPrice2,
-            },
-          ],
+          params: [swapC],
+
+
+            // {
+            //   from: currentAccount,
+            //   to: to2,
+            //   data: data2,
+            //   value: value2.toString(16),
+            //   // gas: gas2,
+            //   // gasPrice: gasPrice2,
+            // },
+          // ],
         });
         console.log("TX transfer hash", txHash2);
 
