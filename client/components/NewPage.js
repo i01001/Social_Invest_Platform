@@ -394,6 +394,9 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
 
   const enterPress = async () => {
     // console.log(Web3Utils.toHex(100000000000));
+    setquoteErMessage({ isHidden: true });
+    setquoteMessage({ isHidden: true });
+    settransferMessage({ isHidden: true });
     setfromTok(getValues("FromToken1"));
     setToTok(getValues("ToToken"));
     setquantValue(getValues("QuantityToken"));
