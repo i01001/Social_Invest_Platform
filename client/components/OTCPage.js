@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { SocialContext } from "../context/context";
 import { contractABI, contractAddress } from '../lib/constants';
 // import { ethers } from 'ethers';
-const Web3 = require("web3");
+var Web3 = require("web3");
 const axios = require("axios");
 import {
   ChakraProvider,
