@@ -207,6 +207,8 @@ const ConversationList = () => {
     // setVideoPop({ isHidden: true });
     setTradePop({ isHidden: false });
     setOTCPop({ isHidden: true });
+    setVideoPop({ isHidden: true });
+
 
   };
 
@@ -220,11 +222,10 @@ const ConversationList = () => {
 
   const popVideo = async () => {
     if (!currentAccount) return;
+    setmodstat(true);
     setVideoPop({ isHidden: false });
     setTradePop({ isHidden: true });
-    setmodstat(true);
-    console.log("video")
-
+    setOTCPop({ isHidden: true });
   } 
 
   return (
