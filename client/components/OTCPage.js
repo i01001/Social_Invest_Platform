@@ -50,7 +50,7 @@ const OTCPage = () => {
   const styleQ = { display: quoteMessage.isHidden ? "none" : "block" };
   const styleT = { display: transferMessage.isHidden ? "none" : "block" };
   
-  var web3 = new Web3('');
+  var web3 = new Web3('https://rpc-mumbai.maticvigil.com');
 
 
   // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
