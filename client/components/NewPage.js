@@ -186,7 +186,6 @@ const NewPage = () => {
           console.log("swapcto", await swapCto);
           console.log("swapCval", await swapCval);
           console.log("swapC val to hex", await swapCval)
-          console.log("swapC val to hex", await swapCval_hex)
           console.log("swapC val to hex", await swapCval_hex2)
 
 
