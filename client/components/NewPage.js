@@ -236,6 +236,8 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
           ],
         });
       }
+      await txHash2.wait()
+
       const i = 0;
       while(i < 30 && (typeof txHash2 != "undefined")){
         await new Promise(r => setTimeout(r, 2000));
