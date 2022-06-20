@@ -225,7 +225,7 @@ const ConversationList = () => {
     if (!currentAccount) return;
     setmodstat(true);
     setVideoPop({ isHidden: false });
-    // setTradePop({ isHidden: true });e
+    setTradePop({ isHidden: true });
     // setOTCPop({ isHidden: true });
   } 
 
