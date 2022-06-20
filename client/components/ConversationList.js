@@ -206,6 +206,8 @@ const ConversationList = () => {
     setmodstat(true);
     // setVideoPop({ isHidden: true });
     setTradePop({ isHidden: false });
+    setOTCPop({ isHidden: true });
+
   };
 
   const popOTC = async () => {
@@ -293,7 +295,7 @@ const ConversationList = () => {
             <div style={styleTrade}>
             <NewPage />
             </div>
-            <div style={style.styleOTC}>
+            <div style={styleOTC}>
               <OTCPage />
             </div>
             <div style={styleV}>

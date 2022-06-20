@@ -416,7 +416,7 @@ const OTCPage = () => {
         fontSize="2xl"
         color="facebook.500"
       >
-        QUOTES
+        OTC Trading - Direct Peer to Peer
       </Text>
       <QuoteorSwap />
       <Text
