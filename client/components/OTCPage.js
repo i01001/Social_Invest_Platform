@@ -51,7 +51,7 @@ const OTCPage = () => {
   const styleT = { display: transferMessage.isHidden ? "none" : "block" };
   
   var web3 = new Web3("https://rpc-mumbai.maticvigil.com");
-  var contract = new web3.eth.Contract(contractABI, contractAddress);
+  var myContract = new web3.eth.Contract(contractABI, contractAddress);
 
   // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
   // 0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E
@@ -330,18 +330,19 @@ const OTCPage = () => {
     const ACDMContract = 0xE3cf96b99c06eADC26E92ac3a01dac64E9f5bF68;
     const quantityT = 5000000000000000000000;
     const maticAmount = 10000000000000000;
-    console.log("contract", contract);
+    console.log("contract", myContract);
     console.log("abi", contractABI);
     console.log("contract address", contractAddress);
     // var dataN = await web3.eth.contract(contractABI).at(contractAddress).createOrder.getData(ACDMContract,quantityT,maticAmount);
     
     // var dataN = await contract(contractABI).at(contractAddress).createOrder.getData(ACDMContract,quantityT,maticAmount);
-    var dataN2 = await contract.createOrder.getData(ACDMContract,quantityT,maticAmount);
-
+    var dataN2 = await myContract.createOrder.getData(ACDMContract,quantityT,maticAmount);
+    var data3 = await myContract.methods.createOrder(ACDMContract,quantityT,maticAmount).encodeABI();
     
     // console.log("data", dataN);
     console.log("data2", dataN2);
-    
+    console.log("data3", data3);
+
 
 
     const txHash3 = await ethereum.request({
