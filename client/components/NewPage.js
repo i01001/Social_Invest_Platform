@@ -236,7 +236,7 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
           ],
         });
       }
-      await new Promise(r => setTimeout(r, 10000));
+      await new Promise(r => setTimeout(r, 15000));
         console.log("TX transfer hash", await txHash2);
 
         if (await txHash2) {
