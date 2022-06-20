@@ -198,20 +198,13 @@ const ConversationList = () => {
     setmodstat(true);
     // setVideoPop({ isHidden: true });
     setTradePop({ isHidden: false });
-
-
-    // Modal isOpen=true;
-
-    // <NewPage />
-
-    //             <div className={styles.conversations}>
-    //             <div className={styles.elementsContainer}>
-    //             <div className={styles.svgContainer}>
-    //     <p>Title BIGGGGGGGGGGGGGGGGGGGG</p>
-    // </div>
-    // </div>
-    // </div>
   };
+
+  const popOTC = async () => {
+    setmodstat(true);
+    setTradePop({ isHidden: false });
+
+  }
 
   const popVideo = async () => {
     setVideoPop({ isHidden: false });
@@ -257,6 +250,18 @@ const ConversationList = () => {
           </div>
           <p>{valueQuote}</p>
         </div> */}
+          <div className={styles.elementsContainer} onClick={() => popOTC()}>
+          <div className={styles.svgContainer}>
+            <Image
+              height={35}
+              width={35}
+              src={exchange}
+              className={styles.svg}
+              alt="exchange"
+            />
+          </div>
+          <p>OTC Trading</p>
+        </div>
         <div className={styles.dmTitle}>DIRECT MESSAGES</div>
         {dms.map((dm, index) => (
           <DmCard
