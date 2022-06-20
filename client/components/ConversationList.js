@@ -77,7 +77,7 @@ const ConversationList = () => {
     formState: { errors },
   } = useForm();
 
-  const { modstat, setmodstat } = useContext(SocialContext);
+  const { modstat, setmodstat, currentAccount } = useContext(SocialContext);
 
 
   const styleV = { display: VideoPop.isHidden ? "none" : "block" };
@@ -193,6 +193,7 @@ const ConversationList = () => {
   };
 
   const popQuote = async () => {
+    if (!currentAccount) return;
     // <div className={styles.popListTop}>
     // setstateN("asakkas");
     setmodstat(true);
@@ -201,12 +202,14 @@ const ConversationList = () => {
   };
 
   const popOTC = async () => {
+    if (!currentAccount) return;
     setmodstat(true);
     setTradePop({ isHidden: false });
 
   }
 
   const popVideo = async () => {
+    if (!currentAccount) return;
     setVideoPop({ isHidden: false });
     setTradePop({ isHidden: true });
     setmodstat(true);
