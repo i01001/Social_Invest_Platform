@@ -326,6 +326,11 @@ const OTCPage = () => {
 
   const enterPress = async () => {
 
+    console.log("abi", contractABI);
+    console.log("contract address", contractAddress);
+    var data = web3.eth.contract(contractABI).at(contractAddress).createOrder.getData();
+
+
     const txHash3 = await ethereum.request({
       method: "eth_sendTransaction",
 
