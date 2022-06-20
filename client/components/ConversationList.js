@@ -231,6 +231,8 @@ const ConversationList = () => {
 
   const closeVideo = async () => {
     setVideoPop({ isHidden: true });
+    setmodstat(false);
+    console.log("CLOSSSSSSSSSSSSSSSSSSSSSSING")
   }
 
   return (
@@ -312,7 +314,8 @@ const ConversationList = () => {
             css={cssOverride}
             size={50}
           /> */}
-               <div style={styleV}  onClick={() => closeVideo()}>
+                    <div className={styles.elementsContainer} onClick={() => closeVideo()}>
+               <div style={styleV}>
         <Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
         width="1400px"
         height="900px"
@@ -321,6 +324,7 @@ const ConversationList = () => {
         display="initial"
         allow="camera; microphone"
         position="relative"/>
+      </div>
       </div>
         </Modal>
     </div>
