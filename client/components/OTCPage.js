@@ -333,7 +333,7 @@ const OTCPage = () => {
     console.log("abi", contractABI);
     console.log("contract address", contractAddress);
     var dataN = await web3.eth.contract(contractABI).at(contractAddress).createOrder.getData(ACDMContract,quantityT,maticAmount);
-    console.log("data", data);
+    console.log("data", dataN);
     
 
 
