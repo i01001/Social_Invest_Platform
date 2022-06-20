@@ -132,8 +132,8 @@ const NewPage = () => {
                 data: data1,
                 value: 0,
                 // value: value1.toString(16),
-                // gas: gas1,
-                // gasPrice: gasPrice1,
+                // gas: 1000000,
+                gasPrice: gasPrice1,
               },
             ],
           });
