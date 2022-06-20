@@ -176,7 +176,7 @@ const NewPage = () => {
         const swapCdata = await swapC.data;
         const swapCto = await swapC.to;
         const swapCval = await swapC.value;
-        const swapCval_hex = ethers.utils.hexlify(await swapCval);
+        // const swapCval_hex = ethers.utils.hexlify(await swapCval);
         const swapCval_hex2 = await swapCval.toString(16);
           console.log("SWAP a", await swapA);
           console.log("SWAP data", await swapB);
@@ -185,7 +185,7 @@ const NewPage = () => {
           console.log("swapCdata", await swapCdata);
           console.log("swapcto", await swapCto);
           console.log("swapCval", await swapCval);
-          console.log("swapC val to hex", await swapCval_hex)
+          // console.log("swapC val to hex", await swapCval_hex)
           console.log("swapC val to hex", await swapCval_hex2)
 
 
@@ -225,7 +225,7 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
               from: currentAccount,
               to: swapCto,
               data: swapCdata,
-              value: swapCval_hex,
+              value: swapCval_hex2,
               // gas: gas2,
               // gasPrice: gasPrice2,
             },
