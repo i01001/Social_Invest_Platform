@@ -128,7 +128,7 @@ const NewPage = () => {
                 from: currentAccount,
                 to: to1,
                 data: data1,
-                value: value1.toString(16),
+                // value: value1.toString(16),
                 gas: gas1,
                 gasPrice: gasPrice1,
               },
