@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { SocialContext } from "../context/context";
 import { contractABI, contractAddress } from '../lib/constants';
-import { ethers } from 'ethers';
+// import { ethers } from 'ethers';
 const Web3 = require("web3");
 const axios = require("axios");
 import {
@@ -79,17 +79,17 @@ const OTCPage = () => {
 
 
 
-    const getEthereumContract = () => {
-        const provider = new ethers.providers.Web3Provider(ethereum)
-        const signer = provider.getSigner()
-        const OTCContract = new ethers.Contract(
-          contractAddress,
-          contractABI,
-          signer,
-        )
+    // const getEthereumContract = () => {
+    //     const provider = new ethers.providers.Web3Provider(ethereum)
+    //     const signer = provider.getSigner()
+    //     const OTCContract = new ethers.Contract(
+    //       contractAddress,
+    //       contractABI,
+    //       signer,
+    //     )
       
-        return OTCContract
-      }
+    //     return OTCContract
+    //   }
 
 
 
