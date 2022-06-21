@@ -415,6 +415,12 @@ const createListing = async () => {
   return 
 }
 
+var receiptApprove = web3.eth.getTransactionReceipt(txHashApprove)
+.then(console.log);
+if(receiptApprove == null){
+  await new Promise(r => setTimeout(r, 2000));
+  console.log("waiting");
+}
 
 
 try{
