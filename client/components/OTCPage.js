@@ -328,7 +328,7 @@ const OTCPage = () => {
 
   const enterPress = async () => {
 
-    const _orderNumber = 0;
+    const _orderNumber = 2;
   
     var datacancel = await myContract.methods.cancelOrder(_orderNumber).encodeABI();
     console.log("datacancel", datacancel);
