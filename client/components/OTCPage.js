@@ -309,6 +309,8 @@ const OTCPage = () => {
   const Centerfunc = async () => {
     setCListOrderNo(getValues("cOrderNo"));
     const inc = 1;
+    settransferError({ isHidden: true });
+    settransferSuccess({ isHidden: true });
     setCEntercount((prevState) => {
       return {
         ...prevState,
