@@ -47,6 +47,23 @@ const OTCPage = () => {
   var web3 = new Web3("https://rpc-mumbai.maticvigil.com");
   var myContract = new web3.eth.Contract(contractABI, contractAddress);
 
+
+  const useComponentDidMount = () => {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = true;
+    }, []);
+    return ref.current;
+  };
+
+  const isComponentMounted = useComponentDidMount();
+
+  useEffect(() => {
+    if (isComponentMounted) {
+      quoteFunction();
+    }
+  }, [quantValue, fromTok, ToTok, Entercount]);
+
   const ListContractAddress = () => (
     <Input
       size="md"
