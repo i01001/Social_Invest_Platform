@@ -443,7 +443,7 @@ const OTCPage = () => {
       console.log(ordersObject[i].tokenContract);
       console.log(ordersObject[i].maticAmount);
     }
-    setlistingData(ordersObject[0]);
+    setlistingData(ordersObject[0].seller);
     web3.eth.getChainId().then(console.log);
   };
 
