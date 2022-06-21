@@ -62,7 +62,7 @@ const OTCPage = () => {
     if (isComponentMounted) {
       quoteFunction();
     }
-  }, [LtokenAddress, LTokenQuant, LMaticAmt, BbuyOrder, CListOrderNo, Entercount]);
+  }, [LtokenAddress, LTokenQuant, LMaticAmt, Entercount]);
 
   const ListContractAddress = () => (
     <Input
