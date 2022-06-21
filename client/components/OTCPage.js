@@ -387,7 +387,7 @@ const OTCPage = () => {
   const enterPress = async () => {
 
 
-  var eventsList = await myContract.getPastEvents("allEvents")
+  var eventsList = await myContract.getPastEvents('OrderCreate')
   console.log(eventsList);
 
 
