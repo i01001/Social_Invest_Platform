@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { SocialContext } from "../context/context";
-import { contractABI, contractAddress } from '../lib/constants';
+import {contractStandardABI, contractABI, contractAddress } from '../lib/constants';
 // import { ethers } from 'ethers';
 var Web3 = require("web3");
 const axios = require("axios");
@@ -341,6 +341,9 @@ const OTCPage = () => {
 
     // dataApprove = await my
 
+    var tokenContractDep = new web3.eth.Contract(contractStandardABI, TokenCont);
+
+    var dataApprove = await tokenContractDep.methods.approve
 
     var data3 = await myContract.methods.createOrder(TokenCont,quantityT,maticAmount).encodeABI();
     
