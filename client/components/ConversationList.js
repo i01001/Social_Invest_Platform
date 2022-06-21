@@ -217,14 +217,15 @@ const ConversationList = () => {
   const popOTC = async () => {
     if (!currentAccount) return;
     // setVideoPop({ isHidden: true });
-
-    setmodstat(true);
+    setmodstat(false);
+    setmodOTC(true);
     setTradePop({ isHidden: true });
     setOTCPop({ isHidden: false });
   }
 
   const popVideo = async () => {
     if (!currentAccount) return;
+
     setmodVstat(true);
     setVideoPop({ isHidden: false });
     // setTradePop({ isHidden: true });
