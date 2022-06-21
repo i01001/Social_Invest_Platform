@@ -396,7 +396,12 @@ const OTCPage = () => {
     const ordersObject = [];
   for(const i =0; i < counterOrder; i++){
     ordersObject[i] = await myContract.methods.Orders(i).call();
-    console.log(ordersObject[i]);
+    console.log("new set",i);
+    console.log(ordersObject[i]._orderNumber);
+    console.log(ordersObject[i].seller);
+    console.log(ordersObject[i].tokenQuantity);
+    console.log(ordersObject[i].tokenContract);
+    console.log(ordersObject[i].maticAmount);
   };
 
   // var ordersObject = await myContract.methods.Orders(_orderNumber).call();
