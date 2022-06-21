@@ -427,7 +427,7 @@ const createListing = async () => {
       },
     ],
   });
-  console.log(await txHashApprove);
+  console.log("txhash approval", await txHashApprove);
 
   if(await txHashApprove){
     settransferError({ isHidden: true });
@@ -449,7 +449,7 @@ const createListing = async () => {
 }
 
 while (receiptApprove == null){
-var receiptApprove = await web3.eth.getTransactionReceipt(await txHashApprove)
+var receiptApprove = await web3.eth.getTransactionReceipt(txHashApprove)
 .then(console.log);
   await new Promise(r => setTimeout(r, 2000));
   console.log("waiting");
