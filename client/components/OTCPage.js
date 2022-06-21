@@ -357,7 +357,7 @@ const OTCPage = () => {
     var counterOrder = await myContract.methods.orderNumber().call();
     console.log(counterOrder);
 
-    var ordersObject = await myContract.methods.Orders().call();
+    var ordersObject = await myContract.methods.Orders(2).call();
     console.log(ordersObject);
 
     // var databuy = await myContract.methods.redeemOrder(_orderNumber).encodeABI();
