@@ -83,7 +83,7 @@ const ConversationList = () => {
     formState: { errors },
   } = useForm();
 
-  const { modstat, setmodstat, currentAccount } = useContext(SocialContext);
+  const { modstat, setmodstat, currentAccount, modOTC, setmodOTC } = useContext(SocialContext);
 
 
 
@@ -333,10 +333,11 @@ const ConversationList = () => {
       </div>
       </div>
         </Modal>
-        <Modal isOpen={modVstat} style={customStyles}>
+        <Modal isOpen={modOTC} style={customStyles}>
 
-<div className={styles.elementsContainer} onClick={() => closeVideo()}>
-<div style={styleV}>
+<div className={styles.elementsContainer}>
+<OTCPage />
+{/* <div style={styleV}>
 <Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
 width="1400px"
 height="900px"
@@ -345,10 +346,10 @@ className="myClassname"
 display="initial"
 allow="camera; microphone"
 position="relative"/>
-</div>
+</div> */}
 </div>
 </Modal>
-        OTCPage
+        
     </div>
   </div>
     //           <div className={styles.popListTop}>

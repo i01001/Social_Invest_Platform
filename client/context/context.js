@@ -27,6 +27,7 @@ export const SocialProvider = ({ children }) => {
   const [messageText, setMessageText] = useState("");
   const [currentUser, setCurrentUser] = useState();
   const [modstat, setmodstat] = useState(false);
+  const [modOTC, setmodOTC] = useState(false);
 
 
   useEffect(() => {
@@ -162,6 +163,8 @@ export const SocialProvider = ({ children }) => {
         currentUser,
         modstat,
         setmodstat,
+        modOTC,
+        setmodOTC,
       }}
     >
       {children}

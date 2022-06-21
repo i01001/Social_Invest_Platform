@@ -41,7 +41,7 @@ const OTCPage = () => {
     count: 1,
   });
 
-  const { modstat, setmodstat } = useContext(SocialContext);
+  const { modstat, setmodstat, modOTC, setmodOTC  } = useContext(SocialContext);
 
 
   // const firstUpdate = useRef(true);
