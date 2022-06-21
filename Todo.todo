@@ -5,6 +5,24 @@ Done
 - 2 inputs; fix value 
 
 
+Today
+1. Check if transaction went through
+2. Change display to ETH and parse
+3. Make layout on top
+Order Number Token Contract Quantity Matic Quantity
+
+Selling listing - Token Contract Quantity Matic Quantity
+Buy - Order Number
+Cancel listing - Order Number
+
+Alert - Description and transaction hash
+
+4. Also check for Modal working
+
+5. Auto message created in Trading group
+6. Retrieve information for listing via Covalent api ? 
+
+
 
 Pending
 2. Carry out transaction on 1inch and transaction messages to be auto posted in group
