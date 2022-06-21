@@ -48,12 +48,22 @@ const OTCPage = () => {
     inc: 1,
     count: 1,
   })
+
+  const [BEntercount, setBEntercount] = useState({
+    inc: 1,
+    count: 1,
+  })
   
+  const [CEntercount, setCEntercount] = useState({
+    inc: 1,
+    count: 1,
+  })
+
   var web3 = new Web3("https://rpc-mumbai.maticvigil.com");
   var myContract = new web3.eth.Contract(contractABI, contractAddress);
 
 
-  const useComponentDidMount = () => {
+  const LuseComponentDidMount = () => {
     const ref = useRef();
     useEffect(() => {
       ref.current = true;
@@ -61,13 +71,46 @@ const OTCPage = () => {
     return ref.current;
   };
 
-  const isComponentMounted = useComponentDidMount();
+  const LisComponentMounted = LuseComponentDidMount();
 
   useEffect(() => {
-    if (isComponentMounted) {
+    if (LisComponentMounted) {
       createListing();
     }
   }, [LtokenAddress, LTokenQuant, LMaticAmt, LEntercount]);
+
+
+  const BuseComponentDidMount = () => {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = true;
+    }, []);
+    return ref.current;
+  };
+
+  const BisComponentMounted = BuseComponentDidMount();
+
+  useEffect(() => {
+    if (BisComponentMounted) {
+      buyorder();
+    }
+  }, [BbuyOrder, BEntercount]);
+
+  const CuseComponentDidMount = () => {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = true;
+    }, []);
+    return ref.current;
+  };
+
+  const CisComponentMounted = CuseComponentDidMount();
+
+  useEffect(() => {
+    if (CisComponentMounted) {
+      cancelOrder();
+    }
+  }, [CListOrderNo, CEntercount]);
 
   const ListContractAddress = () => (
     <Input
@@ -207,7 +250,7 @@ const OTCPage = () => {
       // pt={3}
       type="submit"
       onClick={() => {
-        buyorder();
+        Benterfunc();
       }}
     >
       ENTER{" "}
@@ -256,16 +299,27 @@ const OTCPage = () => {
       // pt={3}
       type="submit"
       onClick={() => {
-        cancelOrder();
+        Centerfunc();
       }}
     >
       ENTER{" "}
     </Button>
   );
 
+  const Centerfunc = async () => {
+    setCListOrderNo(getValues("cOrderNo"));
+    const inc = 1;
+    setCEntercount((prevState) => {
+      return {
+        ...prevState,
+        count: prevState.count + CEntercount.inc,
+      };
+    });
+
+  }
+
   const cancelOrder = async () => {
 
-    setCListOrderNo(getValues("cOrderNo"));
 
     try{
     var datacancel = await myContract.methods.cancelOrder(CListOrderNo).encodeABI();
@@ -306,11 +360,25 @@ const OTCPage = () => {
 
   }
 
+
+  const Benterfunc = async () => {
+    setBbuyOrder(getValues("buyOrdern"));
+    const inc = 1;
+    setBEntercount((prevState) => {
+      return {
+        ...prevState,
+        count: prevState.count + BEntercount.inc,
+      };
+    });
+  }
+
+
   const buyorder = async () => {
 
-    setBbuyOrder(getValues("buyOrdern"));
 
     await BbuyOrder;
+    // await new Promise(r => setTimeout(r, 2000));
+
     console.log(await BbuyOrder);
     // var counterOrder = await myContract.methods.orderNumber().call();
     // console.log(counterOrder);
