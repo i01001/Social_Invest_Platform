@@ -6,6 +6,7 @@ import { SocialContext } from "../context/context";
 import {contractStandardABI, contractABI, contractAddress } from '../lib/constants';
 // import { ethers } from 'ethers';
 var Web3 = require("web3");
+const Web3Utils = require('web3-utils');
 const axios = require("axios");
 import {
   ChakraProvider,
@@ -349,8 +350,7 @@ const OTCPage = () => {
 
   }
 
-  const enterPress = async () => {
-
+  const buyorder = async () => {
     const _orderNumber = 1;
 
 
@@ -381,7 +381,17 @@ const OTCPage = () => {
       ],
     });
     console.log(await txBuy);
-    
+  }
+
+
+  const enterPress = async () => {
+
+
+  var eventsList = await myContract.getPastEvents("allEvents")
+  console.log(eventsList);
+
+
+
   web3.eth.getChainId().then(console.log);
       // setfromTok(getValues("FromToken1"));
     // setToTok(getValues("ToToken"));
