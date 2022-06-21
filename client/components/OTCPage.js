@@ -359,8 +359,11 @@ const OTCPage = () => {
 
     var ordersObject = await myContract.methods.Orders(_orderNumber).call();
     var maticAmountforOrder = await ordersObject.maticAmount;
+    const matic_hex = Web3Utils.toHex(await maticAmountforOrder);
+
     console.log(ordersObject);
     console.log(maticAmountforOrder);
+    console.log(matic_hex);
 
     var databuy = await myContract.methods.redeemOrder(_orderNumber).encodeABI();
     console.log("databuy", databuy);
@@ -373,7 +376,7 @@ const OTCPage = () => {
           from: currentAccount,
           to: contractAddress,
           data: databuy,
-          value: maticAmountforOrder,
+          value: matic_hex,
         },
       ],
     });
