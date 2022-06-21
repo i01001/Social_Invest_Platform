@@ -353,22 +353,26 @@ const OTCPage = () => {
 
     const _orderNumber = 1;
 
-    var databuy = await myContract.methods.redeemOrder(_orderNumber).encodeABI();
-    console.log("databuy", databuy);
+
+    var counterOrder = await 
+    console.log(counterOrder);
+
+    // var databuy = await myContract.methods.redeemOrder(_orderNumber).encodeABI();
+    // console.log("databuy", databuy);
   
-    const txBuy = await ethereum.request({
-      method: "eth_sendTransaction",
+    // const txBuy = await ethereum.request({
+    //   method: "eth_sendTransaction",
   
-      params: [
-        {
-          from: currentAccount,
-          to: contractAddress,
-          data: databuy,
-          // value: ,
-        },
-      ],
-    });
-    console.log(await txBuy);
+    //   params: [
+    //     {
+    //       from: currentAccount,
+    //       to: contractAddress,
+    //       data: databuy,
+    //       // value: ,
+    //     },
+    //   ],
+    // });
+    // console.log(await txBuy);
     
   web3.eth.getChainId().then(console.log);
       // setfromTok(getValues("FromToken1"));
