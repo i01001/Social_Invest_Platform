@@ -122,8 +122,6 @@ const ConversationList = () => {
   };
 
   const getrates = async () => {
-    const RPC_URL_FANTOM_MAINNET = process.env.RPC_URL_FANTOM_MAINNET;
-    const web3 = new Web3(RPC_URL_FANTOM_MAINNET);
 
     let minABI = [
       // balanceOf
