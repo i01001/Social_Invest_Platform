@@ -43,6 +43,11 @@ const OTCPage = () => {
 
   const styleE = { display: transferError.isHidden ? "none" : "block" };
   const styleT = { display: transferSuccess.isHidden ? "none" : "block" };
+
+  const [LEntercount, setLEntercount] = useState({
+    inc: 1,
+    count: 1,
+  })
   
   var web3 = new Web3("https://rpc-mumbai.maticvigil.com");
   var myContract = new web3.eth.Contract(contractABI, contractAddress);
@@ -60,9 +65,9 @@ const OTCPage = () => {
 
   useEffect(() => {
     if (isComponentMounted) {
-      quoteFunction();
+      createListing();
     }
-  }, [LtokenAddress, LTokenQuant, LMaticAmt, Entercount]);
+  }, [LtokenAddress, LTokenQuant, LMaticAmt, LEntercount]);
 
   const ListContractAddress = () => (
     <Input
@@ -139,7 +144,7 @@ const OTCPage = () => {
       // pt={3}
       type="submit"
       onClick={() => {
-        createListing();
+        Lenterfunc();
       }}
     >
       ENTER{" "}
@@ -378,11 +383,22 @@ const OTCPage = () => {
 };
 
 
-const createListing = async () => {
 
+const Lenterfunc = async () => {
   setLtokenAddress(getValues("listContract"));
   setLTokenQuant(getValues("tokenQuant"));
   setLMaticAmt(getValues("lMatAmount"));
+  const inc = 1;
+  setLEntercount((prevState) => {
+    return {
+      ...prevState,
+      count: prevState.count + LEntercount.inc,
+    };
+  });
+}
+
+
+const createListing = async () => {
 
   console.log(await LtokenAddress);
   console.log(await LTokenQuant);
