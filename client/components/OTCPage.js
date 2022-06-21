@@ -3,10 +3,14 @@ import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { SocialContext } from "../context/context";
-import {contractStandardABI, contractABI, contractAddress } from '../lib/constants';
+import {
+  contractStandardABI,
+  contractABI,
+  contractAddress,
+} from "../lib/constants";
 // import { ethers } from 'ethers';
 var Web3 = require("web3");
-const Web3Utils = require('web3-utils');
+const Web3Utils = require("web3-utils");
 const axios = require("axios");
 import {
   ChakraProvider,
@@ -19,6 +23,7 @@ import {
   AlertTitle,
   AlertDescription,
   Divider,
+  Textarea,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon, CloseIcon } from "@chakra-ui/icons";
 
@@ -29,6 +34,7 @@ const OTCPage = () => {
   const [transferSuccess, settransferSuccess] = useState({ isHidden: true });
   const [errorMessage, seterrorMessage] = useState("");
   const [transferMessage, settransferMessage] = useState("");
+  const [listingData, setlistingData] = useState("");
 
   const { roomName, currentAccount, connectWallet } = useContext(SocialContext);
 
@@ -38,8 +44,7 @@ const OTCPage = () => {
   const [BbuyOrder, setBbuyOrder] = useState();
   const [CListOrderNo, setCListOrderNo] = useState();
 
-  const { modstat, setmodstat, modOTC, setmodOTC  } = useContext(SocialContext);
- 
+  const { modstat, setmodstat, modOTC, setmodOTC } = useContext(SocialContext);
 
   const styleE = { display: transferError.isHidden ? "none" : "block" };
   const styleT = { display: transferSuccess.isHidden ? "none" : "block" };
@@ -47,21 +52,20 @@ const OTCPage = () => {
   const [LEntercount, setLEntercount] = useState({
     inc: 1,
     count: 1,
-  })
+  });
 
   const [BEntercount, setBEntercount] = useState({
     inc: 1,
     count: 1,
-  })
-  
+  });
+
   const [CEntercount, setCEntercount] = useState({
     inc: 1,
     count: 1,
-  })
+  });
 
   var web3 = new Web3("https://rpc-mumbai.maticvigil.com");
   var myContract = new web3.eth.Contract(contractABI, contractAddress);
-
 
   const LuseComponentDidMount = () => {
     const ref = useRef();
@@ -78,7 +82,6 @@ const OTCPage = () => {
       createListing();
     }
   }, [LtokenAddress, LTokenQuant, LMaticAmt, LEntercount]);
-
 
   const BuseComponentDidMount = () => {
     const ref = useRef();
@@ -129,7 +132,6 @@ const OTCPage = () => {
     />
   );
 
-
   const LTokenQuantity = () => (
     <Input
       size="md"
@@ -140,7 +142,7 @@ const OTCPage = () => {
       variant="filled"
       fontWeight="bold"
       textAlign="center"
-      width={500} 
+      width={500}
       fontSize="lg"
       {...register("tokenQuant")}
       color="facebook.500"
@@ -158,7 +160,7 @@ const OTCPage = () => {
       fontWeight="bold"
       textAlign="center"
       fontSize="lg"
-      width={500} 
+      width={500}
       {...register("lMatAmount")}
       color="facebook.500"
     />
@@ -171,14 +173,14 @@ const OTCPage = () => {
       mt={1}
       // pl={5}
       // pr={5}
-      display="inline"  
+      display="inline"
       fontWeight="bold"
       color="white"
       textAlign="center"
       backgroundColor="whiteAlpha.500"
       border={100}
       borderRadius={20}
-      ml={6 }
+      ml={6}
       colorScheme="whiteAlpha"
       rightIcon={<ArrowForwardIcon />}
       letterSpacing="wide"
@@ -207,7 +209,6 @@ const OTCPage = () => {
       color="messenger.500"
     />
   );
-  
 
   const BuyOrderNumber = () => (
     <Input
@@ -234,7 +235,7 @@ const OTCPage = () => {
       mt={1}
       // pl={5}
       // pr={5}
-      display="inline"  
+      display="inline"
       fontWeight="bold"
       color="white"
       textAlign="center"
@@ -257,7 +258,6 @@ const OTCPage = () => {
     </Button>
   );
 
-  
   const CanOrderNumber = () => (
     <Input
       size="md"
@@ -283,7 +283,7 @@ const OTCPage = () => {
       mt={1}
       // pl={5}
       // pr={5}
-      display="inline"  
+      display="inline"
       fontWeight="bold"
       color="white"
       textAlign="center"
@@ -306,6 +306,12 @@ const OTCPage = () => {
     </Button>
   );
 
+  const AllListing = () => (
+    <Textarea 
+    placeholder="Text inside" 
+    />
+  );
+
   const Centerfunc = async () => {
     setCListOrderNo(getValues("cOrderNo"));
     const inc = 1;
@@ -317,51 +323,46 @@ const OTCPage = () => {
         count: prevState.count + CEntercount.inc,
       };
     });
-
-  }
+  };
 
   const cancelOrder = async () => {
+    try {
+      var datacancel = await myContract.methods
+        .cancelOrder(CListOrderNo)
+        .encodeABI();
+      console.log("datacancel", datacancel);
 
+      const txcancelList = await ethereum.request({
+        method: "eth_sendTransaction",
 
-    try{
-    var datacancel = await myContract.methods.cancelOrder(CListOrderNo).encodeABI();
-    console.log("datacancel", datacancel);
-  
-    const txcancelList = await ethereum.request({
-      method: "eth_sendTransaction",
-  
-      params: [
-        {
-          from: currentAccount,
-          to: contractAddress,
-          data: datacancel,
-        },
-      ],
-    });
-    console.log(await txcancelList);
+        params: [
+          {
+            from: currentAccount,
+            to: contractAddress,
+            data: datacancel,
+          },
+        ],
+      });
+      console.log(await txcancelList);
 
-    if(txcancelList){
-      settransferError({ isHidden: true });
-      settransferSuccess({ isHidden: false });
-      settransferMessage(`Transfer has been successful
+      if (txcancelList) {
+        settransferError({ isHidden: true });
+        settransferSuccess({ isHidden: false });
+        settransferMessage(`Transfer has been successful
       https://polygonscan.com/tx/${txcancelList}`);
-    }
-    else{
+      } else {
+        settransferError({ isHidden: false });
+        settransferSuccess({ isHidden: true });
+        seterrorMessage("Transaction has been unsuccessful");
+        return;
+      }
+    } catch (error_transfer) {
       settransferError({ isHidden: false });
       settransferSuccess({ isHidden: true });
-      seterrorMessage("Transaction has been unsuccessful");
-      return 
+      seterrorMessage("Transaction has an error");
+      return;
     }
-  
-  } catch(error_transfer){
-    settransferError({ isHidden: false });
-    settransferSuccess({ isHidden: true });
-    seterrorMessage("Transaction has an error");
-    return 
-  }
-
-  }
-
+  };
 
   const Benterfunc = async () => {
     setBbuyOrder(getValues("buyOrdern"));
@@ -374,12 +375,9 @@ const OTCPage = () => {
         count: prevState.count + BEntercount.inc,
       };
     });
-  }
-
+  };
 
   const buyorder = async () => {
-
-
     await BbuyOrder;
     // await new Promise(r => setTimeout(r, 2000));
 
@@ -388,200 +386,225 @@ const OTCPage = () => {
     // console.log(counterOrder);
 
     try {
-    var ordersObject = await myContract.methods.Orders(BbuyOrder).call();
-    var maticAmountforOrder = await ordersObject.maticAmount;
-    const matic_hex = Web3Utils.toHex(await maticAmountforOrder);
+      var ordersObject = await myContract.methods.Orders(BbuyOrder).call();
+      var maticAmountforOrder = await ordersObject.maticAmount;
+      const matic_hex = Web3Utils.toHex(await maticAmountforOrder);
 
-    console.log(ordersObject);
-    console.log(maticAmountforOrder);
-    console.log(matic_hex);
+      console.log(ordersObject);
+      console.log(maticAmountforOrder);
+      console.log(matic_hex);
 
-    var databuy = await myContract.methods.redeemOrder(BbuyOrder).encodeABI();
-    console.log("databuy", databuy);
-  
-    const txBuy = await ethereum.request({
-      method: "eth_sendTransaction",
-  
-      params: [
-        {
-          from: currentAccount,
-          to: contractAddress,
-          data: databuy,
-          value: matic_hex,
-        },
-      ],
-    });
-    console.log(await txBuy);
+      var databuy = await myContract.methods.redeemOrder(BbuyOrder).encodeABI();
+      console.log("databuy", databuy);
 
-    if(txBuy){
-      settransferError({ isHidden: true });
-      settransferSuccess({ isHidden: false });
-      settransferMessage(`Transfer has been successful
+      const txBuy = await ethereum.request({
+        method: "eth_sendTransaction",
+
+        params: [
+          {
+            from: currentAccount,
+            to: contractAddress,
+            data: databuy,
+            value: matic_hex,
+          },
+        ],
+      });
+      console.log(await txBuy);
+
+      if (txBuy) {
+        settransferError({ isHidden: true });
+        settransferSuccess({ isHidden: false });
+        settransferMessage(`Transfer has been successful
       https://polygonscan.com/tx/${txBuy}`);
-    }
-    else{
+      } else {
+        settransferError({ isHidden: false });
+        settransferSuccess({ isHidden: true });
+        seterrorMessage("Transaction has been unsuccessful");
+        return;
+      }
+    } catch (error_transfer) {
       settransferError({ isHidden: false });
       settransferSuccess({ isHidden: true });
-      seterrorMessage("Transaction has been unsuccessful");
-      return 
+      seterrorMessage("Transaction has an error");
+      return;
     }
-  
-  } catch(error_transfer){
-    settransferError({ isHidden: false });
-    settransferSuccess({ isHidden: true });
-    seterrorMessage("Transaction has an error");
-    return 
-  }
-
-
-  }
-
-
-  const enterPress = async () => {
-
-  var counterOrder = await myContract.methods.orderNumber().call();
-  console.log(counterOrder);
-
-    const ordersObject = [];
-  for(const i =0; i < counterOrder; i++){
-    ordersObject[i] = await myContract.methods.Orders(i).call();
-    console.log(ordersObject[i]._orderNumber);
-    console.log(ordersObject[i].seller);
-    console.log(ordersObject[i].tokenQuantity);
-    console.log(ordersObject[i].tokenContract);
-    console.log(ordersObject[i].maticAmount);
   };
 
+  const enterPressOTC = async () => {
+    var counterOrder = await myContract.methods.orderNumber().call();
+    console.log(counterOrder);
 
-  web3.eth.getChainId().then(console.log);
-};
+    const ordersObject = [];
+    for (const i = 0; i < counterOrder; i++) {
+      ordersObject[i] = await myContract.methods.Orders(i).call();
+      console.log(ordersObject[i]._orderNumber);
+      console.log(ordersObject[i].seller);
+      console.log(ordersObject[i].tokenQuantity);
+      console.log(ordersObject[i].tokenContract);
+      console.log(ordersObject[i].maticAmount);
+    }
+    setlistingData(ordersObject[0]);
+    web3.eth.getChainId().then(console.log);
+  };
 
-
-
-const Lenterfunc = async () => {
-  setLtokenAddress(getValues("listContract"));
-  setLTokenQuant(getValues("tokenQuant"));
-  setLMaticAmt(getValues("lMatAmount"));
-  settransferError({ isHidden: true });
-  settransferSuccess({ isHidden: true });
-  const inc = 1;
-  setLEntercount((prevState) => {
-    return {
-      ...prevState,
-      count: prevState.count + LEntercount.inc,
-    };
-  });
-}
-
-
-const createListing = async () => {
-
-  console.log(await LtokenAddress);
-  console.log(await LTokenQuant);
-  console.log(await LMaticAmt);
-
-  // const TokenCont = "0x71b602688e7341eC30032327ACECE64342a17621";
-  // const quantityT = 3000000000000000;
-  // const maticAmount = 100000000000000;
-
-
-  try{
-
-  var tokenContractDep = new web3.eth.Contract(contractStandardABI, LtokenAddress);
-
-  var dataApprove = await tokenContractDep.methods.approve(contractAddress,LTokenQuant).encodeABI();
-  console.log("dataApprove", dataApprove);
-
-  const txHashApprove = await ethereum.request({
-    method: "eth_sendTransaction",
-
-    params: [
-      {
-        from: currentAccount,
-        to: LtokenAddress,
-        data: dataApprove,
-      },
-    ],
-  });
-  console.log("txhash approval", await txHashApprove);
-
-  if(txHashApprove){
+  const Lenterfunc = async () => {
+    setLtokenAddress(getValues("listContract"));
+    setLTokenQuant(getValues("tokenQuant"));
+    setLMaticAmt(getValues("lMatAmount"));
     settransferError({ isHidden: true });
-    settransferSuccess({ isHidden: false });
-    settransferMessage(`Approval to transfer has been successful"
+    settransferSuccess({ isHidden: true });
+    const inc = 1;
+    setLEntercount((prevState) => {
+      return {
+        ...prevState,
+        count: prevState.count + LEntercount.inc,
+      };
+    });
+  };
+
+  const createListing = async () => {
+    console.log(await LtokenAddress);
+    console.log(await LTokenQuant);
+    console.log(await LMaticAmt);
+
+    // const TokenCont = "0x71b602688e7341eC30032327ACECE64342a17621";
+    // const quantityT = 3000000000000000;
+    // const maticAmount = 100000000000000;
+
+    try {
+      var tokenContractDep = new web3.eth.Contract(
+        contractStandardABI,
+        LtokenAddress
+      );
+
+      var dataApprove = await tokenContractDep.methods
+        .approve(contractAddress, LTokenQuant)
+        .encodeABI();
+      console.log("dataApprove", dataApprove);
+
+      const txHashApprove = await ethereum.request({
+        method: "eth_sendTransaction",
+
+        params: [
+          {
+            from: currentAccount,
+            to: LtokenAddress,
+            data: dataApprove,
+          },
+        ],
+      });
+      console.log("txhash approval", await txHashApprove);
+
+      if (txHashApprove) {
+        settransferError({ isHidden: true });
+        settransferSuccess({ isHidden: false });
+        settransferMessage(`Approval to transfer has been successful"
     https://polygonscan.com/tx/${txHashApprove}`);
-  }
-  else{
-    settransferError({ isHidden: false });
-    settransferSuccess({ isHidden: true });
-    seterrorMessage("Approval Transaction unsuccessful");
-    return 
-  }
-}catch(error_approval){
-  settransferError({ isHidden: false });
-  settransferSuccess({ isHidden: true });
-  seterrorMessage("Error in approval");
-  return 
-}
-var receiptApprove = await web3.eth.getTransactionReceipt('0x6b5dce363433b7a0f860fa2fc15bde461e568047838607446600c893fd9ef622')
-.then(console.log);
-// while (receiptApprove == null){
-// receiptApprove = await web3.eth.getTransactionReceipt(txHashApprove)
-// .then(console.log);
-//   await new Promise(r => setTimeout(r, 2000));
-//   console.log("waiting");
-// }
+      } else {
+        settransferError({ isHidden: false });
+        settransferSuccess({ isHidden: true });
+        seterrorMessage("Approval Transaction unsuccessful");
+        return;
+      }
+    } catch (error_approval) {
+      settransferError({ isHidden: false });
+      settransferSuccess({ isHidden: true });
+      seterrorMessage("Error in approval");
+      return;
+    }
+    var receiptApprove = await web3.eth
+      .getTransactionReceipt(
+        "0x6b5dce363433b7a0f860fa2fc15bde461e568047838607446600c893fd9ef622"
+      )
+      .then(console.log);
+    // while (receiptApprove == null){
+    // receiptApprove = await web3.eth.getTransactionReceipt(txHashApprove)
+    // .then(console.log);
+    //   await new Promise(r => setTimeout(r, 2000));
+    //   console.log("waiting");
+    // }
 
-const i = 0;
-while(i < 10){
-  await new Promise(r => setTimeout(r, 2000));
-  console.log("count of i", i);
-  i++;
-}
+    const i = 0;
+    while (i < 10) {
+      await new Promise((r) => setTimeout(r, 2000));
+      console.log("count of i", i);
+      i++;
+    }
 
-try{
-  var data3 = await myContract.methods.createOrder(LtokenAddress,LTokenQuant,LMaticAmt).encodeABI();
-  
-  console.log("data3", data3);
+    try {
+      var data3 = await myContract.methods
+        .createOrder(LtokenAddress, LTokenQuant, LMaticAmt)
+        .encodeABI();
 
-  const txHash3 = await ethereum.request({
-    method: "eth_sendTransaction",
+      console.log("data3", data3);
 
-    params: [
-      {
-        from: currentAccount,
-        to: contractAddress,
-        data: data3,
-      },
-    ],
-  });
-  console.log(await txHash3);
+      const txHash3 = await ethereum.request({
+        method: "eth_sendTransaction",
 
-  if(txHash3){
-    settransferError({ isHidden: true });
-    settransferSuccess({ isHidden: false });
-    settransferMessage(`Transfer has been successful
+        params: [
+          {
+            from: currentAccount,
+            to: contractAddress,
+            data: data3,
+          },
+        ],
+      });
+      console.log(await txHash3);
+
+      if (txHash3) {
+        settransferError({ isHidden: true });
+        settransferSuccess({ isHidden: false });
+        settransferMessage(`Transfer has been successful
     https://polygonscan.com/tx/${txHash3}`);
-  }
-  else{
-    settransferError({ isHidden: false });
-    settransferSuccess({ isHidden: true });
-    seterrorMessage("Transaction has been unsuccessful");
-    return 
-  }
-
-} catch(error_transfer){
-  settransferError({ isHidden: false });
-  settransferSuccess({ isHidden: true });
-  seterrorMessage("Transaction has an error");
-  return 
-}
-
-};
+      } else {
+        settransferError({ isHidden: false });
+        settransferSuccess({ isHidden: true });
+        seterrorMessage("Transaction has been unsuccessful");
+        return;
+      }
+    } catch (error_transfer) {
+      settransferError({ isHidden: false });
+      settransferSuccess({ isHidden: true });
+      seterrorMessage("Transaction has an error");
+      return;
+    }
+  };
 
   const exitPress = async () => {
-    setmodOTC(false)
-  }
+    setmodOTC(false);
+  };
+
+  
+  const AlllistingButton = () => (
+    <Button
+      variant="solid"
+      size="lg"
+      mt={40}
+      pl={5}
+      pr={5}
+      fontWeight="bold"
+      color="white"
+      textAlign="center"
+      backgroundColor="whiteAlpha.500"
+      border={100}
+      borderRadius={20}
+      ml={10}
+      colorScheme="whiteAlpha"
+      letterSpacing="wide"
+      fontSize="lg"
+      leftIcon={<CloseIcon />}
+      display="inline"
+      pb={10}
+      pt={3}
+      onClick={() => {
+        enterPressOTC();
+      }}
+    >
+      ALL LISTINGS
+    </Button>
+  );
+
+
 
   const ExitButton = () => (
     <Button
@@ -611,10 +634,6 @@ try{
       EXIT
     </Button>
   );
-
-  
-
-
 
   const TransferErrorDiv = () => (
     <Alert status="error" variant="solid" mt={5}>
@@ -681,7 +700,7 @@ try{
         fontSize="2xl"
         color="facebook.500"
       >
-      CREATE SELLING LISTING
+        CREATE SELLING LISTING
       </Text>
       {/* <QuoteorSwap /> */}
       {/* <Text
@@ -715,54 +734,54 @@ try{
         <DividerN />
         <br></br>
         <Text
-        // display="inline"
-        // ml={240}
-        fontWeight="bold"
-        textAlign="center"
-        border={30}
-        borderRadius={20}
-        pl={10}
-        pr={10}
-        pt={2}
-        pb={2}
-        opacity={1}
-        mr={10}
-        // mt={20}
-        // backgroundColor="whiteAlpha.500"
-        boxShadow={10}
-        fontSize="2xl"
-        color="facebook.500"
-      >
-      BUY LISTING
-      </Text>
-      <BuyOrderNumber />
-      <BEnterButton />
-      <DividerN />
+          // display="inline"
+          // ml={240}
+          fontWeight="bold"
+          textAlign="center"
+          border={30}
+          borderRadius={20}
+          pl={10}
+          pr={10}
+          pt={2}
+          pb={2}
+          opacity={1}
+          mr={10}
+          // mt={20}
+          // backgroundColor="whiteAlpha.500"
+          boxShadow={10}
+          fontSize="2xl"
+          color="facebook.500"
+        >
+          BUY LISTING
+        </Text>
+        <BuyOrderNumber />
+        <BEnterButton />
+        <DividerN />
         <br></br>
         <Text
-        // display="inline"
-        // ml={240}
-        fontWeight="bold"
-        textAlign="center"
-        border={30}
-        borderRadius={20}
-        pl={10}
-        pr={10}
-        pt={2}
-        pb={2}
-        opacity={1}
-        mr={10}
-        // mt={20}
-        // backgroundColor="whiteAlpha.500"
-        boxShadow={10}
-        fontSize="2xl"
-        color="facebook.500"
-      >
-      CANCEL LISTING
-      </Text>
+          // display="inline"
+          // ml={240}
+          fontWeight="bold"
+          textAlign="center"
+          border={30}
+          borderRadius={20}
+          pl={10}
+          pr={10}
+          pt={2}
+          pb={2}
+          opacity={1}
+          mr={10}
+          // mt={20}
+          // backgroundColor="whiteAlpha.500"
+          boxShadow={10}
+          fontSize="2xl"
+          color="facebook.500"
+        >
+          CANCEL LISTING
+        </Text>
         <CanOrderNumber />
-      <CEnterButton />
-      <DividerN />
+        <CEnterButton />
+        <DividerN />
         <br></br>
         <div style={styleT}>
           <TransferSuccessDiv />
@@ -771,26 +790,29 @@ try{
           <TransferErrorDiv />
         </div>
         <Text
-        // display="inline"
-        // ml={240}
-        fontWeight="bold"
-        textAlign="center"
-        border={30}
-        borderRadius={20}
-        pl={10}
-        pr={10}
-        pt={2}
-        pb={2}
-        opacity={1}
-        mr={10}
-        // mt={20}
-        // backgroundColor="whiteAlpha.500"
-        boxShadow={10}
-        fontSize="2xl"
-        color="facebook.500"
-      >
-ALL LISTINGS      </Text>
-<ExitButton />
+          // display="inline"
+          // ml={240}
+          fontWeight="bold"
+          textAlign="center"
+          border={30}
+          borderRadius={20}
+          pl={10}
+          pr={10}
+          pt={2}
+          pb={2}
+          opacity={1}
+          mr={10}
+          // mt={20}
+          // backgroundColor="whiteAlpha.500"
+          boxShadow={10}
+          fontSize="2xl"
+          color="facebook.500"
+        >
+          ALL LISTINGS{listingData}{" "}
+        </Text>
+        <AlllistingButton />
+        <AllListing />
+        <ExitButton />
       </form>
     </ChakraProvider>
   );

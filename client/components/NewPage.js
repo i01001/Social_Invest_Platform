@@ -5,8 +5,8 @@ import { useContext } from "react";
 import { SocialContext } from "../context/context";
 const Web3 = require("web3");
 const axios = require("axios");
-import { ethers } from 'ethers';
-const Web3Utils = require('web3-utils');
+import { ethers } from "ethers";
+const Web3Utils = require("web3-utils");
 
 import {
   ChakraProvider,
@@ -43,7 +43,6 @@ const NewPage = () => {
 
   const { modstat, setmodstat } = useContext(SocialContext);
 
-
   // const firstUpdate = useRef(true);
   // const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
 
@@ -51,9 +50,6 @@ const NewPage = () => {
   const styleQ = { display: quoteMessage.isHidden ? "none" : "block" };
   const styleT = { display: transferMessage.isHidden ? "none" : "block" };
 
-
-
-  
   // install web3 plugin
   // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
   // 0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E
@@ -122,7 +118,7 @@ const NewPage = () => {
           const to1 = await approve_data.to;
           console.log("TO TOKEN", await to1);
 
-          const gas2= 1000000;
+          const gas2 = 1000000;
 
           console.log("data1 printed", data1);
           console.log("current printed", currentAccount);
@@ -169,41 +165,40 @@ const NewPage = () => {
         }
       }
       console.log("POST APPROVAL");
-      
-        const swap_transfer = await axios.get(
-          `https://api.1inch.io/v4.0/137/swap?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}&fromAddress=${currentAccount}&slippage=0.1&disableEstimate=true`
-        );
-        const swapA = await swap_transfer.data;
-        const swapB = await swapA.data;
-        const swapC = await swapA.tx;
-        const swapCdata = await swapC.data;
-        const swapCto = await swapC.to;
-        const swapCval = await swapC.value;
-        const swapCval_hex = Web3Utils.toHex(await swapCval);
-        const swapCval_hex2 = await swapCval.toString(16);
-          console.log("SWAP a", await swapA);
-          console.log("SWAP data", await swapB);
-          console.log("swap transfer", await swap_transfer);
-          console.log("swap C", await swapC);
-          console.log("swapCdata", await swapCdata);
-          console.log("swapcto", await swapCto);
-          console.log("swapCval", await swapCval);
-          console.log("swapC val to hex", await swapCval_hex)
-          console.log("swapC val to hex", await swapCval_hex2)
 
+      const swap_transfer = await axios.get(
+        `https://api.1inch.io/v4.0/137/swap?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}&fromAddress=${currentAccount}&slippage=0.1&disableEstimate=true`
+      );
+      const swapA = await swap_transfer.data;
+      const swapB = await swapA.data;
+      const swapC = await swapA.tx;
+      const swapCdata = await swapC.data;
+      const swapCto = await swapC.to;
+      const swapCval = await swapC.value;
+      const swapCval_hex = Web3Utils.toHex(await swapCval);
+      const swapCval_hex2 = await swapCval.toString(16);
+      console.log("SWAP a", await swapA);
+      console.log("SWAP data", await swapB);
+      console.log("swap transfer", await swap_transfer);
+      console.log("swap C", await swapC);
+      console.log("swapCdata", await swapCdata);
+      console.log("swapcto", await swapCto);
+      console.log("swapCval", await swapCval);
+      console.log("swapC val to hex", await swapCval_hex);
+      console.log("swapC val to hex", await swapCval_hex2);
 
-        // if (await swap_transfer.data) {
-          // const swapA = await swap_transfer.data;
-          // const swapB = await swapA.data;
-          // const swapC = await swapA.tx;
-          // const swapCdata = await swapC.data;
-          // const swapCto = await swapC.to;
-          // const swapCval = await swapC.value;
-          // const swapCdata_hex = await swapC.data_hex;
-        // }
-console.log("TEST");
+      // if (await swap_transfer.data) {
+      // const swapA = await swap_transfer.data;
+      // const swapB = await swapA.data;
+      // const swapC = await swapA.tx;
+      // const swapCdata = await swapC.data;
+      // const swapCto = await swapC.to;
+      // const swapCval = await swapC.value;
+      // const swapCdata_hex = await swapC.data_hex;
+      // }
+      console.log("TEST");
 
-if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
+      if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
         const txHash2 = await ethereum.request({
           method: "eth_sendTransaction",
 
@@ -220,33 +215,30 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
         });
 
         const i = 0;
-        while(i < 15){
-          await new Promise(r => setTimeout(r, 2000));
+        while (i < 15) {
+          await new Promise((r) => setTimeout(r, 2000));
           console.log("count of i", i);
           i++;
         }
-          console.log("TX transfer hash", await txHash2);
-  
-          if (txHash2) {
-            console.log("transfer successful!!!");
-            setquoteErMessage({ isHidden: true });
-            setquoteMessage({ isHidden: true });
-            settransferMessage({ isHidden: false });
-            settApprovalMessage(`Transaction carried out!! 
+        console.log("TX transfer hash", await txHash2);
+
+        if (txHash2) {
+          console.log("transfer successful!!!");
+          setquoteErMessage({ isHidden: true });
+          setquoteMessage({ isHidden: true });
+          settransferMessage({ isHidden: false });
+          settApprovalMessage(`Transaction carried out!! 
             https://polygonscan.com/tx/${txHash2}`);
-            return
-          } else {
-            console.log("Transaction unsuccessful");
-            setquoteErMessage({ isHidden: false });
-            setquoteMessage({ isHidden: true });
-            settransferMessage({ isHidden: true });
-            setqErrormess("Transaction has been unsuccessful");
-            return;
-          }
-
-
-      }
-      else {
+          return;
+        } else {
+          console.log("Transaction unsuccessful");
+          setquoteErMessage({ isHidden: false });
+          setquoteMessage({ isHidden: true });
+          settransferMessage({ isHidden: true });
+          setqErrormess("Transaction has been unsuccessful");
+          return;
+        }
+      } else {
         const txHash2 = await ethereum.request({
           method: "eth_sendTransaction",
 
@@ -263,35 +255,32 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
         });
 
         const i = 0;
-        while(i < 15){
-          await new Promise(r => setTimeout(r, 2000));
+        while (i < 15) {
+          await new Promise((r) => setTimeout(r, 2000));
           console.log("count of i", i);
           i++;
         }
-          console.log("TX transfer hash", await txHash2);
-  
-          if (txHash2) {
-            console.log("transfer successful!!!");
-            setquoteErMessage({ isHidden: true });
-            setquoteMessage({ isHidden: true });
-            settransferMessage({ isHidden: false });
-            settApprovalMessage(`Transaction carried out!!
-           https://polygonscan.com/tx/${txHash2}`);
-          } else {
-            console.log("Transaction unsuccessful");
-            setquoteErMessage({ isHidden: false });
-            setquoteMessage({ isHidden: true });
-            settransferMessage({ isHidden: true });
-            setqErrormess("Transaction has been unsuccessful");
-            return;
-          }
+        console.log("TX transfer hash", await txHash2);
 
+        if (txHash2) {
+          console.log("transfer successful!!!");
+          setquoteErMessage({ isHidden: true });
+          setquoteMessage({ isHidden: true });
+          settransferMessage({ isHidden: false });
+          settApprovalMessage(`Transaction carried out!!
+           https://polygonscan.com/tx/${txHash2}`);
+        } else {
+          console.log("Transaction unsuccessful");
+          setquoteErMessage({ isHidden: false });
+          setquoteMessage({ isHidden: true });
+          settransferMessage({ isHidden: true });
+          setqErrormess("Transaction has been unsuccessful");
+          return;
+        }
       }
       // await txHash2.wait();
 
-      
-      
-        // }
+      // }
       // } catch (error_transfer) {
       //   console.error("Error in Transfer");
       //   setquoteErMessage({ isHidden: false });
@@ -409,8 +398,8 @@ if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
   };
 
   const exitPress = async () => {
-    setmodstat(false)
-  }
+    setmodstat(false);
+  };
 
   const ExitButton = () => (
     <Button
