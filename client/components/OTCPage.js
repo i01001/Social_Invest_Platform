@@ -327,7 +327,7 @@ const OTCPage = () => {
   );
 
   const enterPress = async () => {
-    const ACDMContract = "0xE3cf96b99c06eADC26E92ac3a01dac64E9f5bF68";
+    const TokenCont = "0x71b602688e7341eC30032327ACECE64342a17621";
     const quantityT = 3000000000000000;
     const maticAmount = 100000000000000;
     console.log("contract", myContract);
@@ -337,7 +337,7 @@ const OTCPage = () => {
     
     // var dataN = await contract(contractABI).at(contractAddress).createOrder.getData(ACDMContract,quantityT,maticAmount);
     // var dataN2 = await myContract.createOrder.getData(ACDMContract,quantityT,maticAmount);
-    var data3 = await myContract.methods.createOrder(ACDMContract,quantityT,maticAmount).encodeABI();
+    var data3 = await myContract.methods.createOrder(TokenCont,quantityT,maticAmount).encodeABI();
     
     // console.log("data", dataN);
     // console.log("data2", dataN2);
