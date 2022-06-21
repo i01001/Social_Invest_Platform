@@ -346,7 +346,6 @@ const ConversationList = () => {
       mt={15}
       pl={10}
       pr={10}
-      pt={15}
       fontWeight="bold"
       color="white"
       textAlign="center"
