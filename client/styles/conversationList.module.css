@@ -31,6 +31,18 @@
     margin-bottom: 10px;
   }
   
+  .elementsContainerOTC {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 1500px;
+    height: 900px;
+  }
+  
+
   .elementsContainer:hover {
     background: #3b3d43;
   }

@@ -466,7 +466,7 @@ const createListing = async () => {
 };
 
   const exitPress = async () => {
-    setmodstat(false)
+    setmodOTC(false)
   }
 
   const TestingButton = async () => {

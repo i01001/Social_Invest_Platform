@@ -19,7 +19,18 @@ import OTCPage from "./OTCPage";
 import { useContext } from 'react'
 import { SocialContext } from '../context/context'
 import Iframe from 'react-iframe'
-
+import {
+  ChakraProvider,
+  Switch,
+  Text,
+  Input,
+  Button,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from "@chakra-ui/react";
+import { ArrowForwardIcon, CloseIcon } from "@chakra-ui/icons";
 
 Modal.setAppElement("#__next");
 
@@ -329,15 +340,44 @@ const ConversationList = () => {
         display="initial"
         allow="camera; microphone"
         position="relative"/>
+    <Button
+      variant="solid"
+      size="lg"
+      mt={15}
+      pl={5}
+      pr={5}
+      fontWeight="bold"
+      color="white"
+      textAlign="center"
+      backgroundColor="black"
+      border={100}
+      borderRadius={20}
+      ml={50}
+      // mb={50}
+      colorScheme="whiteAlpha"
+      letterSpacing="wide"
+      fontSize="lg"
+      leftIcon={<CloseIcon />}
+      display="inline"
+      pb={10}
+      pt={3}
+      onClick={() => {
+        closeVideo();
+      }}
+    >
+      EXIT
+    </Button>
+
+
       </div>
       </div>
         </Modal>
         <Modal isOpen={modOTC} style={customStyles}>
 
-{/* <div className={styles.elementsContainer}> */}
+<div className={styles.elementsContainerOTC}>
 <div style={styleOTC}>
               <OTCPage />
-            {/* </div> */}
+            </div>
             {/* <div style={styleV}>
 <Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
 width="1400px"
