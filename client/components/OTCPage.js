@@ -351,21 +351,24 @@ const OTCPage = () => {
 
   const enterPress = async () => {
 
-    var datacancel = await myContract.methods.cancelOrder(_orderNumber).encodeABI();
-    console.log("datacancel", datacancel);
+    const _orderNumber = 1;
+
+    var databuy = await myContract.methods.redeemOrder(_orderNumber).encodeABI();
+    console.log("databuy", databuy);
   
-    const txcancelList = await ethereum.request({
+    const txBuy = await ethereum.request({
       method: "eth_sendTransaction",
   
       params: [
         {
           from: currentAccount,
           to: contractAddress,
-          data: datacancel,
+          data: databuy,
+          // value: ,
         },
       ],
     });
-    console.log(await txcancelList);
+    console.log(await txBuy);
     
   web3.eth.getChainId().then(console.log);
       // setfromTok(getValues("FromToken1"));
