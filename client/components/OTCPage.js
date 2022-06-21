@@ -449,7 +449,7 @@ const createListing = async () => {
 }
 
 while (receiptApprove == null){
-var receiptApprove = web3.eth.getTransactionReceipt(await txHashApprove)
+var receiptApprove = await web3.eth.getTransactionReceipt(await txHashApprove)
 .then(console.log);
   await new Promise(r => setTimeout(r, 2000));
   console.log("waiting");
