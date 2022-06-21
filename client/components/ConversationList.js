@@ -305,9 +305,7 @@ const ConversationList = () => {
             <div style={styleTrade}>
             <NewPage />
             </div>
-            <div style={styleOTC}>
-              <OTCPage />
-            </div>
+
       {/* </div> */}
       {/* <div className={style.title}>Transaction in progress...</div>
           <MoonLoader
@@ -336,8 +334,10 @@ const ConversationList = () => {
         <Modal isOpen={modOTC} style={customStyles}>
 
 <div className={styles.elementsContainer}>
-<OTCPage />
-{/* <div style={styleV}>
+<div style={styleOTC}>
+              <OTCPage />
+            </div>
+            {/* <div style={styleV}>
 <Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
 width="1400px"
 height="900px"
