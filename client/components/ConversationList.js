@@ -333,6 +333,22 @@ const ConversationList = () => {
       </div>
       </div>
         </Modal>
+        <Modal isOpen={modVstat} style={customStyles}>
+
+<div className={styles.elementsContainer} onClick={() => closeVideo()}>
+<div style={styleV}>
+<Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
+width="1400px"
+height="900px"
+id="myId"
+className="myClassname"
+display="initial"
+allow="camera; microphone"
+position="relative"/>
+</div>
+</div>
+</Modal>
+        OTCPage
     </div>
   </div>
     //           <div className={styles.popListTop}>
