@@ -358,16 +358,6 @@ const OTCPage = () => {
 
 
   web3.eth.getChainId().then(console.log);
-      // setfromTok(getValues("FromToken1"));
-    // setToTok(getValues("ToToken"));
-    // setquantValue(getValues("QuantityToken"));
-    // const inc = 1;
-    // setEntercount((prevState) => {
-    //   return {
-    //     ...prevState,
-    //     count: prevState.count + Entercount.inc,
-    //   };
-    // });
 };
 
 
