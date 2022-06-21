@@ -326,8 +326,9 @@ const OTCPage = () => {
     </Button>
   );
 
-  const enterPress = async () => {
 
+
+  const cancelOrder = async () => {
     const _orderNumber = 2;
   
     var datacancel = await myContract.methods.cancelOrder(_orderNumber).encodeABI();
@@ -346,9 +347,25 @@ const OTCPage = () => {
     });
     console.log(await txcancelList);
 
+  }
 
+  const enterPress = async () => {
 
-
+    var datacancel = await myContract.methods.cancelOrder(_orderNumber).encodeABI();
+    console.log("datacancel", datacancel);
+  
+    const txcancelList = await ethereum.request({
+      method: "eth_sendTransaction",
+  
+      params: [
+        {
+          from: currentAccount,
+          to: contractAddress,
+          data: datacancel,
+        },
+      ],
+    });
+    console.log(await txcancelList);
     
   web3.eth.getChainId().then(console.log);
       // setfromTok(getValues("FromToken1"));
