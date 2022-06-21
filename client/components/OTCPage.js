@@ -328,8 +328,8 @@ const OTCPage = () => {
 
   const enterPress = async () => {
     const ACDMContract = "0xE3cf96b99c06eADC26E92ac3a01dac64E9f5bF68";
-    const quantityT = 5000000000;
-    const maticAmount = 100000000;
+    const quantityT = 3000000000;
+    const maticAmount = 1000000000;
     console.log("contract", myContract);
     console.log("abi", contractABI);
     console.log("contract address", contractAddress);
