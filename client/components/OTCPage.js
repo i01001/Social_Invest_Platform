@@ -343,7 +343,25 @@ const OTCPage = () => {
 
     var tokenContractDep = new web3.eth.Contract(contractStandardABI, TokenCont);
 
-    var dataApprove = await tokenContractDep.methods.approve
+    var dataApprove = await tokenContractDep.methods.approve(contractAddress,quantityT).encodeABI();
+    console.log("dataApprove", dataApprove);
+
+    const txHashApprove = await ethereum.request({
+      method: "eth_sendTransaction",
+
+      params: [
+        {
+          from: currentAccount,
+          to: TokenCont,
+          data: dataApprove,
+          // value: value2.toString(16),
+          // gas: gas2,
+          // gasPrice: gasPrice2,
+        },
+      ],
+    });
+    console.log(await txHashApprove);
+
 
     var data3 = await myContract.methods.createOrder(TokenCont,quantityT,maticAmount).encodeABI();
     
