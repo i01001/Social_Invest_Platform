@@ -327,69 +327,31 @@ const OTCPage = () => {
   );
 
   const enterPress = async () => {
-    const TokenCont = "0x71b602688e7341eC30032327ACECE64342a17621";
-    const quantityT = 3000000000000000;
-    const maticAmount = 100000000000000;
-    console.log("contract", myContract);
-    console.log("abi", contractABI);
-    console.log("contract address", contractAddress);
-    // var dataN = await web3.eth.contract(contractABI).at(contractAddress).createOrder.getData(ACDMContract,quantityT,maticAmount);
-    
-    // var dataN = await contract(contractABI).at(contractAddress).createOrder.getData(ACDMContract,quantityT,maticAmount);
-    // var dataN2 = await myContract.createOrder.getData(ACDMContract,quantityT,maticAmount);
 
-
-    // dataApprove = await my
-
-    var tokenContractDep = new web3.eth.Contract(contractStandardABI, TokenCont);
-
-    var dataApprove = await tokenContractDep.methods.approve(contractAddress,quantityT).encodeABI();
-    console.log("dataApprove", dataApprove);
-
-    const txHashApprove = await ethereum.request({
+    const _orderNumber = 0;
+  
+    var datacancel = await myContract.methods.cancelOrder(_orderNumber).encodeABI();
+    console.log("datacancel", datacancel);
+  
+    const txcancelList = await ethereum.request({
       method: "eth_sendTransaction",
-
-      params: [
-        {
-          from: currentAccount,
-          to: TokenCont,
-          data: dataApprove,
-          // value: value2.toString(16),
-          // gas: gas2,
-          // gasPrice: gasPrice2,
-        },
-      ],
-    });
-    console.log(await txHashApprove);
-
-
-    var data3 = await myContract.methods.createOrder(TokenCont,quantityT,maticAmount).encodeABI();
-    
-    // console.log("data", dataN);
-    // console.log("data2", dataN2);
-    console.log("data3", data3);
-
-
-    web3.eth.getChainId().then(console.log);
-
-
-    const txHash3 = await ethereum.request({
-      method: "eth_sendTransaction",
-
+  
       params: [
         {
           from: currentAccount,
           to: contractAddress,
-          data: data3,
-          // value: value2.toString(16),
-          // gas: gas2,
-          // gasPrice: gasPrice2,
+          data: datacancel,
         },
       ],
     });
-    console.log(await txHash3);
+    console.log(await txcancelList);
 
-    // setfromTok(getValues("FromToken1"));
+
+
+
+    
+  web3.eth.getChainId().then(console.log);
+      // setfromTok(getValues("FromToken1"));
     // setToTok(getValues("ToToken"));
     // setquantValue(getValues("QuantityToken"));
     // const inc = 1;
@@ -399,7 +361,52 @@ const OTCPage = () => {
     //     count: prevState.count + Entercount.inc,
     //   };
     // });
-  };
+};
+
+
+const createListing = async () => {
+
+  const TokenCont = "0x71b602688e7341eC30032327ACECE64342a17621";
+  const quantityT = 3000000000000000;
+  const maticAmount = 100000000000000;
+  var tokenContractDep = new web3.eth.Contract(contractStandardABI, TokenCont);
+
+  var dataApprove = await tokenContractDep.methods.approve(contractAddress,quantityT).encodeABI();
+  console.log("dataApprove", dataApprove);
+
+  const txHashApprove = await ethereum.request({
+    method: "eth_sendTransaction",
+
+    params: [
+      {
+        from: currentAccount,
+        to: TokenCont,
+        data: dataApprove,
+      },
+    ],
+  });
+  console.log(await txHashApprove);
+
+
+  var data3 = await myContract.methods.createOrder(TokenCont,quantityT,maticAmount).encodeABI();
+  
+  console.log("data3", data3);
+
+  const txHash3 = await ethereum.request({
+    method: "eth_sendTransaction",
+
+    params: [
+      {
+        from: currentAccount,
+        to: contractAddress,
+        data: data3,
+      },
+    ],
+  });
+  console.log(await txHash3);
+
+
+};
 
   const exitPress = async () => {
     setmodstat(false)
