@@ -393,8 +393,14 @@ const OTCPage = () => {
   var counterOrder = await myContract.methods.orderNumber().call();
   console.log(counterOrder);
 
-  var ordersObject = await myContract.methods.Orders(_orderNumber).call();
-  var maticAmountforOrder = await ordersObject.maticAmount;
+    const ordersObject = [];
+  for(const i =0; i < counterOrder; i++){
+    ordersObject[i] = await myContract.methods.Orders(i).call();
+    console.log(ordersObject[i]);
+  };
+
+  // var ordersObject = await myContract.methods.Orders(_orderNumber).call();
+  // var maticAmountforOrder = await ordersObject.maticAmount;
 
   web3.eth.getChainId().then(console.log);
       // setfromTok(getValues("FromToken1"));
