@@ -328,7 +328,7 @@ const OTCPage = () => {
 
   const enterPress = async () => {
     const ACDMContract = "0xE3cf96b99c06eADC26E92ac3a01dac64E9f5bF68";
-    const quantityT = 30000000000000000;
+    const quantityT = 3000000000000000;
     const maticAmount = 100000000000000;
     console.log("contract", myContract);
     console.log("abi", contractABI);
@@ -353,7 +353,7 @@ const OTCPage = () => {
       params: [
         {
           from: currentAccount,
-          to: ACDMContract,
+          to: contractAddress,
           data: data3,
           // value: value2.toString(16),
           // gas: gas2,
