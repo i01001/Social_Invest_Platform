@@ -365,6 +365,8 @@ const OTCPage = () => {
 
   const Benterfunc = async () => {
     setBbuyOrder(getValues("buyOrdern"));
+    settransferError({ isHidden: true });
+    settransferSuccess({ isHidden: true });
     const inc = 1;
     setBEntercount((prevState) => {
       return {
@@ -443,7 +445,6 @@ const OTCPage = () => {
     const ordersObject = [];
   for(const i =0; i < counterOrder; i++){
     ordersObject[i] = await myContract.methods.Orders(i).call();
-    console.log("new set",i);
     console.log(ordersObject[i]._orderNumber);
     console.log(ordersObject[i].seller);
     console.log(ordersObject[i].tokenQuantity);
@@ -461,6 +462,8 @@ const Lenterfunc = async () => {
   setLtokenAddress(getValues("listContract"));
   setLTokenQuant(getValues("tokenQuant"));
   setLMaticAmt(getValues("lMatAmount"));
+  settransferError({ isHidden: true });
+  settransferSuccess({ isHidden: true });
   const inc = 1;
   setLEntercount((prevState) => {
     return {
