@@ -327,7 +327,7 @@ const OTCPage = () => {
   );
 
   const enterPress = async () => {
-    const ACDMContract = 0xE3cf96b99c06eADC26E92ac3a01dac64E9f5bF68;
+    const ACDMContract = "0xE3cf96b99c06eADC26E92ac3a01dac64E9f5bF68";
     const quantityT = 5000000000000000000000;
     const maticAmount = 10000000000000000;
     console.log("contract", myContract);
