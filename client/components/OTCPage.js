@@ -337,6 +337,11 @@ const OTCPage = () => {
     
     // var dataN = await contract(contractABI).at(contractAddress).createOrder.getData(ACDMContract,quantityT,maticAmount);
     // var dataN2 = await myContract.createOrder.getData(ACDMContract,quantityT,maticAmount);
+
+
+    dataApprove = await my
+
+
     var data3 = await myContract.methods.createOrder(TokenCont,quantityT,maticAmount).encodeABI();
     
     // console.log("data", dataN);
