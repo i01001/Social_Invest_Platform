@@ -265,7 +265,7 @@ const ConversationList = () => {
               alt="friends"
             />
           </div>
-          <p>    GROUP Video Calling</p>
+          <p>CONFERENCE CALL</p>
         </div>
         <div className={styles.elementsContainer} onClick={() => popQuote()}>
           <div className={styles.svgContainer}>
@@ -277,7 +277,7 @@ const ConversationList = () => {
               alt="exchange"
             />
           </div>
-          <p>Polygon Network Tokens Trading</p>
+          <p>POLYGON NETWORK TOKENS TRADING</p>
         </div>
         {/* <div className={styles.elementsContainer}>
           <div className={styles.svgContainer}>
@@ -295,7 +295,7 @@ const ConversationList = () => {
               alt="exchange"
             />
           </div>
-          <p>OTC Trading</p>
+          <p>OTC TRADING</p>
         </div>
         <div className={styles.dmTitle}>DIRECT MESSAGES</div>
         {dms.map((dm, index) => (
@@ -334,7 +334,7 @@ const ConversationList = () => {
                <div style={styleV}>
         <Iframe url="https://web3-video-call.herokuapp.com/a776638c-b7a1-4018-a9bd-8c9e462b1cdd"
         width="1400px"
-        height="900px"
+        height="800px"
         id="myId"
         className="myClassname"
         display="initial"
@@ -344,16 +344,17 @@ const ConversationList = () => {
       variant="solid"
       size="lg"
       mt={15}
-      pl={5}
-      pr={5}
+      pl={10}
+      pr={10}
+      pt={15}
       fontWeight="bold"
       color="white"
       textAlign="center"
       backgroundColor="black"
-      border={100}
-      borderRadius={20}
-      ml={50}
-      // mb={50}
+      border={50}
+      borderRadius={10}
+      ml={30}
+      mb={30} 
       colorScheme="whiteAlpha"
       letterSpacing="wide"
       fontSize="lg"

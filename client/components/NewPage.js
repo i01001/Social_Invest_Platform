@@ -146,7 +146,6 @@ const NewPage = () => {
           console.log("TX hash approval", txHash);
 
           if (txHash) {
-            console.log("approval for DAI successful");
             setquoteErMessage({ isHidden: true });
             setquoteMessage({ isHidden: true });
             settransferMessage({ isHidden: false });

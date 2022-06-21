@@ -10,16 +10,19 @@ Today
 3. Make layout on top
 Order Number Token Contract Quantity Matic Quantity
 
+
 Selling listing - Token Contract Quantity Matic Quantity
 Buy - Order Number
 Cancel listing - Order Number
 
 Alert - Description and transaction hash
+Exit button
 
 4. Also check for Modal working
 
-5. Auto message created in Trading group
-6. Retrieve information for listing via Covalent api ? 
+5. Auto message created in Trading group - nope
+6. Retrieve information for listing via Covalent api ? - cant be bothered
+
 
 7. Make video
 8. Update Read me

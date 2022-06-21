@@ -18,306 +18,175 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
+  Divider,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon, CloseIcon } from "@chakra-ui/icons";
 
 const OTCPage = () => {
   const [inputRecord, setinputRecord] = useState("");
   const { register, getValues, handleSubmit } = useForm();
-  const [quoteMessage, setquoteMessage] = useState({ isHidden: true });
-  const [quoteErMessage, setquoteErMessage] = useState({ isHidden: true });
-  const [tApprovalMessage, settApprovalMessage] = useState("");
-  const [transferMessage, settransferMessage] = useState({ isHidden: true });
+  const [transferError, settransferError] = useState({ isHidden: true });
+  const [transferSuccess, settransferSuccess] = useState({ isHidden: true });
+  const [errorMessage, seterrorMessage] = useState("");
+  const [transferMessage, settransferMessage] = useState("");
 
   const { roomName, currentAccount, connectWallet } = useContext(SocialContext);
 
-  const [fromTok, setfromTok] = useState();
-  const [ToTok, setToTok] = useState();
-  const [quantValue, setquantValue] = useState();
-  const [name1, setname1] = useState("");
-  const [qErrormess, setqErrormess] = useState("");
-  const [Entercount, setEntercount] = useState({
-    inc: 1,
-    count: 1,
-  });
+  const [LtokenAddress, setLtokenAddress] = useState();
+  const [LTokenQuant, setLTokenQuant] = useState();
+  const [LMaticAmt, setLMaticAmt] = useState();
+  const [BbuyOrder, setBbuyOrder] = useState();
+  const [CListOrderNo, setCListOrderNo] = useState();
 
   const { modstat, setmodstat, modOTC, setmodOTC  } = useContext(SocialContext);
+ 
 
-
-  // const firstUpdate = useRef(true);
-  // const styleQ = { visibility: quoteMessage.isHidden ? 'hidden' : 'visible' };
-
-  const styleE = { display: quoteErMessage.isHidden ? "none" : "block" };
-  const styleQ = { display: quoteMessage.isHidden ? "none" : "block" };
-  const styleT = { display: transferMessage.isHidden ? "none" : "block" };
+  const styleE = { display: transferError.isHidden ? "none" : "block" };
+  const styleT = { display: transferSuccess.isHidden ? "none" : "block" };
   
   var web3 = new Web3("https://rpc-mumbai.maticvigil.com");
   var myContract = new web3.eth.Contract(contractABI, contractAddress);
 
-  // 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
-  // 0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E
-  // 100000000000000000
-
-  const useComponentDidMount = () => {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = true;
-    }, []);
-    return ref.current;
-  };
-
-  const isComponentMounted = useComponentDidMount();
-
-  useEffect(() => {
-    if (isComponentMounted) {
-      quoteFunction();
-    }
-  }, [quantValue, fromTok, ToTok, Entercount]);
-
-  const quoteFunction = async () => {
-    const quoteYes = await getValues("Quoteornot");
-
-    console.log(await fromTok, ToTok, quantValue, quoteYes);
-
-
-
-    // const getEthereumContract = () => {
-    //     const provider = new ethers.providers.Web3Provider(ethereum)
-    //     const signer = provider.getSigner()
-    //     const OTCContract = new ethers.Contract(
-    //       contractAddress,
-    //       contractABI,
-    //       signer,
-    //     )
-      
-    //     return OTCContract
-    //   }
-
-
-
-
-    if (!quoteYes) {
-      try {
-        const quote = await axios.get(
-          `https://api.1inch.io/v4.0/137/quote?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}`
-        );
-        console.log(quote);
-        if (quote) {
-          setname1(await quote.data.toTokenAmount);
-          console.log("NAME1", await name1);
-
-          // setquoteMessage({ isHidden: !quoteMessage.isHidden });
-          setquoteMessage({ isHidden: false });
-          setquoteErMessage({ isHidden: true });
-          settransferMessage({ isHidden: true });
-        }
-      } catch (error) {
-        console.error("Quote execution error", error);
-        setquoteErMessage({ isHidden: false });
-        setquoteMessage({ isHidden: true });
-        settransferMessage({ isHidden: true });
-        setqErrormess("Quote execution error");
-      }
-    } else {
-      console.log("Current account", await currentAccount);
-      const lowerBaseToken = await fromTok.toLowerCase();
-      console.log(await lowerBaseToken);
-      if (lowerBaseToken != "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee") {
-        try {
-          const approve = await axios.get(
-            `h    console.log("data", dataN);
-            ttps://api.1inch.io/v4.0/137/approve/transaction?tokenAddress=${ToTok}&amount=${quantValue}`
-          );
-
-          const approve_data = approve.data;
-          console.log(await approve);
-          console.log(await approve_data.data);
-          // var receiver = "0x11F43Aa282E4405057e607396Ee00f6B34a05474";
-          const data1 = await approve_data.data;
-          const value1 = await approve_data.value;
-          const gas1 = await approve_data.gas;
-          const gasPrice1 = await approve_data.gasPrice;
-          const to1 = await approve_data.to;
-          console.log(await to1);
-
-          console.log("data1 printed", data1);
-          // web3.eth.sendTransaction;
-          const txHash = await ethereum.request({
-            method: "eth_sendTransaction",
-
-            params: [
-              {
-                from: currentAccount,
-                to: to1,
-                data: data1,
-                value: value1.toString(16),
-                gas: gas1,
-                gasPrice: gasPrice1,
-              },
-            ],
-          });
-          console.log(txHash);
-
-          if (txHash) {
-            console.log("approval for DAI successful");
-            setquoteErMessage({ isHidden: true });
-            setquoteMessage({ isHidden: true });
-            settransferMessage({ isHidden: false });
-            settApprovalMessage("Approval to transfer has been successful");
-          } else {
-            console.log("Approval Transaction unsuccessful");
-            setquoteErMessage({ isHidden: false });
-            setquoteMessage({ isHidden: true });
-            settransferMessage({ isHidden: true });
-            setqErrormess("Approval Transaction unsuccessful");
-            return;
-          }
-          // }
-        } catch (error_approval) {
-          console.log("Error approval");
-          setquoteErMessage({ isHidden: false });
-          setquoteMessage({ isHidden: true });
-          settransferMessage({ isHidden: true });
-          setqErrormess("Error in approval");
-          return;
-        }
-      }
-      console.log("POST APPROVAL");
-      try {
-        const swap_transfer = await axios.get(
-          `https://api.1inch.io/v4.0/137/swap?fromTokenAddress=${fromTok}&toTokenAddress=${ToTok}&amount=${quantValue}&fromAddress=${currentAccount}&slippage=0.1&disableEstimate=true`
-        );
-        console.log(swap_transfer);
-        if (swap_transfer.data) {
-          swap_data = swap_transfer.data;
-          swap_data.tx.gas = 1000000;
-          const data2 = await swap_data.data;
-          const value2 = await swap_data.value;
-          const gas2 = await swap_data.gas;
-          const gasPrice2 = await swap_data.gasPrice;
-          const to2 = await swap_data.to;
-        }
-        const txHash2 = await ethereum.request({
-          method: "eth_sendTransaction",
-
-          params: [
-            {
-              from: currentAccount,
-              to: to2,
-              data: data2,
-              value: value2.toString(16),
-              gas: gas2,
-              gasPrice: gasPrice2,
-            },
-          ],
-        });
-        console.log(txHash2);
-
-        if (txHash2) {
-          console.log("transfer successful!!!");
-          setquoteErMessage({ isHidden: true });
-          setquoteMessage({ isHidden: true });
-          settransferMessage({ isHidden: false });
-          settApprovalMessage("Transfer has been successful!!");
-        } else {
-          console.log("Transaction unsuccessful");
-          setquoteErMessage({ isHidden: false });
-          setquoteMessage({ isHidden: true });
-          settransferMessage({ isHidden: true });
-          setqErrormess("Transaction has been unsuccessful");
-          return;
-        }
-        // }
-      } catch (error_transfer) {
-        console.error("Error in Transfer");
-        setquoteErMessage({ isHidden: false });
-        setquoteMessage({ isHidden: true });
-        settransferMessage({ isHidden: true });
-        setqErrormess("Error in Transfer!");
-        return;
-      }
-    }
-  };
-
-  const QuoteorSwap = () => (
-    <Switch
+  const ListContractAddress = () => (
+    <Input
+      size="md"
       display="inline"
-      // isChecked
-      mt={20}
-      fontWeight="bold"
-      backgroundColor="whiteAlpha.500"
-      colorScheme="messenger"
-      color="facebook.500"
-      textAlign="center"
-      {...register("Quoteornot")}
-      pt={1}
-    />
-  );
-
-  const FromToken = () => (
-    <Input
-      size="md"
       mt={15}
-      placeholder="FROM TOKEN"
+      ml={30}
+      placeholder="TOKEN CONTRACT ADDRESS"
       variant="filled"
       fontWeight="bold"
       textAlign="center"
+      display="inline"
+      width={500}
       fontSize="lg"
-      // id="fromTok"
-      {...register("FromToken1")}
+      {...register("listContract")}
       color="facebook.500"
     />
   );
 
-  const ToToken = () => (
-    <Input
-      size="md"
-      mt={15}
-      placeholder="TO TOKEN"
-      variant="filled"
-      fontWeight="bold"
-      textAlign="center"
-      fontSize="lg"
-      {...register("ToToken")}
-      color="facebook.500"
-    />
-  );
 
-  const QuantityToken = () => (
+  const LTokenQuantity = () => (
     <Input
       size="md"
+      display="inline"
       mt={15}
+      ml={6}
       placeholder="TOKEN QUANTITY"
       variant="filled"
       fontWeight="bold"
       textAlign="center"
+      width={500} 
       fontSize="lg"
-      {...register("QuantityToken")}
+      {...register("tokenQuant")}
       color="facebook.500"
     />
   );
 
-  const EnterButton = () => (
+  const LMaticAmount = () => (
+    <Input
+      size="md"
+      mt={15}
+      display="inline"
+      ml={6}
+      placeholder="MATIC AMOUNT"
+      variant="filled"
+      fontWeight="bold"
+      textAlign="center"
+      fontSize="lg"
+      width={500} 
+      {...register("lMatAmount")}
+      color="facebook.500"
+    />
+  );
+
+  const LEnterButton = () => (
     <Button
       variant="solid"
       size="lg"
-      mt={15}
-      pl={5}
-      pr={5}
+      mt={1}
+      // pl={5}
+      // pr={5}
+      display="inline"  
       fontWeight="bold"
       color="white"
       textAlign="center"
       backgroundColor="whiteAlpha.500"
       border={100}
       borderRadius={20}
-      ml={60}
+      ml={6 }
       colorScheme="whiteAlpha"
       rightIcon={<ArrowForwardIcon />}
       letterSpacing="wide"
       fontSize="xl"
       display="inline"
-      pb={10}
-      pt={3}
+      // pb={10}
+      // pt={3}
+      type="submit"
+      onClick={() => {
+        createListing();
+      }}
+    >
+      ENTER{" "}
+    </Button>
+  );
+
+  const DividerN = () => (
+    <Divider
+      borderColor="purple.500"
+      mt={5}
+      width={1750}
+      ml={3}
+      fontWeight="bold"
+      border={6}
+      borderRadius={10}
+      backgroundColor="messenger.500"
+      color="messenger.500"
+    />
+  );
+  
+
+  const BuyOrderNumber = () => (
+    <Input
+      size="md"
+      display="inline"
+      mt={15}
+      ml={350}
+      placeholder="BUY LISTING NUMBER"
+      variant="filled"
+      fontWeight="bold"
+      textAlign="center"
+      display="inline"
+      width={500}
+      fontSize="lg"
+      // id="fromTok"
+      {...register("buyOrdern")}
+      color="facebook.500"
+    />
+  );
+
+  const BEnterButton = () => (
+    <Button
+      variant="solid"
+      size="lg"
+      mt={1}
+      // pl={5}
+      // pr={5}
+      display="inline"  
+      fontWeight="bold"
+      color="white"
+      textAlign="center"
+      backgroundColor="whiteAlpha.500"
+      border={100}
+      borderRadius={20}
+      ml={100}
+      colorScheme="whiteAlpha"
+      rightIcon={<ArrowForwardIcon />}
+      letterSpacing="wide"
+      fontSize="xl"
+      display="inline"
+      // pb={10}
+      // pt={3}
       type="submit"
       onClick={() => {
         enterPress();
@@ -327,12 +196,62 @@ const OTCPage = () => {
     </Button>
   );
 
+  
+  const CanOrderNumber = () => (
+    <Input
+      size="md"
+      display="inline"
+      mt={15}
+      ml={350}
+      placeholder="CANCEL LISTING NUMBER"
+      variant="filled"
+      fontWeight="bold"
+      textAlign="center"
+      display="inline"
+      width={500}
+      fontSize="lg"
+      // id="fromTok"
+      {...register("cOrderNo")}
+      color="facebook.500"
+    />
+  );
 
+  const CEnterButton = () => (
+    <Button
+      variant="solid"
+      size="lg"
+      mt={1}
+      // pl={5}
+      // pr={5}
+      display="inline"  
+      fontWeight="bold"
+      color="white"
+      textAlign="center"
+      backgroundColor="whiteAlpha.500"
+      border={100}
+      borderRadius={20}
+      ml={100}
+      colorScheme="whiteAlpha"
+      rightIcon={<ArrowForwardIcon />}
+      letterSpacing="wide"
+      fontSize="xl"
+      // pb={10}
+      // pt={3}
+      type="submit"
+      onClick={() => {
+        cancelOrder();
+      }}
+    >
+      ENTER{" "}
+    </Button>
+  );
 
   const cancelOrder = async () => {
-    const _orderNumber = 2;
-  
-    var datacancel = await myContract.methods.cancelOrder(_orderNumber).encodeABI();
+
+    setCListOrderNo(getValues("cOrderNo"));
+
+    try{
+    var datacancel = await myContract.methods.cancelOrder(CListOrderNo).encodeABI();
     console.log("datacancel", datacancel);
   
     const txcancelList = await ethereum.request({
@@ -348,16 +267,35 @@ const OTCPage = () => {
     });
     console.log(await txcancelList);
 
+    if(txcancelList){
+      settransferError({ isHidden: true });
+      settransferSuccess({ isHidden: false });
+      settransferMessage("Transfer has been successful");
+    }
+    else{
+      settransferError({ isHidden: false });
+      settransferSuccess({ isHidden: true });
+      seterrorMessage("Transaction has been unsuccessful");
+      return 
+    }
+  
+  } catch(error_transfer){
+    settransferError({ isHidden: false });
+    settransferSuccess({ isHidden: true });
+    seterrorMessage("Transaction has an error");
+    return 
+  }
+
   }
 
   const buyorder = async () => {
-    const _orderNumber = 1;
 
+    setBbuyOrder(getValues("buyOrdern"));
+    // var counterOrder = await myContract.methods.orderNumber().call();
+    // console.log(counterOrder);
 
-    var counterOrder = await myContract.methods.orderNumber().call();
-    console.log(counterOrder);
-
-    var ordersObject = await myContract.methods.Orders(_orderNumber).call();
+    try {
+    var ordersObject = await myContract.methods.Orders(BbuyOrder).call();
     var maticAmountforOrder = await ordersObject.maticAmount;
     const matic_hex = Web3Utils.toHex(await maticAmountforOrder);
 
@@ -365,7 +303,7 @@ const OTCPage = () => {
     console.log(maticAmountforOrder);
     console.log(matic_hex);
 
-    var databuy = await myContract.methods.redeemOrder(_orderNumber).encodeABI();
+    var databuy = await myContract.methods.redeemOrder(BbuyOrder).encodeABI();
     console.log("databuy", databuy);
   
     const txBuy = await ethereum.request({
@@ -381,14 +319,31 @@ const OTCPage = () => {
       ],
     });
     console.log(await txBuy);
+
+    if(txBuy){
+      settransferError({ isHidden: true });
+      settransferSuccess({ isHidden: false });
+      settransferMessage("Transfer has been successful");
+    }
+    else{
+      settransferError({ isHidden: false });
+      settransferSuccess({ isHidden: true });
+      seterrorMessage("Transaction has been unsuccessful");
+      return 
+    }
+  
+  } catch(error_transfer){
+    settransferError({ isHidden: false });
+    settransferSuccess({ isHidden: true });
+    seterrorMessage("Transaction has an error");
+    return 
+  }
+
+
   }
 
 
   const enterPress = async () => {
-
-
-  // var eventsList = await myContract.getPastEvents('OrderCreate',{},{})
-  // console.log(eventsList);
 
   var counterOrder = await myContract.methods.orderNumber().call();
   console.log(counterOrder);
@@ -404,8 +359,6 @@ const OTCPage = () => {
     console.log(ordersObject[i].maticAmount);
   };
 
-  // var ordersObject = await myContract.methods.Orders(_orderNumber).call();
-  // var maticAmountforOrder = await ordersObject.maticAmount;
 
   web3.eth.getChainId().then(console.log);
       // setfromTok(getValues("FromToken1"));
@@ -423,12 +376,20 @@ const OTCPage = () => {
 
 const createListing = async () => {
 
-  const TokenCont = "0x71b602688e7341eC30032327ACECE64342a17621";
-  const quantityT = 3000000000000000;
-  const maticAmount = 100000000000000;
-  var tokenContractDep = new web3.eth.Contract(contractStandardABI, TokenCont);
+  setLtokenAddress(getValues("listContract"));
+  setLTokenQuant(getValues("tokenQuant"));
+  setLMaticAmt(getValues("lMatAmount"));
 
-  var dataApprove = await tokenContractDep.methods.approve(contractAddress,quantityT).encodeABI();
+  // const TokenCont = "0x71b602688e7341eC30032327ACECE64342a17621";
+  // const quantityT = 3000000000000000;
+  // const maticAmount = 100000000000000;
+
+
+  try{
+
+  var tokenContractDep = new web3.eth.Contract(contractStandardABI, LtokenAddress);
+
+  var dataApprove = await tokenContractDep.methods.approve(contractAddress,LTokenQuant).encodeABI();
   console.log("dataApprove", dataApprove);
 
   const txHashApprove = await ethereum.request({
@@ -437,15 +398,33 @@ const createListing = async () => {
     params: [
       {
         from: currentAccount,
-        to: TokenCont,
+        to: setLtokenAddress,
         data: dataApprove,
       },
     ],
   });
   console.log(await txHashApprove);
 
+  if(txHashApprove){
+    settransferError({ isHidden: true });
+    settransferSuccess({ isHidden: false });
+    settransferMessage("Approval to transfer has been successful");
+  }
+  else{
+    settransferError({ isHidden: false });
+    settransferSuccess({ isHidden: true });
+    seterrorMessage("Approval Transaction unsuccessful");
+    return 
+  }
+}catch(error_approval){
+  settransferError({ isHidden: false });
+  settransferSuccess({ isHidden: true });
+  seterrorMessage("Error in approval");
+  return 
+}
 
-  var data3 = await myContract.methods.createOrder(TokenCont,quantityT,maticAmount).encodeABI();
+try{
+  var data3 = await myContract.methods.createOrder(LtokenAddress,LTokenQuant,LMaticAmt).encodeABI();
   
   console.log("data3", data3);
 
@@ -462,6 +441,24 @@ const createListing = async () => {
   });
   console.log(await txHash3);
 
+  if(txHash3){
+    settransferError({ isHidden: true });
+    settransferSuccess({ isHidden: false });
+    settransferMessage("Transfer has been successful");
+  }
+  else{
+    settransferError({ isHidden: false });
+    settransferSuccess({ isHidden: true });
+    seterrorMessage("Transaction has been unsuccessful");
+    return 
+  }
+
+} catch(error_transfer){
+  settransferError({ isHidden: false });
+  settransferSuccess({ isHidden: true });
+  seterrorMessage("Transaction has an error");
+  return 
+}
 
 };
 
@@ -469,15 +466,11 @@ const createListing = async () => {
     setmodOTC(false)
   }
 
-  const TestingButton = async () => {
-
-  }
-
   const ExitButton = () => (
     <Button
       variant="solid"
       size="lg"
-      mt={15}
+      mt={40}
       pl={5}
       pr={5}
       fontWeight="bold"
@@ -486,7 +479,7 @@ const createListing = async () => {
       backgroundColor="whiteAlpha.500"
       border={100}
       borderRadius={20}
-      ml={260}
+      ml={10}
       colorScheme="whiteAlpha"
       letterSpacing="wide"
       fontSize="lg"
@@ -503,75 +496,28 @@ const createListing = async () => {
   );
 
   
-  const TestButton = () => (
-    <Button
-      variant="solid"
-      size="lg"
-      mt={15}
-      pl={5}
-      pr={5}
-      fontWeight="bold"
-      color="white"
-      textAlign="center"
-      backgroundColor="whiteAlpha.500"
-      border={100}
-      borderRadius={20}
-      ml={260}
-      colorScheme="whiteAlpha"
-      letterSpacing="wide"
-      fontSize="lg"
-      leftIcon={<CloseIcon />}
-      display="inline"
-      pb={10}
-      pt={3}
-      onClick={() => {
-        TestingButton();
-      }}
-    >
-      TestButton
-    </Button>
-  );
 
-  const QuotesResult = () => (
-    <Alert status="info" variant="solid" mt={5}>
-      <AlertIcon />
-      <AlertTitle mr={1} fontWeight="bold">
-        QUOTES:
-      </AlertTitle>
-      <AlertDescription>
-        <AlertTitle
-          fontWeight="bold"
-          color="red
-    
-    "
-        >
-          {" "}
-          {name1} TOKENS
-        </AlertTitle>
-        Conversion of {quantValue} tokens of {fromTok} to {ToTok}{" "}
-      </AlertDescription>
-    </Alert>
-  );
 
-  const QuotesError = () => (
+
+  const TransferErrorDiv = () => (
     <Alert status="error" variant="solid" mt={5}>
       <AlertIcon />
       <AlertTitle mr={1} fontWeight="bold">
         ERROR:{" "}
       </AlertTitle>
       <AlertDescription>
-        Request is having an issue: {qErrormess}
+        Request is having an issue: {errorMessage}
       </AlertDescription>
     </Alert>
   );
 
-  const TransferSuccess = () => (
+  const TransferSuccessDiv = () => (
     <Alert status="success" variant="solid" mt={5}>
       <AlertIcon />
       <AlertTitle mr={1} fontWeight="bold">
         TRANSFER:
       </AlertTitle>
-      <AlertDescription>{tApprovalMessage}</AlertDescription>
+      <AlertDescription>{transferMessage}</AlertDescription>
     </Alert>
   );
 
@@ -580,7 +526,7 @@ const createListing = async () => {
       <br></br>
       <Text
         display="inline"
-        ml={240}
+        // ml={240}
         fontWeight="bold"
         textAlign="center"
         border={30}
@@ -595,12 +541,33 @@ const createListing = async () => {
         // backgroundColor="whiteAlpha.500"
         boxShadow={10}
         fontSize="2xl"
+        color="white"
+      >
+        OTC TRADING - PEER TO PEER - ANY POLYGON TOKENS TO MATIC
+      </Text>
+      <Text
+        // display="inline"
+        // ml={240}
+        fontWeight="bold"
+        textAlign="center"
+        border={30}
+        borderRadius={20}
+        pl={10}
+        pr={10}
+        pt={2}
+        pb={2}
+        opacity={1}
+        mr={10}
+        // mt={20}
+        // backgroundColor="whiteAlpha.500"
+        boxShadow={10}
+        fontSize="2xl"
         color="facebook.500"
       >
-        OTC Trading - Direct Peer to Peer
+      CREATE SELLING LISTING
       </Text>
-      <QuoteorSwap />
-      <Text
+      {/* <QuoteorSwap /> */}
+      {/* <Text
         display="inline"
         ml={8}
         fontWeight="bold"
@@ -618,27 +585,95 @@ const createListing = async () => {
         color="facebook.500"
       >
         SWAP TOKENS
-      </Text>
+      </Text> */}
       <form
         onSubmit={handleSubmit((inputRecord) =>
           setinputRecord(JSON.stringify(inputRecord))
         )}
       >
-        <FromToken />
-        <ToToken />
-        <QuantityToken />
-        <ExitButton />
-        <TestButton />
-        <EnterButton />
-        <div style={styleQ}>
-          <QuotesResult />
-        </div>
+        <ListContractAddress />
+        <LTokenQuantity />
+        <LMaticAmount />
+        <LEnterButton />
+        <DividerN />
+        <br></br>
+        <Text
+        // display="inline"
+        // ml={240}
+        fontWeight="bold"
+        textAlign="center"
+        border={30}
+        borderRadius={20}
+        pl={10}
+        pr={10}
+        pt={2}
+        pb={2}
+        opacity={1}
+        mr={10}
+        // mt={20}
+        // backgroundColor="whiteAlpha.500"
+        boxShadow={10}
+        fontSize="2xl"
+        color="facebook.500"
+      >
+      BUY LISTING
+      </Text>
+      <BuyOrderNumber />
+      <BEnterButton />
+      <DividerN />
+        <br></br>
+        <Text
+        // display="inline"
+        // ml={240}
+        fontWeight="bold"
+        textAlign="center"
+        border={30}
+        borderRadius={20}
+        pl={10}
+        pr={10}
+        pt={2}
+        pb={2}
+        opacity={1}
+        mr={10}
+        // mt={20}
+        // backgroundColor="whiteAlpha.500"
+        boxShadow={10}
+        fontSize="2xl"
+        color="facebook.500"
+      >
+      CANCEL LISTING
+      </Text>
+        <CanOrderNumber />
+      <CEnterButton />
+      <DividerN />
+        <br></br>
         <div style={styleT}>
-          <TransferSuccess />
+          <TransferSuccessDiv />
         </div>
         <div style={styleE}>
-          <QuotesError />
+          <TransferErrorDiv />
         </div>
+        <Text
+        // display="inline"
+        // ml={240}
+        fontWeight="bold"
+        textAlign="center"
+        border={30}
+        borderRadius={20}
+        pl={10}
+        pr={10}
+        pt={2}
+        pb={2}
+        opacity={1}
+        mr={10}
+        // mt={20}
+        // backgroundColor="whiteAlpha.500"
+        boxShadow={10}
+        fontSize="2xl"
+        color="facebook.500"
+      >
+ALL LISTINGS      </Text>
+<ExitButton />
       </form>
     </ChakraProvider>
   );
