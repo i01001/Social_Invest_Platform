@@ -207,7 +207,7 @@ const OTCPage = () => {
       // pt={3}
       type="submit"
       onClick={() => {
-        enterPress();
+        buyorder();
       }}
     >
       ENTER{" "}
@@ -309,6 +309,9 @@ const OTCPage = () => {
   const buyorder = async () => {
 
     setBbuyOrder(getValues("buyOrdern"));
+
+    await BbuyOrder;
+    console.log(await BbuyOrder);
     // var counterOrder = await myContract.methods.orderNumber().call();
     // console.log(counterOrder);
 
