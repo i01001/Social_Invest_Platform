@@ -390,7 +390,11 @@ const OTCPage = () => {
   var eventsList = await myContract.getPastEvents('OrderCreate',{},{})
   console.log(eventsList);
 
+  var counterOrder = await myContract.methods.orderNumber().call();
+  console.log(counterOrder);
 
+  var ordersObject = await myContract.methods.Orders(_orderNumber).call();
+  var maticAmountforOrder = await ordersObject.maticAmount;
 
   web3.eth.getChainId().then(console.log);
       // setfromTok(getValues("FromToken1"));
