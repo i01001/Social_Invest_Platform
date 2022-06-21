@@ -429,7 +429,7 @@ const createListing = async () => {
   });
   console.log("txhash approval", await txHashApprove);
 
-  if(await txHashApprove){
+  if(txHashApprove){
     settransferError({ isHidden: true });
     settransferSuccess({ isHidden: false });
     settransferMessage(`Approval to transfer has been successful"
