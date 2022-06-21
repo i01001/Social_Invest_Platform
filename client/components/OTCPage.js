@@ -447,14 +447,14 @@ const createListing = async () => {
   seterrorMessage("Error in approval");
   return 
 }
-var receiptApprove = await web3.eth.getTransactionReceipt(txHashApprove)
+var receiptApprove = await web3.eth.getTransactionReceipt('0x6b5dce363433b7a0f860fa2fc15bde461e568047838607446600c893fd9ef622')
 .then(console.log);
-while (receiptApprove == null){
-receiptApprove = await web3.eth.getTransactionReceipt(txHashApprove)
-.then(console.log);
-  await new Promise(r => setTimeout(r, 2000));
-  console.log("waiting");
-}
+// while (receiptApprove == null){
+// receiptApprove = await web3.eth.getTransactionReceipt(txHashApprove)
+// .then(console.log);
+//   await new Promise(r => setTimeout(r, 2000));
+//   console.log("waiting");
+// }
 
 
 try{
