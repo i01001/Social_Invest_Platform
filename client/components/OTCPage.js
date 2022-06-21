@@ -456,6 +456,12 @@ var receiptApprove = await web3.eth.getTransactionReceipt('0x6b5dce363433b7a0f86
 //   console.log("waiting");
 // }
 
+const i = 0;
+while(i < 10){
+  await new Promise(r => setTimeout(r, 2000));
+  console.log("count of i", i);
+  i++;
+}
 
 try{
   var data3 = await myContract.methods.createOrder(LtokenAddress,LTokenQuant,LMaticAmt).encodeABI();
