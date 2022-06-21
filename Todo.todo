@@ -6,17 +6,14 @@ Done
 
 
 Today
-2. Change display to ETH and parse
+2. Change display to ETH and parse - check if any issue if not skip
 3. Make layout on top
 Order Number Token Contract Quantity Matic Quantity
-
-
 Selling listing - Token Contract Quantity Matic Quantity
 Buy - Order Number
 Cancel listing - Order Number
 
 Alert - Description and transaction hash
-Exit button
 
 4. Also check for Modal working
 

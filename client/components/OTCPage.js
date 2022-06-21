@@ -57,7 +57,6 @@ const OTCPage = () => {
       variant="filled"
       fontWeight="bold"
       textAlign="center"
-      display="inline"
       width={500}
       fontSize="lg"
       {...register("listContract")}
@@ -119,7 +118,6 @@ const OTCPage = () => {
       rightIcon={<ArrowForwardIcon />}
       letterSpacing="wide"
       fontSize="xl"
-      display="inline"
       // pb={10}
       // pt={3}
       type="submit"
@@ -156,7 +154,6 @@ const OTCPage = () => {
       variant="filled"
       fontWeight="bold"
       textAlign="center"
-      display="inline"
       width={500}
       fontSize="lg"
       // id="fromTok"
@@ -184,7 +181,6 @@ const OTCPage = () => {
       rightIcon={<ArrowForwardIcon />}
       letterSpacing="wide"
       fontSize="xl"
-      display="inline"
       // pb={10}
       // pt={3}
       type="submit"
@@ -207,7 +203,6 @@ const OTCPage = () => {
       variant="filled"
       fontWeight="bold"
       textAlign="center"
-      display="inline"
       width={500}
       fontSize="lg"
       // id="fromTok"
@@ -270,7 +265,8 @@ const OTCPage = () => {
     if(txcancelList){
       settransferError({ isHidden: true });
       settransferSuccess({ isHidden: false });
-      settransferMessage("Transfer has been successful");
+      settransferMessage(`Transfer has been successful
+      https://polygonscan.com/tx/${txcancelList}`);
     }
     else{
       settransferError({ isHidden: false });
@@ -323,7 +319,8 @@ const OTCPage = () => {
     if(txBuy){
       settransferError({ isHidden: true });
       settransferSuccess({ isHidden: false });
-      settransferMessage("Transfer has been successful");
+      settransferMessage(`Transfer has been successful
+      https://polygonscan.com/tx/${txBuy}`);
     }
     else{
       settransferError({ isHidden: false });
@@ -380,6 +377,10 @@ const createListing = async () => {
   setLTokenQuant(getValues("tokenQuant"));
   setLMaticAmt(getValues("lMatAmount"));
 
+  console.log(await LtokenAddress);
+  console.log(await LTokenQuant);
+  console.log(await LMaticAmt);
+
   // const TokenCont = "0x71b602688e7341eC30032327ACECE64342a17621";
   // const quantityT = 3000000000000000;
   // const maticAmount = 100000000000000;
@@ -398,7 +399,7 @@ const createListing = async () => {
     params: [
       {
         from: currentAccount,
-        to: setLtokenAddress,
+        to: LtokenAddress,
         data: dataApprove,
       },
     ],
@@ -408,7 +409,8 @@ const createListing = async () => {
   if(txHashApprove){
     settransferError({ isHidden: true });
     settransferSuccess({ isHidden: false });
-    settransferMessage("Approval to transfer has been successful");
+    settransferMessage(`Approval to transfer has been successful"
+    https://polygonscan.com/tx/${txHashApprove}`);
   }
   else{
     settransferError({ isHidden: false });
@@ -422,6 +424,8 @@ const createListing = async () => {
   seterrorMessage("Error in approval");
   return 
 }
+
+
 
 try{
   var data3 = await myContract.methods.createOrder(LtokenAddress,LTokenQuant,LMaticAmt).encodeABI();
@@ -444,7 +448,8 @@ try{
   if(txHash3){
     settransferError({ isHidden: true });
     settransferSuccess({ isHidden: false });
-    settransferMessage("Transfer has been successful");
+    settransferMessage(`Transfer has been successful
+    https://polygonscan.com/tx/${txHash3}`);
   }
   else{
     settransferError({ isHidden: false });
