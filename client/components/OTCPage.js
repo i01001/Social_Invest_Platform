@@ -447,7 +447,7 @@ const OTCPage = () => {
     const jsonAllData = await JSON.stringify(ordersObjectList);
     
 
-    setdataAllList(ordersObjectList);
+    setdataAllList(jsonAllData);
     console.log("order Objects orig", ordersObjectList);
     console.log("order Objects mod", jsonAllData);
 
@@ -819,7 +819,7 @@ const OTCPage = () => {
           ALL LISTING
           {dataAllList}{" "}
         </Text>
-{/* <JsonDataDisplay /> */}
+<JsonDataDisplay />
         <AlllistingButton />
         <AllListing />
         <ExitButton />

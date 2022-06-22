@@ -2,28 +2,36 @@ import React from 'react'
 import { useContext } from "react";
 import { SocialContext } from "../context/context";
 
-function JsonDataDisplay(){
+const JsonDataDisplay = async () => {
 
     const { dataAllList, setdataAllList} = useContext(SocialContext);
 
-	const DisplayData=dataAllList.map(
-		(info)=>{
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
+      );
+    const data = await response.json();
+	const DisplayData=data.map(
+		(_orderNumber,seller,tokenQuantity,tokenContract,maticAmount)=>{
 			return(
-				<tr>
-					<td>{info._orderNumber}</td>
+                <>
+                <p> key={_orderNumber}</p>
+
+				{/* <tr> */}
+                    {/* <td>{info.tokenQuantity}</td> */}
+					{/* <td>{info._orderNumber}</td>
 					<td>{info.seller}</td>
 					<td>{info.tokenQuantity}</td>
                     <td>{info.tokenContract}</td>
-					<td>{info.maticAmount}</td>
-
-				</tr>
+					<td>{info.maticAmount}</td> */}
+                    </>
+				// </tr>
 			)
 		}
 	)
 
 	return(
 		<div>
-			<table class="table table-striped">
+			{/* <table class="table table-striped">
 				<thead>
 					<tr>
 					<th>Order No</th>
@@ -33,13 +41,13 @@ function JsonDataDisplay(){
 					<th>Matic Amount</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody> */}
 				
 					
 					{DisplayData}
 					
-				</tbody>
-			</table>
+				{/* </tbody>
+			</table> */}
 			
 		</div>
 	)
