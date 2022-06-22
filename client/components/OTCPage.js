@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import JsonDataDisplay from "./dataRender";
+// import JsonDataDisplay from "./dataRender";
 import { SocialContext } from "../context/context";
 import {
   contractStandardABI,
@@ -817,9 +817,10 @@ const OTCPage = () => {
           color="facebook.500"
         >
           ALL LISTING
+          <br></br>
           {dataAllList}{" "}
         </Text>
-<JsonDataDisplay />
+{/* <JsonDataDisplay /> */}
         <AlllistingButton />
         <AllListing />
         <ExitButton />
