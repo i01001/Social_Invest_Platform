@@ -437,7 +437,7 @@ const OTCPage = () => {
 
     const ordersObjectList = [];
     for (const i = 0; i < counterOrder; i++) {
-      ordersObjectList[i] = await myContract.methods.Orders(i).call();
+      ordersObjectList[i] = await myContract.methods.Orders(i.seller).call();
       console.log(ordersObjectList[i]._orderNumber);
       console.log(ordersObjectList[i].seller);
       console.log(ordersObjectList[i].tokenQuantity);
@@ -815,10 +815,8 @@ const OTCPage = () => {
           fontSize="2xl"
           color="facebook.500"
         >
-          ALL LISTINGS
-
-          
-          {dataAllList.seller}{" "}
+          ALL LISTING
+          {dataAllList}{" "}
         </Text>
         {/* <Display /> */}
         <AlllistingButton />
