@@ -309,7 +309,7 @@ const OTCPage = () => {
 
   const AllListing = () => (
     <Textarea 
-    placeholder="Text inside" 
+    placeholder={dataAllList} 
     />
   );
 
@@ -818,7 +818,7 @@ const OTCPage = () => {
         >
           ALL LISTING
           <br></br>
-          {dataAllList}{" "}
+          {" "}
         </Text>
 {/* <JsonDataDisplay /> */}
         <AlllistingButton />
