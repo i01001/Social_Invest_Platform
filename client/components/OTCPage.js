@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component } from 'react';
 import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
+// import Display from "./dataRender";
 import { SocialContext } from "../context/context";
 import {
   contractStandardABI,
@@ -36,7 +37,7 @@ const OTCPage = () => {
   const [transferMessage, settransferMessage] = useState("");
   const [listingData, setlistingData] = useState("");
 
-  const { roomName, currentAccount, connectWallet } = useContext(SocialContext);
+  const { roomName, currentAccount, connectWallet, dataAllList, setdataAllList } = useContext(SocialContext);
 
   const [LtokenAddress, setLtokenAddress] = useState();
   const [LTokenQuant, setLTokenQuant] = useState();
@@ -434,16 +435,22 @@ const OTCPage = () => {
     var counterOrder = await myContract.methods.orderNumber().call();
     console.log(counterOrder);
 
-    const ordersObject = [];
+    const ordersObjectList = [];
     for (const i = 0; i < counterOrder; i++) {
-      ordersObject[i] = await myContract.methods.Orders(i).call();
-      console.log(ordersObject[i]._orderNumber);
-      console.log(ordersObject[i].seller);
-      console.log(ordersObject[i].tokenQuantity);
-      console.log(ordersObject[i].tokenContract);
-      console.log(ordersObject[i].maticAmount);
+      ordersObjectList[i] = await myContract.methods.Orders(i).call();
+      console.log(ordersObjectList[i]._orderNumber);
+      console.log(ordersObjectList[i].seller);
+      console.log(ordersObjectList[i].tokenQuantity);
+      console.log(ordersObjectList[i].tokenContract);
+      console.log(ordersObjectList[i].maticAmount);
     }
-    setlistingData(ordersObject[0].seller);
+    const jsonAllData = await ordersObjectList.json();
+
+    setdataAllList(ordersObjectList);
+    console.log("order Objects orig", ordersObjectList);
+    console.log("order Objects mod", jsonAllData);
+
+
     web3.eth.getChainId().then(console.log);
   };
 
@@ -808,13 +815,22 @@ const OTCPage = () => {
           fontSize="2xl"
           color="facebook.500"
         >
-          ALL LISTINGS{listingData}{" "}
+          ALL LISTINGS
+
+          
+          {dataAllList.seller}{" "}
         </Text>
+        {/* <Display /> */}
         <AlllistingButton />
         <AllListing />
         <ExitButton />
       </form>
     </ChakraProvider>
+    // <div>
+    //             {ordersObject.map((user) => (
+    //         <p>[{user.seller}] {user.tokenContract}</p>
+    //       ))}
+    // </div>
   );
 };
 

@@ -28,6 +28,7 @@ export const SocialProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [modstat, setmodstat] = useState(false);
   const [modOTC, setmodOTC] = useState(false);
+  const [dataAllList, setdataAllList] = useState("");
 
 
   useEffect(() => {
@@ -165,6 +166,8 @@ export const SocialProvider = ({ children }) => {
         setmodstat,
         modOTC,
         setmodOTC,
+        dataAllList,
+        setdataAllList,
       }}
     >
       {children}
