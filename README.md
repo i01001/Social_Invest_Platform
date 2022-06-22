@@ -21,8 +21,9 @@ Additionally there is an OTC Platform (on Testnet) that allows Peer to Peer trad
 
 Website: https://social-invest-platform.vercel.app/  
 
-Unstoppable Domain: socialtrading.dao
+Video Demonstration: https://www.youtube.com/watch?v=B9zmLImWkGs
 
+Unstoppable Domain: socialtrading.dao
 
 Smart Contract: 0x743Ab0f69a767D3cF3556d62dB54fbEEb548E77d https://mumbai.polygonscan.com/address/0x743ab0f69a767d3cf3556d62db54fbeeb548e77d
 
