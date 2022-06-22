@@ -437,18 +437,19 @@ const OTCPage = () => {
 
     const ordersObjectList = [];
     for (const i = 0; i < counterOrder; i++) {
-      ordersObjectList[i] = await myContract.methods.Orders(i.seller).call();
+      ordersObjectList[i] = await myContract.methods.Orders([i].seller).call();
       console.log(ordersObjectList[i]._orderNumber);
       console.log(ordersObjectList[i].seller);
       console.log(ordersObjectList[i].tokenQuantity);
       console.log(ordersObjectList[i].tokenContract);
       console.log(ordersObjectList[i].maticAmount);
     }
-    // const jsonAllData = await ordersObjectList.json();
+    const jsonAllData = await JSON.stringify(ordersObjectList);
+    
 
     setdataAllList(ordersObjectList);
     console.log("order Objects orig", ordersObjectList);
-    console.log("order Objects mod", ordersObjectList[0]);
+    console.log("order Objects mod", jsonAllData);
 
 
     web3.eth.getChainId().then(console.log);
