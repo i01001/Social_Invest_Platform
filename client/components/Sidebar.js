@@ -6,17 +6,17 @@ import RoomAvatar from "./RoomAvatar";
 import avatar1 from "../assets/avatar-1.png"
 
 
-const dummy = [
-  {
-    rooName: "some",
-    roomId: 33,
-    avatar: avatar1, 
-  }
-]
+// const dummy = [
+//   {
+//     rooName: "some",
+//     roomId: 33,
+//     avatar: avatar1, 
+//   }
+// ]
 
 const Sidebar = () => {
   const router = useRouter();
-  const [channels, setChannels] = useState(dummy);
+  const [channels, setChannels] = useState([]);
 
   useEffect(() => {
     sidebarEffect();
@@ -28,7 +28,9 @@ const Sidebar = () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/getchannels`,
       );
+      console.log("RESPONSE", await response);
       const data = await response.json();
+      console.log("DATAAAAAAAAAAAA", await data);
     setChannels(data);
     router.push(`?channel=${data[0].roomId}&name=${data[0].roomName}`);
   } catch (error) {

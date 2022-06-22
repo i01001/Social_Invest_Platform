@@ -28,7 +28,7 @@ export const SocialProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [modstat, setmodstat] = useState(false);
   const [modOTC, setmodOTC] = useState(false);
-  const [dataAllList, setdataAllList] = useState("");
+  const [dataAllList, setdataAllList] = useState ([{"0":"0","1":"0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549","2":"0","3":"0xE3cf96b99c06eADC26E92ac3a01dac64E9f5bF68","4":"0","_orderNumber":"0","seller":"0xaF87B6479f9CA8D3BAE56deAd220bcE44a709549","tokenQuantity":"0","tokenContract":"0xE3cf96b99c06eADC26E92ac3a01dac64E9f5bF68","maticAmount":"0"}]);
 
 
   useEffect(() => {

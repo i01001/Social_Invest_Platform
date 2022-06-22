@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-// import JsonDataDisplay from "./dataRender";
+import DataRender from "./DataRender";
+require('react-json-pretty/themes/monikai.css');
+import 'react-json-pretty/themes/monikai.css';
 import { SocialContext } from "../context/context";
 import {
   contractStandardABI,
@@ -25,8 +27,10 @@ import {
   AlertDescription,
   Divider,
   Textarea,
+  resize,
 } from "@chakra-ui/react";
 import { ArrowForwardIcon, CloseIcon } from "@chakra-ui/icons";
+var JSONPrettyMon = require('react-json-pretty/dist/monikai');
 
 const OTCPage = () => {
   const [inputRecord, setinputRecord] = useState("");
@@ -36,7 +40,9 @@ const OTCPage = () => {
   const [errorMessage, seterrorMessage] = useState("");
   const [transferMessage, settransferMessage] = useState("");
   const [listingData, setlistingData] = useState("");
+  const [Mapping, setMapping] = useState([]);
 
+  
   const { roomName, currentAccount, connectWallet, dataAllList, setdataAllList } = useContext(SocialContext);
 
   const [LtokenAddress, setLtokenAddress] = useState();
@@ -80,6 +86,8 @@ const OTCPage = () => {
 
   useEffect(() => {
     if (LisComponentMounted) {
+      settransferError({ isHidden: true });
+      settransferSuccess({ isHidden: true });
       createListing();
     }
   }, [LtokenAddress, LTokenQuant, LMaticAmt, LEntercount]);
@@ -96,6 +104,8 @@ const OTCPage = () => {
 
   useEffect(() => {
     if (BisComponentMounted) {
+      settransferError({ isHidden: true });
+      settransferSuccess({ isHidden: true });
       buyorder();
     }
   }, [BbuyOrder, BEntercount]);
@@ -112,9 +122,16 @@ const OTCPage = () => {
 
   useEffect(() => {
     if (CisComponentMounted) {
+      settransferError({ isHidden: true });
+      settransferSuccess({ isHidden: true });
       cancelOrder();
     }
   }, [CListOrderNo, CEntercount]);
+
+  // useEffect(() => {
+  //   enterPressOTC()
+  // }, []);
+  
 
   const ListContractAddress = () => (
     <Input
@@ -308,8 +325,16 @@ const OTCPage = () => {
   );
 
   const AllListing = () => (
-    <Textarea 
+    <Textarea
+    isReadOnly 
+    mt={30}
+    color="black"
+    fontStyle="italic" 
+    lineHeight={8}
     placeholder={dataAllList} 
+    resize={resize}
+    height={800}
+    letterSpacing="wide"
     />
   );
 
@@ -432,24 +457,30 @@ const OTCPage = () => {
   };
 
   const enterPressOTC = async () => {
+    settransferError({ isHidden: true });
+    settransferSuccess({ isHidden: true });
     var counterOrder = await myContract.methods.orderNumber().call();
     console.log(counterOrder);
 
     const ordersObjectList = [];
     for (const i = 0; i < counterOrder; i++) {
       ordersObjectList[i] = await myContract.methods.Orders(i).call();
-      console.log(ordersObjectList[i]._orderNumber);
-      console.log(ordersObjectList[i].seller);
-      console.log(ordersObjectList[i].tokenQuantity);
-      console.log(ordersObjectList[i].tokenContract);
-      console.log(ordersObjectList[i].maticAmount);
+      // console.log(ordersObjectList[i]._orderNumber);
+      // console.log(ordersObjectList[i].seller);
+      // console.log(ordersObjectList[i].tokenQuantity);
+      // console.log(ordersObjectList[i].tokenContract);
+      // console.log(ordersObjectList[i].maticAmount);
     }
+    console.log(ordersObjectList);
     const jsonAllData = await JSON.stringify(ordersObjectList);
-    
-
-    setdataAllList(jsonAllData);
+    console.log("JSON data going", await jsonAllData);
+    await jsonAllData;
     console.log("order Objects orig", ordersObjectList);
     console.log("order Objects mod", jsonAllData);
+    console.log('dataAlllist being updated', await dataAllList);
+    setdataAllList(await jsonAllData);
+    // setMapping(jsonAllData);
+    // TestMapping();
 
 
     web3.eth.getChainId().then(console.log);
@@ -582,12 +613,44 @@ const OTCPage = () => {
     setmodOTC(false);
   };
 
-  
+  const TestMapping = () => {
+    <div>
+      {/* {Rchannels.map((roomId, roomName) => ( */}
+      {jsonAllData.map(({ _orderNumber, seller }) => (
+      <Text
+        display="inline"
+        ml={240}
+        fontWeight="bold"
+        textAlign="center"
+        border={30}
+        borderRadius={20}
+        pl={10}
+        pr={10}
+        pt={2}
+        pb={2}
+        opacity={1}
+        mr={10}
+        mt={20}
+        // backgroundColor="whiteAlpha.500"
+        boxShadow={10}
+        fontSize="2xl"
+        color="facebook.500"
+      // >key={roomId}
+      // {roomName}
+        /* [{indi._orderNumber} {indi[{index}].seller}] */
+        key={_orderNumber}>NEW COFF type {seller} in a {_orderNumber} size
+
+      </Text>
+      ))}
+    </div>
+  }
+
+
   const AlllistingButton = () => (
     <Button
       variant="solid"
       size="lg"
-      mt={40}
+      // mt={40}
       pl={5}
       pr={5}
       fontWeight="bold"
@@ -600,7 +663,7 @@ const OTCPage = () => {
       colorScheme="whiteAlpha"
       letterSpacing="wide"
       fontSize="lg"
-      leftIcon={<CloseIcon />}
+      rightIcon={<ArrowForwardIcon />}
       display="inline"
       pb={10}
       pt={3}
@@ -618,7 +681,8 @@ const OTCPage = () => {
     <Button
       variant="solid"
       size="lg"
-      mt={40}
+      // mt={40}
+      display="inline"
       pl={5}
       pr={5}
       fontWeight="bold"
@@ -627,12 +691,11 @@ const OTCPage = () => {
       backgroundColor="whiteAlpha.500"
       border={100}
       borderRadius={20}
-      ml={10}
+      ml={50}
       colorScheme="whiteAlpha"
       letterSpacing="wide"
       fontSize="lg"
       leftIcon={<CloseIcon />}
-      display="inline"
       pb={10}
       pt={3}
       onClick={() => {
@@ -666,6 +729,7 @@ const OTCPage = () => {
   );
 
   return (
+    <div>
     <ChakraProvider resetCSS>
       <br></br>
       <Text
@@ -797,9 +861,10 @@ const OTCPage = () => {
         <div style={styleE}>
           <TransferErrorDiv />
         </div>
+        <ExitButton />
         <Text
           // display="inline"
-          // ml={240}
+          ml={600}
           fontWeight="bold"
           textAlign="center"
           border={30}
@@ -808,8 +873,9 @@ const OTCPage = () => {
           pr={10}
           pt={2}
           pb={2}
+          display="inline"
           opacity={1}
-          mr={10}
+          mr={30}
           // mt={20}
           // backgroundColor="whiteAlpha.500"
           boxShadow={10}
@@ -817,15 +883,26 @@ const OTCPage = () => {
           color="facebook.500"
         >
           ALL LISTING
-          <br></br>
+          {/* <br></br> */}
           {" "}
         </Text>
-{/* <JsonDataDisplay /> */}
         <AlllistingButton />
-        <AllListing />
-        <ExitButton />
+        {/* <TestMapping /> */}
+        {/* <DataRender /> */}
+       
+
+
+
       </form>
+      <div width={600}> 
+      {/* <pre>{JSON.stringify(dataAllList, null, 2)}</pre> */}
+      {/* <JSONPretty data={dataAllList} theme={JSONPrettyMon}></JSONPretty> */}
+          </div>
+      <AllListing />
     </ChakraProvider>
+    {/* <pre>{dataAllList}</pre> */}
+    </div>
+    
     // <div>
     //             {jsonAllData.map((user, index) => (
     //         <p>{user.seller}</p>
