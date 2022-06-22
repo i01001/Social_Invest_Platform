@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-// import Display from "./dataRender";
+import JsonDataDisplay from "./dataRender";
 import { SocialContext } from "../context/context";
 import {
   contractStandardABI,
@@ -819,15 +819,15 @@ const OTCPage = () => {
           ALL LISTING
           {dataAllList}{" "}
         </Text>
-        {/* <Display /> */}
+{/* <JsonDataDisplay /> */}
         <AlllistingButton />
         <AllListing />
         <ExitButton />
       </form>
     </ChakraProvider>
     // <div>
-    //             {ordersObject.map((user) => (
-    //         <p>[{user.seller}] {user.tokenContract}</p>
+    //             {jsonAllData.map((user, index) => (
+    //         <p>{user.seller}</p>
     //       ))}
     // </div>
   );

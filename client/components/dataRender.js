@@ -1,25 +1,48 @@
-// import React, { Component } from 'react';
+import React from 'react'
+import { useContext } from "react";
+import { SocialContext } from "../context/context";
 
-// export default class Display extends Component {
+function JsonDataDisplay(){
 
-//     render() {
-//         const { dataAllList, setdataAllList } = useContext(SocialContext);
+    const { dataAllList, setdataAllList} = useContext(SocialContext);
 
-//         const { dataAllList } = this.props;
+	const DisplayData=dataAllList.map(
+		(info)=>{
+			return(
+				<tr>
+					<td>{info._orderNumber}</td>
+					<td>{info.seller}</td>
+					<td>{info.tokenQuantity}</td>
+                    <td>{info.tokenContract}</td>
+					<td>{info.maticAmount}</td>
 
-//         return (
-//             <>
-//                {
-//                 {dataAllList.map((channel, index) => (
-//                       _orderNumber={index}
-//                       seller={channel.seller}
-//                       tokenQuantity={channel.tokenQuantity}
-//                       tokenContract={channel.tokenContract}
-//                       maticAmount={channel.maticAmount}
-//                   ))}
-//                }
-//             </>
+				</tr>
+			)
+		}
+	)
 
-//         )
-//     }
-// }
+	return(
+		<div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+					<th>Order No</th>
+					<th>Seller</th>
+					<th>Token Quantity</th>
+                    <th>Token Contract</th>
+					<th>Matic Amount</th>
+					</tr>
+				</thead>
+				<tbody>
+				
+					
+					{DisplayData}
+					
+				</tbody>
+			</table>
+			
+		</div>
+	)
+}
+
+export default JsonDataDisplay;
