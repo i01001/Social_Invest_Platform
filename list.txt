@@ -17,7 +17,7 @@ Alert - Description and transaction hash
 
 4. Also check for Modal working
 
-5. Auto message created in Trading group 
+5. Auto message created in Trading group
 6. Retrieve information for listing via Covalent api 
 
 
