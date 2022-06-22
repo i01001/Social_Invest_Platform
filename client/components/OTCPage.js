@@ -444,11 +444,11 @@ const OTCPage = () => {
       console.log(ordersObjectList[i].tokenContract);
       console.log(ordersObjectList[i].maticAmount);
     }
-    const jsonAllData = await ordersObjectList.json();
+    // const jsonAllData = await ordersObjectList.json();
 
     setdataAllList(ordersObjectList);
     console.log("order Objects orig", ordersObjectList);
-    console.log("order Objects mod", jsonAllData);
+    console.log("order Objects mod", ordersObjectList[0]);
 
 
     web3.eth.getChainId().then(console.log);
